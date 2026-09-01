@@ -1,6 +1,6 @@
 # CHUWIN · 无限棋
 
-一个面向 Windows 的无限棋盘网页服务器。项目基于 [Infinite Chess](https://github.com/Infinite-Chess/infinitechess.org) 开源代码，并补充了中文界面、中文文档、Windows 一键启动脚本以及 AI 教练功能。
+一个面向 Windows 的无限棋盘网页服务器。
 
 ![CHUWIN 项目预览](图片/项目预览.png)
 
