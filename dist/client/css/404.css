@@ -1,0 +1,42 @@
+/*
+ * The error pages under views/errors link ONLY this stylesheet — they never pull
+ * in header.css, so the shared design tokens aren't reachable here. The dark
+ * values below are deliberately hardcoded copies of them.
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    color-scheme: dark;
+}
+
+body {
+    padding-top: 60px;
+    min-height: 100vh;
+    background-color: #101216;
+    color: #e7eaee;
+    font-family: Verdana, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+    color: #6aa9ff;
+}
+
+p {
+    margin: 1em;
+    color: #9aa2ae;
+    line-height: 1.6;
+}
+
+a {
+    color: #6aa9ff;
+}
+
+a:hover {
+    color: #e7eaee;
+}

@@ -1,0 +1,2071 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana;
+    border: 0;
+    /* Enable temporarily during dev to see the borders of all elements */
+    /* outline: 1px solid rgba(0, 0, 0, 0.191); */
+}
+
+html {
+    background-color: var(--bg);
+    /* Makes native selects, inputs and scrollbars render dark. */
+    color-scheme: dark;
+}
+
+/* Variables */
+:root {
+    /* 100vw, but with a maximum, so some UIs don't get too big. */
+    --vw-capped: clamp(0px, 100vw, 1086px);
+    --nav-bar-height: 41px; /* 40 + 1 for border */
+    /* The viewport height, subtract the navigation bar height. */
+    --vh-sub-nav: calc(100vh - var(--nav-bar-height));
+    /* The minimum between the viewport width and height */
+    --vwh: min(var(--vh-sub-nav), var(--vw-capped));
+}
+
+
+
+/* Everything besides the top navigation bar */
+
+main {
+    position: fixed;
+    top: var(--nav-bar-height);
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+
+/* Loading Page. A COUPLE OF THSEE CLASSES are also used for the game's loading animation page! */
+
+.animation-container {
+    transition: opacity 0.4s;
+    z-index: 1;
+    pointer-events: none;
+    display: flex;
+    background-color: black;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+}
+
+.loading-glow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    --ring-color: rgb(60,60,60,1);
+    background: radial-gradient(circle, var(--ring-color) 0%, black 70%);
+    color: red;
+    z-index: -1; /* Render below checkers */
+    transition: 0.5s;
+}
+
+.loadingGlowAnimation {
+    animation: loadingGlow 1.2s alternate infinite cubic-bezier(.42,0,.58,1);
+}
+
+@keyframes loadingGlow {
+    0% {
+        transform: scale(1.2);
+        opacity: 70%;
+    }
+    100% {
+        transform: scale(2);
+    }
+}
+
+.loading-glow.loading-glow-error {
+    --ring-color-error: rgb(60, 45, 45);
+    background: radial-gradient(circle, var(--ring-color-error) 0%, black 70%);
+}
+
+.loading-text {
+    color: white;
+    position: absolute;
+    font-family: Verdana;
+    font-size: calc(30px + 1.2vw);
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    animation: 0.6s infinite cubic-bezier(.42,0,.58,1) alternate loadingPulsing,
+               1.2s infinite cubic-bezier(.42,0,.58,1) alternate loadingExpand;
+}
+
+@keyframes loadingPulsing {
+    from {
+        opacity: 100%;
+    }
+    to {
+        opacity: 60%;
+    }
+}
+
+@keyframes loadingExpand {
+    from {
+        
+    }
+    to {
+        transform: scale(1.04);
+    }
+}
+
+.loading-error {
+    color: red;
+    position: absolute;
+    font-family: Verdana;
+    text-align: center;
+}
+
+.loading-error h1 {
+    font-size: calc(30px + 1.2vw);
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    margin-bottom: 0.1em;
+}
+
+.loading-error p {
+    font-size: 16px;
+    padding: 0 1em;
+}
+
+.checkerboard {
+    width: 100vw;
+	height: 100svh;
+	background: repeating-conic-gradient(black 0% 25%, transparent 0% 50%) 
+      50% / 20vmin 20vmin;
+}
+
+/* Canvas and the Overlay containing all html elements above the canvas */
+
+canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* The game loading screen when loading svgs and generating spritesheet */
+
+.game-loading-screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-loading-screen.transparent {
+    /* Adding this rule here instead of in the non-transparent loading screen
+    means that the opacity will only be transitioned one-way */
+    transition: opacity 0.3s;
+}
+
+.game-loading-screen .spinny-pawn {
+    --width: 90px;
+    --color: #e5e5e5;
+    width: var(--width);
+    height: var(--width);
+    stroke: var(--color);
+    fill: var(--color);
+}
+
+/* The overlay that contains all UI elements overtop the canvas. */
+
+#overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* Bottom strip of the title screen and the invite creation screen. Empty since the
+   credits link was removed, but the div it positions is still there — three scripts
+   toggle it by id. */
+
+.menu-external-links {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+
+
+
+/* Title Screen: Play, guide, board editor */
+
+.title {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template: min(16vw, 173px, calc(var(--vh-sub-nav) * 0.184)) repeat(4, min(8vw, 86px, calc(var(--vh-sub-nav) * 0.092))) / 1fr min(50vw, 542px, calc(var(--vh-sub-nav) * 0.575)) 1fr;
+    gap: min(2vw, 22px, calc(var(--vh-sub-nav) * 0.023));
+    padding-bottom: min(10vw, 108px, calc(var(--vh-sub-nav) * 0.115));
+    justify-content: center;
+    align-content: center;
+}
+
+/* The board is a light WebGL canvas that CSS can't reach, and #overlay has no
+   background of its own, so every full-screen menu gets its own scrim. Without
+   it the light text would sit directly on the light board. Geometry untouched —
+   only the backdrop is added. */
+.title, .play-selection, .guide, .practice-selection {
+    background-color: rgba(16, 18, 22, 0.62);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.title h1 {
+    font-size: min(10vw, 108px, calc(var(--vh-sub-nav) * 0.115));
+    font-family: Georgia;
+    color: var(--text);
+    text-shadow: 0 2px 26px rgba(106, 169, 255, 0.35), 0 1px 4px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    overflow: visible;
+    grid-column: 1 / 4;
+}
+
+/* All bubble buttons on title screen have similar design */
+.titlebubble {
+    box-shadow: var(--shadow-1);
+    border: 1px solid var(--border);
+    border-radius: min(1.3vw, 14px, calc(var(--vh-sub-nav) * 0.015));
+    color: var(--text);
+    background-color: var(--surface);
+    background: linear-gradient(180deg, var(--surface-2), var(--surface));
+    transition: background 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+}
+
+.title button {
+    font-size: min(2.5vw, 27px, calc(var(--vh-sub-nav) * 0.029));
+    grid-column: 2 / 3;
+}
+
+.title button:hover {
+    background: linear-gradient(180deg, var(--surface-3), var(--surface-2));
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-2);
+}
+
+.title button:active {
+    background: var(--surface-3);
+    transform: translateY(1px);
+}
+
+
+
+/* Guide */
+
+.guide {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template-rows: calc((var(--vh-sub-nav) - var(--gap)) * 0.85) min(calc(var(--vw-capped) * 0.08), var(--vh-sub-nav) * 0.08);
+    grid-template-columns: calc(var(--vwh) * 0.86);
+    --gap: min(1.5vw, 16px, calc(var(--vh-sub-nav) * 0.0173));
+    gap: var(--gap);
+    justify-content: center;
+    align-content: center;
+}
+
+.guide .guide-contents {
+    padding: 5%;
+    overflow-y: scroll;
+}
+
+.guide button {
+    font-size: calc(var(--vwh) * 0.03);
+}
+
+.guide button:hover {
+    background: linear-gradient(180deg, var(--surface-3), var(--surface-2));
+}
+
+.guide button:active {
+    background: var(--surface-3);
+}
+
+.guide h1 {
+    margin: 0 0 1em;
+    font-weight: normal;
+    --edge-color: transparent;
+    background: linear-gradient(to right, var(--edge-color), var(--surface-3), var(--edge-color));
+    border-radius: 0.25em;
+    padding: 0.25em;
+}
+
+.guide h2 {
+    margin: 2.25em 0 0;
+    font-weight: normal;
+}
+
+.guide .line-break {
+    border: 0;
+    border-top: 1px solid #adadad; /* Adjust the color as needed */
+    margin: 0.5em 0 1em; /* Adjust the spacing as needed */
+}
+
+.guide p {
+    margin: 1.5em 0;
+}
+
+.guide li {
+    margin: 0.75em 0 0.5em 0.5em;
+}
+
+.guide .clear-float {
+    clear: both;
+}
+
+.guide img {
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.157);
+    border-radius: 0.7em;
+    border: 2px solid rgb(101, 101, 101);
+    box-sizing: content-box;
+}
+
+.guide .img-promotionlines {
+    margin: 0.75em 0 0.75em 1.5em;
+    width: 50%;
+    aspect-ratio: 1.789 / 1; /* width / height */
+    float: right;
+}
+
+.guide .img-kingrookfork {
+    margin: 0.75em 1.5em 0.75em 0;
+    float: left;
+    width: 42%;
+    aspect-ratio: 1.077 / 1; /* width / height */
+}
+
+.guide .img-arrowindicators {
+    margin: 0.75em 0 0.75em 1.5em;
+    width: 25%;
+    float: right;
+    aspect-ratio: 1 / 1; /* width / height */
+}
+
+.guide .fairy-pieces {
+    display: flex;
+    height: min(var(--vwh) * 0.35);
+    align-items: stretch;
+    justify-content: center;
+}
+
+.img-fairymoveset img {
+    width: 100%;
+}
+
+.guide .img-fairymoveset {
+    box-sizing: border-box;
+    margin: 0 1em 0 0;
+    height: 100%;
+    aspect-ratio: 1 / 1; /* width / height */
+}
+
+.guide .fairy-card-container {
+    font-size: min(var(--vwh) * 0.02);
+    display: flex;
+    box-sizing: border-box;
+}
+
+.guide .left-arrow, .guide .right-arrow {
+    display: flex;
+    width: 13%;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.guide svg {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5%;
+    border-radius: 0.5em;
+    /* margin: 0.75em 0; */
+}
+
+.guide svg:hover {
+    background-color: rgba(255, 255, 255, 0.13);
+}
+
+.guide svg:active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.guide .fairy-card {
+    margin: 0 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.guide .space-1 {
+    flex-grow: 1;
+}
+
+.guide .fairy-card-title {
+    text-align: center;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin: 0 0 1em;
+    text-shadow: 0 0.12em 0.2em rgba(0, 0, 0, 0.203);
+    flex-grow: 0;
+}
+
+.guide .fairy-card-description {
+    margin: 0;
+    font-size: 1em;
+    flex-grow: 0;
+}
+
+.guide .space-2 {
+    flex-grow: 2;
+}
+
+@media only screen and (max-width: 700px) {
+    .guide .img-promotionlines, .guide .img-kingrookfork {
+        float: none;
+        width: 95%;
+        margin: 0 auto;
+        display: block; /* Ensures the image is a block element */
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .guide .img-arrowindicators {
+        width: 96px;
+    }
+}
+
+@media only screen and (max-width: 600px), (max-height: 648px) {
+    .guide .img-fairymoveset {
+        width: 95%;
+        height: unset;
+        margin: 0 0 0.75em;
+    }
+
+    .guide .fairy-card-container {
+        padding-bottom: 0.75em;
+        min-height: 18em;
+    }
+
+    .guide .left-arrow, .guide .right-arrow {
+        display: flex;
+        max-width: 50px;
+    }
+
+    .guide .fairy-pieces {
+        flex-wrap: wrap;
+        height: unset;
+    }
+
+    .guide .fairy-card-title {
+        font-size: 2.4em;
+    }
+    
+    .guide .fairy-card-description {
+        font-size: 1.5em;
+    }
+}
+
+
+/* Practice Page: Practice selection screen */
+
+.practice-selection {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template: min(8vw, 86px, calc(var(--vh-sub-nav) * 0.092)) min(58vw, 628px, calc(var(--vh-sub-nav) * 0.667)) min(8vw, 86px, calc(var(--vh-sub-nav) * 0.092)) / repeat(6, min(13vw, 141px, calc(var(--vh-sub-nav) * 0.15)));
+    gap: min(1.5vw, 16px, calc(var(--vh-sub-nav) * 0.0173));
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 8vh;
+}
+
+.practice-selection button {
+    font-size: min(2.5vw, 27px, calc(var(--vh-sub-nav) * 0.029));
+}
+
+.practice-selection button:hover {
+    background: linear-gradient(180deg, var(--surface-3), var(--surface-2));
+}
+
+.practice-selection button:active {
+    background: var(--surface-3);
+}
+
+.practice-selection .practice-name {
+    grid-column: 1 / 7;
+    align-self: center;
+    justify-self: center;
+    font-size: min(2.5vw, 27px, calc(var(--vh-sub-nav) * 0.029));
+}
+
+.practice-selection .checkmate-practice {
+    grid-column: 1 / 4;
+}
+
+.practice-selection .tactics-practice {
+    grid-column: 4 / 7;
+}
+
+.practice-selection .practice-play {
+    grid-column: 1 / 4;
+    background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+}
+
+.practice-selection .practice-back {
+    grid-column: 4 / 7;
+}
+
+.practice-selection .selected {
+    box-shadow: none;
+}
+
+.practice-box {
+    font-size: min(2.5vw, 27px, calc(var(--vh-sub-nav) * 0.029));
+    grid-column: 1 / 7;
+    display: flex;
+    flex-direction: column;
+}
+
+.practice-head {
+    font-family: Verdana;
+    background: linear-gradient(180deg, var(--surface-3), var(--surface-2));
+    border-bottom: 1px solid var(--border);
+    border-radius: min(1.3vw, 30px, calc(var(--vh-sub-nav) * 0.015));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    padding: 0.5em 2em;
+    height: 4em;
+}
+
+.difficulty-title {
+    font-size: 0.8em;
+}
+
+.checkmate-list {
+    font-size: min(2.5vw, 27px, calc(var(--vh-sub-nav) * 0.029));
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.checkmate {
+    display: flex;
+    align-items: center;
+    font-size: min(1.7vw, 18px, calc(var(--vh-sub-nav) * 0.020));
+    justify-content: center; /* OR: space-between */
+    margin: 0.3em;
+    border-radius: 0.3em;
+    border-width: 0em;
+    height: 3em;
+}
+
+.checkmate {
+    background-color: rgba(199, 199, 199, 1);
+}
+
+.checkmate.selected {
+    outline-style: solid;
+    outline-width: 0.25em;
+    outline-offset: -0.15em;
+}
+
+.checkmate.beaten {
+    background-color: rgba(0, 128, 0, 0.3);
+}
+
+.checkmate:hover {
+    background-color: rgba(168, 168, 168, 0.8);
+    cursor: pointer;
+}
+
+.checkmate:active {
+    background-color: rgba(157, 156, 156, 0.8);
+}
+
+.checkmate.beaten:hover {
+    background-color: rgba(0, 128, 0, 0.2);
+}
+
+.checkmate-child {
+    padding: 0 0.3em;
+    margin: 0.8em;
+}
+
+.completion-mark {
+    width: 10%;
+    height: 100%;
+}
+
+/* Add the checkmark */
+.checkmate.beaten .completion-mark {
+    background-image: url('/img/game/checkmatepractice/checkmark.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.piecelistW {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
+    margin-right: 5%;
+}
+
+.checkmate-child.versus {
+    width: 5%;
+}
+
+.piecelistB {
+    display: flex;
+    justify-content: center;
+    width: 10%;
+    height: 100%;
+}
+
+.checkmate-difficulty {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 20%;
+}
+
+.checkmate-progress {
+    width: 15%;
+    font-size: 1em;
+}
+
+.checkmate-progress-bar {
+    position: relative;
+    width: 60%;
+    height: 1.2em;
+    outline-style: solid;
+    outline-width: 0.1em;
+    border-radius: 0.25em;
+    font-size: 0.8em;
+}
+
+/* Badges */
+
+.badge {
+    position: absolute;
+    height: 2.6em;
+    user-select: none;
+}
+
+.badge img {
+    height: 100%;
+}
+
+.badge:hover img {
+    transition: transform 0.4s ease;
+    transform: scale(1.1);
+}
+
+.unearned {
+    filter: contrast(calc(1/3)) brightness(1.5);
+}
+
+#checkmate-badge-bronze {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#checkmate-badge-silver {
+    left: 75%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#checkmate-badge-gold {
+    left: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Badge shine properties are in header.css since they are shared with badges on play page */
+
+
+
+.checkmatepiececontainer {
+    align-self: center;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 0;
+    padding: 0.02em;
+    margin: 0.25em;
+    border-radius: 1em;
+}
+
+.checkmatepiececontainer.collated {
+    margin-left: -0.65em;
+}
+
+.checkmatepiececontainer.collated-strong {
+    margin-left: -1.75em;
+}
+
+.checkmatepiece {
+    width: 3em;
+    height: 3em;
+    background-image: inherit;
+    background-repeat: no-repeat;
+    /* NEEDS TO BE as many times greater than 100% as there are pieces in a row in the spritesheet! 8 pieces => 800% */
+    background-size: 800%; 
+}
+
+
+/* Play Page: Invite creation screen */
+
+.play-selection {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    /* 4 rows: title, one row of mode buttons, the options card, then start/back.
+       Online and Computer are gone, so the two remaining modes share a single row and
+       the freed vertical space goes to the options card. Total ≈ 0.897 * --vh-sub-nav,
+       still inside the budget the 5-row layout used. */
+    grid-template: repeat(2, min(8vw, 86px, calc(var(--vh-sub-nav) * 0.085))) min(58vw, 630px, calc(var(--vh-sub-nav) * 0.59)) min(8vw, 86px, calc(var(--vh-sub-nav) * 0.085)) / repeat(6, min(13vw, 141px, calc(var(--vh-sub-nav) * 0.15)));
+    gap: min(1.5vw, 16px, calc(var(--vh-sub-nav) * 0.0173));
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 8vh;
+}
+
+.play-selection button {
+    font-size: min(2.5vw, 27px, calc(var(--vh-sub-nav) * 0.029));
+}
+
+.play-selection button:hover {
+    background: linear-gradient(180deg, var(--surface-3), var(--surface-2));
+}
+
+.play-selection button:active {
+    background: var(--surface-3);
+}
+
+.play-selection .play-name {
+    grid-column: 1 / 7;
+    grid-row: 1;
+    align-self: center;
+    justify-self: center;
+    font-size: min(2.5vw, 27px, calc(var(--vh-sub-nav) * 0.029));
+}
+
+/* The two remaining game modes, side by side on one row. */
+.play-selection .local {
+    grid-column: 1 / 4;
+    grid-row: 2;
+}
+
+.play-selection .aiplay {
+    grid-column: 4 / 7;
+    grid-row: 2;
+}
+
+.play-selection .create-invite {
+    grid-column: 1 / 4;
+    grid-row: 4;
+    background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+}
+
+.play-selection .play-back {
+    grid-column: 4 / 7;
+    grid-row: 4;
+}
+
+.play-selection .selected {
+    box-shadow: none;
+}
+
+.play-selection .game-options {
+    font-size: min(2.5vw, 27px, calc(var(--vh-sub-nav) * 0.029));
+    grid-column: 1 / 7;
+    grid-row: 3;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Target the scrollbar */
+.game-options::-webkit-scrollbar {
+    width: 9px; /* Set the width of the scrollbar */
+}
+
+/* Set the background color of the scrollbar track */
+.game-options::-webkit-scrollbar-track {
+    background-color: var(--surface);
+    border-radius: 5px; /* Set the border radius of the track */
+}
+
+/* Set the color and border radius of the scrollbar thumb */
+.game-options::-webkit-scrollbar-thumb {
+    background-color: var(--surface-3);
+    border-radius: 5px; /* Set the border radius of the thumb */
+}
+
+.game-options .options {
+    background: linear-gradient(180deg, var(--surface-3), var(--surface-2));
+    border-bottom: 1px solid var(--border);
+    /* border-radius: min(1.3vw, 30px) min(1.3vw, 30px) 0 0; */
+    border-radius: min(1.3vw, 30px, calc(var(--vh-sub-nav) * 0.015));
+    display: flex;
+    justify-content: center;
+}
+
+.option-card {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 0.35em 1.1em;
+}
+
+.game-options .option-card p {
+    font-size: min(1.5vw, 16px, calc(var(--vh-sub-nav) * 0.017));
+    text-align: center;
+    padding-bottom: 0.3em;
+}
+
+.game-options select {
+    border: 1.5px solid var(--border-strong);
+    color: var(--text);
+    background-color: rgba(0, 0, 0, 0.35);
+    border-radius: 0.75em;
+    padding: 0.6em 0.9em;
+    font-size: min(1.5vw, 16px, calc(var(--vh-sub-nav) * 0.017));
+    box-sizing: content-box;
+    min-width: 3em;
+    max-width: 6em;
+    text-align: center;
+    
+    /* Remove arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+#option-clock {
+    max-width: 5em;
+}
+
+.invite-list {
+    flex-grow: 1;
+}
+
+.game-options .join-existing {
+    text-align: center;
+    font-size: min(1.7vw, 18px, calc(var(--vh-sub-nav) * 0.020));
+    padding: 0.5em;
+}
+
+.game-options .invite {
+    background-color: rgba(0, 0, 255, 0.227);
+    height: 3em;
+    display: flex;
+    align-items: center;
+    font-size: min(1.7vw, 18px, calc(var(--vh-sub-nav) * 0.020));
+    justify-content: space-between;
+    margin: 0.4em;
+    border-radius: 0.3em;
+    cursor: pointer;
+}
+
+.invite .invite-child {
+    padding: 0 0.6em;
+}
+
+.invite .invite-child.accept {
+    margin-right: 0.8em;
+    padding: 0.5em 0.8em;
+    border-radius: 0.5em;
+}
+
+.invite.hover {
+    background-color: rgba(48, 145, 255, 0.442);
+}
+
+.invite.hover .accept {
+    background-color: rgba(255, 255, 255, 0.299);
+}
+
+.invite.ours {
+    background-color: rgba(156, 36, 255, 0.303);
+}
+
+.invite.ours.hover {
+    background-color: rgba(255, 36, 178, 0.266);
+}
+
+.invite.private {
+    background-color: rgba(0, 0, 0, 0.266);
+}
+
+.invite.private.hover {
+    background-color: rgba(0, 0, 0, 0.22);
+}
+
+.join-private, .invite-code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    background: linear-gradient(180deg, var(--surface-3), var(--surface-2));
+    padding: 0.5em 0;
+    border-top: 1px solid var(--border);
+    border-radius: min(1.3vw, 30px, calc(var(--vh-sub-nav) * 0.015));
+}
+
+.textbox-private {
+    font-size: 0.8em;
+    margin: 0 1.8em 0 1em;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.35);
+    color: var(--text);
+    border: 0;
+    border-radius: 0.5em;
+    padding: 0.4em 0;
+    box-shadow: 0 0 0.4em rgba(0, 0, 0, 0.398);
+    width: 4.6em;
+}
+
+.textbox-private:hover {
+    box-shadow: 0 0 0.4em rgba(0, 0, 0, 0.631);
+}
+
+.textbox-private:focus {
+    outline: solid 1px var(--accent);
+}
+
+.invite-code-code {
+    font-size: 1.1em;
+    margin: 0 1.1em 0 0.7em;
+    text-shadow: 0.05em 0.1em 0.15em rgba(0, 0, 0, 0.175);
+    font-weight: bold;
+}
+
+button.join-button, button.copy-button {
+    font-size: 0.8em;
+    color: #0b1016;
+    font-weight: bold;
+    padding: 0.45em 0.65em;
+    border-radius: 0.6em;
+    box-shadow: 0 0 0.4em rgba(0, 0, 0, 0.649);
+    background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+}
+
+
+
+/* Top Navigation: Zoom buttons, coordinates, rewind/forward game, pause */
+
+.navigation-bar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    font-size: 84px; /* Update with doc!! */
+    height: 1em;
+    display: flex;
+    box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.659);
+    background: linear-gradient(to top, rgba(16, 18, 22, 0.62), rgba(16, 18, 22, 0.88), rgba(16, 18, 22, 0.7));
+    color: var(--text);
+    -webkit-backdrop-filter: blur(5px); /* Must be BEFORE the unprefixed rules, so Lightning CSS correclty parses! */
+    backdrop-filter: blur(8px); /* Apply a blur effect to the background */
+}
+
+.teleport, .coords, .right-nav {
+    display: flex;
+    align-items: center;
+}
+
+.teleport {
+    justify-content: flex-start;
+    padding-left: 0.14em;
+}
+
+.coords {
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.right-nav {
+    justify-content: flex-end;
+    padding-right: 0.14em;
+}
+
+#position {
+    box-sizing: border-box;
+    font-size: 0.19em;
+    height: 4em;
+    margin: 0.44em;
+    border-radius: 0.5em;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.878);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.x, .y {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.x {
+    padding: 0.13em 0 0 0.44em;
+    border-radius: 0.5em 0.5em 0 0;
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.y {
+    padding: 0 0 0.13em 0.44em;
+    border-radius: 0 0 0.5em 0.5em;
+}
+
+#x, #y {
+    margin-right: 0.31em;
+    padding: 0.06em 0.19em;
+    border-radius: 0.19em;
+    width: 7.5em;
+    font-size: 1em;
+    background-color: rgb(245, 245, 245);
+    color: rgb(37, 37, 37);
+}
+
+/* The increment and decrement arrow heads spin buttons on the input element */
+#x::-webkit-inner-spin-button, #y::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.navigation-bar .button {
+    position: relative;
+    width: 0.74em;
+    height: 0.74em;
+    margin: 0.07em;
+    border-radius: 0.16em; 
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.878);
+    transition: transform 0.15s;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent; /* No more blue highlight when tapping buttons on mobile */
+}
+
+.navigation-bar .button:hover {
+    transform: scale(1.07);
+}
+
+.navigation-bar .button:active {
+    transform: scale(1);
+}
+
+.navigation-bar svg {
+    position: absolute;
+}
+
+/* Start shrinking top navigation bar */
+@media only screen and (max-width: 700px) {
+    .navigation-bar {
+        font-size: 12vw; /* Update with doc!! */
+    }
+}
+
+/* Small screens. HIDE the coords, and keep the row scaling with the viewport.
+
+   Seven buttons now (six left, the AI coach on the right) come to 6.44em including the
+   two side paddings, so a fixed size no longer fits: at the old 66px they overflowed
+   anything narrower than about 425px. 13.5vw puts the row at ~87vw at every width, which
+   is why the separate mobile step below is gone. */
+@media only screen and (max-width: 550px) {
+    .navigation-bar {
+        justify-content: space-between;
+        font-size: 13.5vw; /* Update with doc!! */
+    }
+
+    .coords {
+        display: none;
+    }
+}
+
+
+
+/* Bottom Navigation: Color to move, clocks, player names, draw offer UI */
+
+.game-info-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 84px; 
+    box-shadow: 0px -1px 7px 0px rgba(0, 0, 0, 0.659);
+    display: flex;
+    background: linear-gradient(to bottom, rgba(16, 18, 22, 0.66), rgba(16, 18, 22, 0.9), rgba(16, 18, 22, 0.78));
+    color: var(--text);
+    -webkit-backdrop-filter: blur(5px); /* Must be BEFORE the unprefixed rules, so Lightning CSS correclty parses! */
+    backdrop-filter: blur(8px); /* Apply a blur effect to the background */
+}
+
+.timerwhitecontainer, .timerblackcontainer {
+    display: flex;
+    align-items: center;
+}
+
+.timerwhitecontainer {
+    padding: 25px 0 25px 25px;
+}
+
+.timerblackcontainer {
+    padding: 25px 25px 25px 0;
+}
+
+.timerwhite, .timerblack {
+    background-color: rgba(121, 121, 121, 0.474);
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.timerwhite {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.878);
+}
+
+.timerblack {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.571);
+}
+
+.playerwhite, .playerblack {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.playerwhite {
+    padding: 0 10px 0 25px;
+}
+
+.playerblack {
+    text-align: right;
+    padding: 0 25px 0 10px;
+}
+
+.whosturn {
+    min-width: 0;
+    max-width: 100%;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+    font-family: "Open Sans";
+    font-weight: bold;
+}
+
+.dotwhite, .dotblack {
+    border: 1px solid black;
+    width: 22px;
+    height: 22px;
+    border-radius: 100%;
+    margin: 12px;
+    transition: 0.25s;
+    flex-shrink: 0;
+}
+
+.dotwhite {
+    background-color: white;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.491);
+}
+
+.dotblack {
+    background-color: black;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.259);
+}
+
+@media only screen and (max-width: 850px) {
+    .dotwhite, .dotblack {
+        display: none;
+    }
+    .whosturn {
+        font-size: 24px;
+    }
+    .playerwhite, .playerblack {
+        font-size: 16px;
+    }
+    .playerwhite {
+        padding-left: 20px;
+    }
+    .playerblack {
+        padding-right: 20px;
+    }
+    .timerwhitecontainer {
+        padding: 20px 0 20px 20px;
+    }
+    
+    .timerblackcontainer {
+        padding: 20px 20px 20px 0;
+    }
+    .timerwhite, .timerblack {
+        padding: 14px 12px;
+        font-size: 18px;
+        border-radius: 9px;
+    }
+    .draw_offer_ui {
+        padding: 0 0.5em;
+    }
+}
+
+@media only screen and (max-width: 502px) {
+    .playerwhite, .playerblack {
+        display: none;
+    }
+}
+
+/* Draw Offer UI (in the bottom nav bar) */
+
+.draw_offer_ui, .practice-engine-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    height: 100%;
+}
+
+.draw_offer_ui .offer_title {
+    font-size: 0.9em;
+}
+
+.draw_offer_ui button, .practice-engine-buttons button {
+    /* Stays light: the icons inside are hardcoded #333 in play.ejs. */
+    background-color: white;
+    border-radius: 1em;
+    width: 4em;
+    height: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--border-strong);
+    font-size: 0.45em;
+}
+
+.draw_offer_ui svg {
+    height: 90%;
+}
+
+.draw_offer_ui button:hover, .practice-engine-buttons button:hover {
+    background: linear-gradient(to bottom, white, rgb(230, 230, 230), white);
+}
+
+.draw_offer_ui button:active, .practice-engine-buttons button:active {
+    background: linear-gradient(to bottom, white, rgb(230, 230, 230), white);
+}
+
+/* Game Control Buttons (in the bottom nav bar) */
+
+.practice-engine-buttons {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    height: 100%;
+    margin: 0 0.5em;
+    -webkit-tap-highlight-color: transparent; /* No more blue highlight when tapping buttons on mobile */
+}
+
+.practice-engine-buttons .svg-undo {
+    width: 72%;
+    transform-origin: 53% 55%;
+}
+
+.practice-engine-buttons .svg-restart {
+    aspect-ratio: 1;
+    width: 84%;
+    transform: translate(0.5px, 0.5px);
+}
+
+
+/* Promotion UI */
+
+#promote {
+    min-width: 280px;
+    max-width: 400px;
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.949);
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.918);
+}
+
+.promotecolor {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.promotepiece {
+    width: 80px;
+    height: 80px;
+    padding: 3px;
+    margin: 3px;
+    border-radius: 10px;
+}
+
+.promotepiece:hover {
+    background-color: rgba(0, 0, 0, 0.099);
+}
+
+.promotepiece:active {
+    background-color: rgba(0, 0, 0, 0.158);
+}
+
+
+
+/* Pause UI */
+
+.pauseUI {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.849);
+    padding-bottom: 15vh;
+    display: grid;
+    grid-template: repeat(7, min(8vw, 86px)) / repeat(2, min(30vw, 320px));
+    gap: min(3vw, 32px);
+    justify-content: center;
+    align-content: center;
+}
+
+.pauseUI p.paused, .pauseUI button {
+    font-size: min(2.5vw, 27px);
+}
+
+.pauseUI p.paused {
+    color: white;
+    text-align: center;
+    align-self: center;
+}
+
+.pauseUI button {
+    box-shadow: var(--shadow-1);
+    border: 1px solid var(--border);
+    border-radius: min(0.9vw, 10px);
+    color: var(--text);
+    background: linear-gradient(180deg, var(--surface-2), var(--surface));
+    transition: background 0.16s ease, border-color 0.16s ease;
+}
+
+.pauseUI button:hover {
+    border-color: var(--border-strong);
+    background: linear-gradient(180deg, var(--surface-3), var(--surface-2));
+}
+
+.pauseUI button:active {
+    /* box-shadow: 0 0 15px 0 rgba(255, 255, 255, 0.51); */
+    background: linear-gradient(180deg, var(--surface-3), var(--surface-2));
+}
+
+.pauseUI p.paused, button.paused, button.resume, button.mainmenu, button.offerdraw, button.practicemenu, button.aicoach {
+    grid-column: 1 / 3;
+}
+
+
+
+/* Win / loss easter egg */
+
+/* The picture orbits the middle of the screen while the song plays. Click-through on
+   purpose: the click that dismisses the egg still has to reach the game over card
+   underneath it, so "play again" works on the first press. */
+.egg-layer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.egg-layer.hidden {
+    display: none;
+}
+
+/* A zero-sized box pinned to the centre of the screen: the pivot the pictures swing
+   around. Each copy gets a negative animation-delay from the script, which is what
+   spreads them around the ring. */
+.egg-orbit {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    animation: egg-orbit 2.6s linear infinite;
+}
+
+.egg-orbit img {
+    position: absolute;
+    /* `left` is the orbit radius; the -50% in the keyframes re-centres the picture on it. */
+    left: min(38vw, 340px);
+    width: min(26vw, 190px);
+    height: auto;
+    filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.55));
+    animation: egg-spin 0.75s linear infinite;
+}
+
+/* Every other copy turns the other way, so the ring doesn't read as one rigid object. */
+.egg-orbit:nth-child(even) img {
+    animation-direction: reverse;
+}
+
+@keyframes egg-orbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes egg-spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+
+/* Game Over UI */
+
+/* The container only positions the card. It stays click-through so the AI coach
+   panel underneath it keeps working while the result is on screen; the card itself
+   turns pointer events back on. */
+.gameoverUI {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10vh;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.gameoverUI.hidden {
+    display: none;
+}
+
+.gameover-card {
+    pointer-events: auto;
+    box-sizing: border-box;
+    width: min(86vw, 380px);
+    padding: min(4vw, 26px) min(4vw, 26px) min(3.4vw, 22px);
+    display: flex;
+    flex-direction: column;
+    gap: min(1.6vw, 12px);
+    text-align: center;
+    color: var(--text);
+    background-color: var(--glass-strong);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-2);
+}
+
+.gameover-headline {
+    margin: 0;
+    font-size: min(6vw, 30px);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.gameover-detail {
+    margin: 0 0 min(1.4vw, 10px);
+    font-size: min(3.6vw, 15px);
+    line-height: 1.5;
+    color: var(--text-dim);
+}
+
+.gameover-card button {
+    padding: min(2.4vw, 11px) min(3vw, 16px);
+    font-size: min(3.8vw, 16px);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, var(--surface-2), var(--surface));
+    box-shadow: var(--shadow-1);
+    transition: background 0.16s ease, border-color 0.16s ease;
+}
+
+.gameover-card button:hover {
+    border-color: var(--border-strong);
+    background: linear-gradient(180deg, var(--surface-3), var(--surface-2));
+}
+
+/* Play again is the one we expect to be pressed, so it gets the accent. */
+.gameover-rematch {
+    background: linear-gradient(180deg, var(--accent), var(--accent-strong)) !important;
+    border-color: transparent !important;
+    font-weight: 600;
+}
+
+.gameover-rematch:hover {
+    filter: brightness(1.08);
+}
+
+.gameover-rematch.hidden {
+    display: none;
+}
+
+/* Dismiss just hides the card; it is a way out, not an action. */
+.gameover-dismiss {
+    background: none !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+    color: var(--text-dim) !important;
+    font-size: min(3.4vw, 14px) !important;
+}
+
+.gameover-dismiss:hover {
+    color: var(--text) !important;
+}
+
+
+/* AI Coach panel */
+
+.aicoachUI {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: min(92vw, 380px);
+    box-sizing: border-box;
+    padding: 10px 14px 14px;
+    /* A column, so the chat composer can stay pinned to the bottom while the
+       results and the transcript scroll between the header and it. */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: var(--glass-strong);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-left: 1px solid var(--border);
+    box-shadow: var(--shadow-2);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.45;
+    z-index: 2;
+    /* The board input listener lives on #overlay, our parent. Scripts also
+       stopPropagation() on pointer events so dragging here can't pan the board. */
+    touch-action: pan-y;
+}
+
+.aicoachUI.hidden {
+    display: none;
+}
+
+.aicoach-header, .aicoach-settings, .aicoach-actions, .aicoach-status, .aicoach-profile, .aicoach-aimove, .aicoach-composer {
+    flex: none;
+}
+
+.aicoach-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.aicoach-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.aicoach-title {
+    flex: 1;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.aicoach-icon-button {
+    flex: none;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.12);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.aicoach-icon-button:hover {
+    background-color: rgba(255, 255, 255, 0.24);
+}
+
+.aicoach-settings {
+    padding: 8px 0 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.aicoach-field {
+    display: block;
+    margin-bottom: 7px;
+}
+
+.aicoach-field > span {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 12px;
+    color: var(--text-dim);
+}
+
+.aicoach-field > input, .aicoach-field > select {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px 7px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.45);
+    color: var(--text);
+    font-size: 13px;
+    font-family: inherit;
+}
+
+.aicoach-field > input:focus, .aicoach-field > select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.aicoach-hint {
+    margin: 6px 0;
+    font-size: 11px;
+    color: rgb(170, 150, 110);
+}
+
+.aicoach-buttons, .aicoach-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.aicoach-actions {
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+.aicoach-button {
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, var(--surface-2), var(--surface));
+    color: var(--text);
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.16s ease, border-color 0.16s ease;
+}
+
+.aicoach-button:hover {
+    border-color: var(--border-strong);
+    background: linear-gradient(180deg, var(--surface-3), var(--surface-2));
+}
+
+.aicoach-analyze {
+    font-weight: bold;
+    border-color: transparent;
+    color: #0b1016;
+    background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+}
+
+.aicoach-analyze:hover {
+    border-color: transparent;
+    background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+    filter: brightness(1.08);
+}
+
+.aicoach-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: var(--text-dim);
+}
+
+.aicoach-status {
+    margin: 4px 0 10px;
+    min-height: 1.4em;
+    font-size: 12px;
+    color: var(--success);
+    overflow-wrap: anywhere;
+}
+
+.aicoach-status.aicoach-error {
+    color: var(--danger);
+}
+
+/* Three bouncing dots while a request is out. Purely cosmetic — it doesn't make
+   the model any faster, but a waiting panel no longer reads as a frozen one. */
+.aicoach-status.aicoach-busy::after {
+    content: '';
+    display: inline-block;
+    margin-left: 0.35em;
+    width: 1.9em;
+    height: 0.35em;
+    background-image: radial-gradient(circle, currentColor 45%, transparent 50%);
+    background-size: 0.62em 0.62em;
+    background-repeat: repeat-x;
+    animation: aicoach-dots 1.1s ease-in-out infinite;
+    vertical-align: middle;
+}
+
+@keyframes aicoach-dots {
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 1; }
+}
+
+/* The remembered skill level. Sits right under the status line, so it stays quiet:
+   dim text, and the only affordance is the re-assess link at its end. */
+.aicoach-profile {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: -4px 0 10px;
+    font-size: 12px;
+    color: var(--text-dim);
+    overflow-wrap: anywhere;
+}
+
+#aicoach-profile-text {
+    flex: 1;
+}
+
+/* A text link that happens to be a <button>, so the keyboard reaches it for free. */
+.aicoach-link-button {
+    flex: none;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    color: var(--accent);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.aicoach-link-button:hover {
+    color: var(--accent-strong);
+}
+
+.aicoach-section {
+    margin-bottom: 12px;
+}
+
+.aicoach-section h3 {
+    margin: 0 0 3px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    color: var(--accent);
+    text-transform: uppercase;
+}
+
+.aicoach-section p {
+    margin: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.aicoach-section ul {
+    margin: 0;
+    padding-left: 1.2em;
+}
+
+.aicoach-bestmove p {
+    font-size: 17px;
+    font-weight: bold;
+    color: var(--success);
+}
+
+.aicoach-warning p {
+    color: rgb(240, 180, 130);
+}
+
+.aicoach-raw {
+    margin: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-size: 12px;
+    color: var(--text-dim);
+}
+
+/* Set the background color of the scrollbar track */
+.aicoach-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.aicoach-scroll::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.aicoach-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--surface-3);
+    border-radius: 4px;
+}
+
+/* AI Coach panel: chat box */
+
+.aicoach-aimove {
+    width: 100%;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.aicoach-aimove.hidden {
+    display: none;
+}
+
+.aicoach-chat {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.aicoach-bubble {
+    max-width: 92%;
+    padding: 6px 9px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-size: 13px;
+}
+
+.aicoach-bubble-you {
+    align-self: flex-end;
+    background-color: var(--accent-soft);
+    border: 1px solid rgba(106, 169, 255, 0.3);
+}
+
+.aicoach-bubble-ai {
+    align-self: flex-start;
+    background-color: var(--surface-2);
+    border: 1px solid var(--border);
+}
+
+/* The AI opponent's remarks about its own move, and our notices about it. */
+.aicoach-bubble-system {
+    align-self: center;
+    max-width: 100%;
+    background: none;
+    padding: 2px 0;
+    font-size: 11px;
+    font-style: italic;
+    color: var(--text-faint);
+    text-align: center;
+}
+
+.aicoach-bubble-author {
+    display: block;
+    margin-bottom: 1px;
+    font-size: 10px;
+    letter-spacing: 0.03em;
+    color: var(--text-faint);
+    text-transform: uppercase;
+}
+
+.aicoach-composer {
+    display: flex;
+    align-items: stretch;
+    gap: 6px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.aicoach-question {
+    flex: 1;
+    box-sizing: border-box;
+    min-width: 0;
+    padding: 5px 7px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.45);
+    color: var(--text);
+    font-size: 13px;
+    font-family: inherit;
+    resize: none;
+}
+
+.aicoach-question:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.aicoach-composer-buttons {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.aicoach-send {
+    padding: 4px 10px;
+}
+
+
+
+/* Status text showing alerts and errors */
+
+.statusmessage {
+    position: absolute;
+    bottom: 84px;
+    left: 0;
+    right: 0;
+    padding: 1em 8%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.statusmessage .statustext {
+    margin: 0 auto;
+    padding: 0.4em 3em;
+    width: fit-content;
+    font-size: 18px;
+    text-align: center;
+    opacity: 0;
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+
+.statustext.ok {
+    opacity: 1;
+    color: black;
+    --color: white;
+    background: linear-gradient(to right, transparent, var(--color), var(--color), var(--color), var(--color), transparent);
+}
+
+.statustext.error {
+    opacity: 1;
+    color: white;
+    --color: rgb(255, 0, 0);
+    background: linear-gradient(to right, transparent, var(--color), var(--color), var(--color), var(--color), transparent);
+}
+
+
+
+/* Status messages along the top-right showing detailed information (move count, fps meter) */
+
+#stats {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    font-size: 22px;
+}
+
+.status {
+    text-align: right;
+    margin: 0.4em 0.6em;
+    word-break: break-all;
+}
+
+
+
+/* General classes with basic properties */
+
+.center {
+    text-align: center;
+}
+
+a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.099);
+}
+
+.hidden {
+    display: none;
+}
+
+.opacity-0_5 {
+    opacity: 0.5;
+}
+
+.opacity-0_25 {
+    opacity: 0.25;
+}
+
+.rotate-180 {
+    transform: rotate(180deg);
+}
+
+
+
+/* Animations */
+
+@keyframes fade-in {
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.fade-in-1s {
+    animation: fade-in 1s;
+}
+
+.fade-out-1s {
+    animation: fade-out 1s; /* UPDATE 1s within the document in the statustext module! */
+}
+
+.fade-in-2_3s {
+    animation: fade-in 0.67s;
+}
+
+.fade-out-2_3s {
+    animation: fade-out 0.67s; /* UPDATE 1s within the document in the statustext module! */
+}

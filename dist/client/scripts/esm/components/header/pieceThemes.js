@@ -1,0 +1,92 @@
+/**
+ * This script stores the SVG locations and default tint colors for the pieces.
+ */
+import { rawTypes, players } from "../../chess/util/typeutil.js";
+/** The default tints for a piece, if not provided. */
+const defaultBaseColors = {
+    [players.NEUTRAL]: [0.5, 0.5, 0.5, 1],
+    [players.WHITE]: [1, 1, 1, 1],
+    [players.BLACK]: [1, 1, 1, 1],
+    // If these are solid color, they're quite saturated
+    [players.RED]: [1, 0.17, 0.17, 1],
+    [players.BLUE]: [0.23, 0.23, 1, 1],
+    [players.YELLOW]: [1, 1, 0.1, 1],
+    [players.GREEN]: [0.1, 1, 0.1, 1],
+};
+/** Config for the SVGs of the pieces */
+const SVGConfig = {
+    [rawTypes.VOID]: {
+        location: null, // VOID has no svg
+        colors: {
+            /*
+             * Dark slate, not pure black. The 8x8 Chess variant fences the board in with a
+             * two-square-thick ring of these, and at [0,0,0] that ring reads as a hole cut
+             * out of the page rather than as a frame around the board. This matches the
+             * dark UI's --surface-2, and `instancedshapes.getDataVoidSquare` gives each
+             * square a darker seam so the ring looks tiled instead of like one flat slab.
+             *
+             * It has to be changed here rather than in a theme: `getTintColorOfType`
+             * MULTIPLIES this base by the theme's tint, so no tint can lighten a black base.
+             */
+            [players.NEUTRAL]: [0.16, 0.18, 0.216, 1],
+            [players.WHITE]: [1, 1, 1, 1],
+            [players.BLACK]: [0.3, 0.3, 0.3, 1],
+            [players.RED]: [1, 0, 0, 1],
+            [players.BLUE]: [0, 0, 1, 1],
+            [players.YELLOW]: [1, 1, 0, 1],
+            [players.GREEN]: [0, 1, 0, 1]
+        }
+    },
+    [rawTypes.OBSTACLE]: {
+        location: "fairy/obstacle",
+        colors: {
+            [players.NEUTRAL]: [0.08, 0.08, 0.08, 1],
+            [players.WHITE]: [1, 1, 1, 1],
+            [players.BLACK]: [0, 0, 0, 1],
+            [players.RED]: [1, 0, 0, 1],
+            [players.BLUE]: [0, 0, 1, 1],
+            [players.YELLOW]: [1, 1, 0, 1],
+            [players.GREEN]: [0, 1, 0, 1]
+        }
+    },
+    [rawTypes.KING]: { location: "classical" },
+    [rawTypes.GIRAFFE]: { location: "fairy/giraffe" },
+    [rawTypes.CAMEL]: { location: "fairy/camel" },
+    [rawTypes.ZEBRA]: { location: "fairy/zebra" },
+    [rawTypes.KNIGHTRIDER]: { location: "fairy/knightrider" },
+    [rawTypes.AMAZON]: { location: "fairy/amazon" },
+    [rawTypes.QUEEN]: { location: "classical" },
+    [rawTypes.ROYALQUEEN]: { location: "fairy/royalQueen" },
+    [rawTypes.HAWK]: { location: "fairy/hawk" },
+    [rawTypes.CHANCELLOR]: { location: "fairy/chancellor" },
+    [rawTypes.ARCHBISHOP]: { location: "fairy/archbishop" },
+    [rawTypes.CENTAUR]: { location: "fairy/centaur" },
+    [rawTypes.ROYALCENTAUR]: { location: "fairy/royalCentaur" },
+    [rawTypes.ROSE]: { location: "fairy/rose" },
+    [rawTypes.KNIGHT]: { location: "classical" },
+    [rawTypes.GUARD]: { location: "fairy/guard" },
+    [rawTypes.HUYGEN]: { location: "fairy/huygen" },
+    [rawTypes.ROOK]: { location: "classical" },
+    [rawTypes.BISHOP]: { location: "classical" },
+    [rawTypes.PAWN]: { location: "classical" },
+};
+function getLocationsForTypes(types) {
+    const locations = new Set();
+    for (const raw of types) {
+        const location = getLocationForType(raw);
+        if (location)
+            locations.add(location);
+    }
+    return locations;
+}
+function getLocationForType(type) {
+    return SVGConfig[type].location;
+}
+function getBaseColorForType(type, team) {
+    return (SVGConfig[type].colors ?? defaultBaseColors)[team];
+}
+export default {
+    getLocationsForTypes,
+    getLocationForType,
+    getBaseColorForType,
+};

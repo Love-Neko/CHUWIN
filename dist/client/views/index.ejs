@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="<%=language%>" dir="<%=t('direction')%>" >
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title><%=t('index.title')%></title>
+        <link rel='stylesheet' href='/css/header.css'>
+        <link rel='stylesheet' href='/css/index.css'>
+        <link rel='stylesheet' href='/css/footer.css'>
+        <link rel="icon" href="/img/favicon-light.png" media="(prefers-color-scheme: light)" />
+        <link rel="icon" href="/img/favicon-dark.png" media="(prefers-color-scheme: dark)" id="favicon" />
+    </head>
+    <body>
+        <%- include(`${viewsfolder}/components/header`, {t:t, languages:languages, language:language}) %>
+        <main>
+            <div class="content">
+                <div class="logo">
+                    <picture>
+                        <source srcset="/img/king_w.avif" type="image/avif" />
+                        <source srcset="/img/king_w.webp" type="image/webp" />
+                        <img src="/img/king_w.png" alt="White chess king">
+                    </picture>
+                    <h1 class="center">无限棋</h1>
+                    <picture>
+                        <source srcset="/img/queen_w.avif" type="image/avif" />
+                        <source srcset="/img/queen_w.webp" type="image/webp" />
+                        <img src="/img/queen_w.png" alt="White chess king">
+                    </picture>
+                    <p class="center"><%=t('index.secondary_title')%></p>
+                </div>
+                <div class="center hero-cta">
+                    <a href="/play" class="cta"><%=t('index.cta_play')%></a>
+                </div>
+                <h2><%=t('index.what_is_it_title')%></h2>
+                <p><%-t('index.what_is_it_pargaraphs', { joinArrays: '</p><p>' })%></p>
+
+                    <h3 class="center"><%=t('index.features_title')%></h3>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h4><%=t('index.feature_infinite_title')%></h4>
+                            <p><%=t('index.feature_infinite_body')%></p>
+                        </div>
+                        <div class="feature-card">
+                            <h4><%=t('index.feature_coach_title')%></h4>
+                            <p><%=t('index.feature_coach_body')%></p>
+                        </div>
+                        <div class="feature-card">
+                            <h4><%=t('index.feature_ai_title')%></h4>
+                            <p><%=t('index.feature_ai_body')%></p>
+                        </div>
+                    </div>
+
+                    <h3><%=t('index.how_to_title')%></h3>
+                    <p><%=t('index.how_to_paragraph.0')%><a href='/play'><%=t('index.how_to_paragraph.1')%></a><%=t('index.how_to_paragraph.2')%></p>
+
+                    <br>
+                    <h3 class="center"><%=t('index.about_title')%></h3>
+                    <p><%=t('index.about_paragraphs.0')%></p>
+            </div>
+        </main>
+        <%- include(`${viewsfolder}/components/footer`, {t:t, languages:languages, language:language}) %>
+    </body>
+</html>

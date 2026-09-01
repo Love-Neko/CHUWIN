@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr-FR" dir="ltr" >
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Conditions d&#39;Utilisation</title>
+        <link rel='stylesheet' href='/css/header.css'>
+        <link rel='stylesheet' href='/css/termsofservice.css'>
+        <link rel='stylesheet' href='/css/footer.css'>
+        <link rel="icon" href="/img/favicon-light.png" media="(prefers-color-scheme: light)" />
+        <link rel="icon" href="/img/favicon-dark.png" media="(prefers-color-scheme: dark)" id="favicon" />
+    </head>
+    <body>
+        <header>
+    <!-- Reusable SVGs (here to reduce redundancy) -->
+    <div class="hidden"> 
+        <!-- The pawn svg and loading animation svg we use in several places -->
+        <svg>
+            <symbol id="svg-pawn" viewBox="0 0 45 45">
+                <path d="M22.5 9c-2.21 0-4 1.79-4 4 0 .89.29 1.71.78 2.38C17.33 16.5 16 18.59 16 21c0 2.03.94 3.84 2.41 5.03-3 1.06-7.41 5.55-7.41 13.47h23c0-7.92-4.41-12.41-7.41-13.47 1.47-1.19 2.41-3 2.41-5.03 0-2.41-1.33-4.5-3.28-5.62.49-.67.78-1.49.78-2.38 0-2.21-1.79-4-4-4z" fill-opacity="1" fill-rule="nonzero" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" stroke-opacity="1" stroke-width="1.5" opacity="1"/>
+            </symbol>
+        </svg>
+        <!-- Checkmark svg commonly found in the settings dropdowns -->
+        <svg>
+            <symbol id="checkmark" viewBox="0 0 320 320">
+                <path d="m290 85-21-21a10 10 0 00-15 0L126 192l-60-61A10 10 0 00 50 130l-20 20a10 10 0 00 0 15l88 90c4 4 10 4 15 0L290 100c4-4 4-10 0-15"/>
+            </symbol>
+        </svg>
+        <!-- Language globe svg -->
+        <svg>
+            <symbol id="svg-language" fill="none" viewBox="0 0 240 240">
+                <path d="m30 75 44 30 4 3h3l4-4 9-12V90h2s0 0 0 0l40-18 3-2v0l1-4 3-42m-8 112 26 11 6 3v4l-2 5-13 18c0 2 0 2-2 3h0l-3 1h-24l-2-2-2-3-7-22v-7l6-10c0-3 2-4 2-5h8l8 3ZM220 120a100 100 0 11-200 0 100 100 0 01 200 0Z" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+            </symbol>
+        </svg>
+        <!-- 2x2 Board tile theme selection svg -->
+        <svg>
+            <symbol id="svg-board" viewBox="0 0 479 479">
+                <path d="M0 240v239h480V0H0v240m0 0v240l1-120V120L0 1v239m60-90v90h180v180h180V240H240V60H60v90" fill="#777" fill-rule="evenodd"/>
+            </symbol>
+        </svg>
+        <!-- Dot and corner tris legal move selection svg -->
+        <svg>
+            <symbol id="svg-legalmove" viewBox="0 0 3710 3700">
+                <path d="M0 740v730l740-730 730-740H0v740m2980-10 730 730V0H2250l730 730m-1260 360h-40l-30 10-10 10h-30l-20 10-20 10h-10l-90 50-20 10-50 30-30 20a840 840 0 00-200 230v10l-10 20-30 50-10 30-40 120a1420 1420 0 00 10 340l20 60v20l10 20 20 50 30 50 10 10 60 90a740 740 0 00 340 250l140 40a1500 1500 0 00 330-20l30-10h20l20-10 10-10c10 10 150-60 200-110 90-80 200-210 190-230l10-10a430 430 0 00 70-160l10-80 10-40a670 670 0 00 0-230l-10-40-10-10a540 540 0 00-90-220c0-30-110-150-190-210l-100-70-40-20c-40-20-120-50-130-40l-10-10c-20-20-310-30-320-10M0 2970v730h1480l-730-730-740-740-10 740m2980 0-730 730h1460V2240l-730 730" fill="#666" fill-rule="evenodd"/>
+            </symbol>
+        </svg>
+        <!-- Perspective mode svg -->
+        <svg>
+            <symbol id="svg-perspective" fill="none" viewBox="0 0 480 480">
+                <path d="M0 0h480v480H0" fill="none"/><path d="M440 280v80l-130 26M440 280 40 320m400-40v-80M40 320v120l130-26M40 320V160m400 40v-80L310 94M440 200 40 160m0 0V40l130 26m140 28v292m0-292L170 66m140 320-140 28m0-348v348" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="40"/>
+            </symbol>
+        </svg>
+        <!-- Mouse svg -->
+        <svg>
+            <symbol id="svg-mouse" viewBox="0 0 240 240" fill="none">
+                <path d="M120 70v20m53.3 70 4.8-71.9.1-2a50 50 0 00-19.1-41.5l-1.7-1.2a60 60 0 00-72.2-2l-2.6 2-1.7 1.3a50 50 0 00-19 43.8l4.8 72a53.4 53.4 0 00 106.6 0Z" stroke="#555" stroke-linecap="round" stroke-width="20"/></svg>
+            </symbol>
+        </svg>
+        <!-- Camera perspective fov svg -->
+        <svg>
+            <symbol id="svg-camera" fill="none" viewBox="0 0 240 240">
+                <path d="M120 160a30 30 0 10 0-60 30 30 0 00 0 60Z" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/><path d="M30 168V92c0-11.2 0-16.8 2.2-21a20 20 0 01 8.7-8.8C45.2 60 50.9 60 62 60h13a10 10 0 00 7.2-4.5l1.1-2.2 2.3-4.2a20 20 0 01 14.5-9h39.8a20 20 0 01 14.5 9l2.3 4.2 1.1 2.2a10 10 0 00 7.2 4.4h13c11.2 0 16.8 0 21 2.3 3.8 2 7 5 8.8 8.7 2.2 4.3 2.2 10 2.2 21v76.1c0 11.2 0 16.8-2.2 21a20 20 0 01-8.7 8.8c-4.3 2.2-9.9 2.2-21 2.2H62c-11.2 0-16.8 0-21-2.2a20 20 0 01-8.8-8.7C30 184.8 30 179.2 30 168.1Z" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+            </symbol>
+        </svg>
+        <!-- Selection svg -->
+        <svg>
+            <symbol id="svg-selection" fill="none" viewBox="0 0 24 24">
+              <path d="M7.92098 2.29951C6.93571 1.5331 5.5 2.23523 5.5 3.48349V20.4923C5.5 21.9145 7.2945 22.5382 8.17661 21.4226L12.3676 16.1224C12.6806 15.7267 13.1574 15.4958 13.6619 15.4958H20.5143C21.9425 15.4958 22.5626 13.6887 21.4353 12.8119L7.92098 2.29951Z" stroke="#555" stroke-linecap="round" stroke-width="3"/>
+            </symbol>
+        </svg>          
+        <!-- Undo arrow for resetting to default -->
+        <svg>
+            <symbol id="svg-undo" fill="none" viewBox="-200 0 1900 1900">
+                <path d="M910 1473c147-169 90-414-136-388 9 56 18 110 20 130 9 47-30 54-30 54l-438-310 423-378s43 0 35 64l-16 128C1142 724 1372 1230 940 1490l-30-17Z" fill="#555" fill-rule="evenodd" clip-rule="evenodd"/>
+            </symbol>
+        </svg>
+    </div>
+    <a class="home compact-1" href="/">
+        <!-- <img class="headerlogo" src="img/logo/light-theme.png"/> -->
+        <picture class="headerlogo" >
+            <source srcset="/img/logo/light-theme.avif" type="image/avif" />
+            <source srcset="/img/logo/light-theme.webp" type="image/webp" />
+            <img src="img/logo/light-theme.png" alt="Omega one, the logo of Infinite Chess.">
+        </picture>
+        <p>Accueil</p>
+    </a>
+    <nav class="compact-3">
+        <a href="/play">
+            <span>Jouer</span>
+            <svg class="svg-pawn"><use href="#svg-pawn"></use></svg>
+        </a>
+        <a id="login-link" href="/login">
+            <span id="login" class="login">Connexion</span>
+            <span id="profile" class="hidden">Profile</span>
+            <svg id="svg-login" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 240 240"><path d="M150 165V190a20 20 0 01-20 20H60a20 20 0 01-20-20V50c0-11 9-20 20-20h70a20 20 0 01 20 20v30m50 40H90m0 0 25 25M90 120l25-25" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg>
+            <svg id="svg-profile" class="hidden" xmlns="http://www.w3.org/2000/svg" fill="#000" stroke="#000" version="1.1" viewBox="0 0 2000 2000"><path d="M1656 1800H344c-70 0-123-70-96-134C370 1370 662 1200 1000 1200s629 170 752 466c27 64-25 134-96 134M592 600c0-220 183-400 408-400s408 180 408 400-183 400-408 400a405 405 0 01-408-400m1404 1164a952 952 0 00-612-697 593 593 0 00 220-560 610 610 0 00-530-503A608 608 0 00 388 600c0 190 89 357 228 467a952 952 0 00-612 697c-27 122 74 236 200 236h1590c128 0 229-114 200-236" fill="#555" fill-rule="evenodd" stroke="none"/></svg>
+        </a>
+        <a id="createaccount-link" href="/createaccount">
+            <span id="createaccount">Créer un compte</span>
+            <span id="logout" class="hidden">Log Out</span>
+            <svg id="svg-createaccount" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill="#555" stroke="#555" version="1.1" viewBox="0 0 3100 3100"><path d="m3006 1597-453-453a150 150 0 00-212 0l-91 90V150a150 150 0 00-150-150H200A150 150 0 00 50 150v2400a150 150 0 00 150 150h850v250a150 150 0 00 150 150h453c40 0 78-16 106-44L3006 1810a150 150 0 00 0-212zM350 300h1600v1235L1094 2390l-9 10H350V300zm1241 2500H1350v-241l1097-1097 240 241L1592 2800"/></svg>
+            <svg id="svg-logout" class="hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 240 240"><path d="m160 170 50-50m0 0-50-50m50 50H90m30 50-.1 5.7a30 30 0 01-24 26.9l-5.7.7-10.2 1.1c-15.4 1.8-23 2.6-29.1.7a30 30 0 01-18.3-16.4C30 183 30 175.2 30 159.7V80.3c0-15.5 0-23.2 2.6-29A30 30 0 01 51 34.9c6-2 13.7-1 29 .7l10.3 1 5.7.8A30 30 0 01 120 64.3V70" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg>
+        </a>
+    </nav>
+    <!-- gear svg for settings -->
+    <div id="settings" class="settings">
+        <svg class="gear" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 240 240"><path d="M128 4c10 0 20 8 21 18v4a30 30 0 00 40 22l4-2c10-3 21 0 26 10l8 13c5 9 3 20-4 26l-4 3a28 28 0 00 0 44l4 3c7 6 10 17 4 26l-8 13c-5 10-16 13-26 10l-4-2a30 30 0 00-40 22v4c-2 10-10 18-21 18h-16c-10 0-20-8-21-18v-4a30 30 0 00-40-22l-4 2c-10 3-21 0-26-10l-8-13a20 20 0 01 4-26l4-3a28 28 0 00 0-44l-4-3A20 20 0 01 13 70L20 56c5-10 16-13 26-10l4 2a30 30 0 00 40-22v-4c2-10 10-18 21-18h16ZM120 153a33 33 0 10 0-66 33 33 0 00 0 66Z" fill="#555" fill-rule="evenodd" clip-rule="evenodd"/></svg>
+        <div class="settings-dropdown dropdown visibility-hidden">
+            <div id="language-settings-dropdown-item" class="settings-dropdown-item">
+                <svg class="svg-language"><use href="#svg-language"></use></svg>
+                <p class="text">Language</p>
+                <span class="arrow-head-right"></span>
+            </div>
+            <div id="board-settings-dropdown-item" class="settings-dropdown-item">
+                <svg class="svg-board"><use href="#svg-board"></use></svg>
+                <p class="text">Board</p>
+                <span class="arrow-head-right"></span>
+            </div>
+            <div id="legalmove-settings-dropdown-item" class="settings-dropdown-item">
+                <svg class="svg-legalmove"><use href="#svg-legalmove"></use></svg>
+                <p class="text">Legal Moves</p>
+                <span class="arrow-head-right"></span>
+            </div>
+            <div id="selection-settings-dropdown-item" class="settings-dropdown-item">
+                <svg class="svg-selection"><use href="#svg-selection"></use></svg>
+                <p class="text">Selection</p>
+                <span class="arrow-head-right"></span>
+            </div>
+            <div id="perspective-settings-dropdown-item" class="settings-dropdown-item hidden"> <!-- Hidden Initially until we test if mouse (& perspective mode) is supported -->
+                <svg class="svg-perspective"><use href="#svg-perspective"></use></svg>
+                <p class="text">Perspective</p>
+                <span class="arrow-head-right"></span>
+            </div>
+            <div class="ping-meter hidden">
+                <div>
+                    <span class="ping">Ping</span>
+                    <strong class="ping-value">-</strong>
+                    <span class="ms">ms</span>
+                </div>
+                <div class="ping-bars">
+                    <div class="ping-bar" style="height: 6px;"></div>
+                    <div class="ping-bar" style="height: 12px;"></div>
+                    <div class="ping-bar" style="height: 18px;"></div>
+                    <div class="ping-bar" style="height: 24px;"></div>
+                    <div class="ping-glow"></div>
+                </div>
+                <svg class="svg-pawn spinny-pawn hidden"><use href="#svg-pawn"></use></svg>
+            </div>
+        </div>
+        <!-- Language -->
+        <div class="language-dropdown dropdown visibility-hidden">
+            <div class="dropdown-title">
+                <span class="arrow-head-left"></span>
+                <svg class="svg-language"><use href="#svg-language"></use></svg>
+                <p class="text">Language</p>
+            </div>
+            
+                <div class="language-dropdown-item " value="en-US">
+                    <div class="language-names">
+                        <p class="name">English</p>
+                        <p class="englishName">English</p>
+                    </div>
+                    
+                </div>
+            
+                <div class="language-dropdown-item " value="es-ES">
+                    <div class="language-names">
+                        <p class="name">Español</p>
+                        <p class="englishName">Spanish</p>
+                    </div>
+                    
+                </div>
+            
+                <div class="language-dropdown-item selected" value="fr-FR">
+                    <div class="language-names">
+                        <p class="name">Français</p>
+                        <p class="englishName">French</p>
+                    </div>
+                    <svg class="checkmark"><use href="#checkmark"></use></svg>
+                </div>
+            
+                <div class="language-dropdown-item " value="pl-PL">
+                    <div class="language-names">
+                        <p class="name">Polski</p>
+                        <p class="englishName">Polish</p>
+                    </div>
+                    
+                </div>
+            
+                <div class="language-dropdown-item " value="pt-BR">
+                    <div class="language-names">
+                        <p class="name">Português</p>
+                        <p class="englishName">Portuguese</p>
+                    </div>
+                    
+                </div>
+            
+                <div class="language-dropdown-item " value="zh-CN">
+                    <div class="language-names">
+                        <p class="name">简体中文</p>
+                        <p class="englishName">Simplified Chinese</p>
+                    </div>
+                    
+                </div>
+            
+                <div class="language-dropdown-item " value="zh-TW">
+                    <div class="language-names">
+                        <p class="name">繁體中文</p>
+                        <p class="englishName">Traditional Chinese</p>
+                    </div>
+                    
+                </div>
+            
+        </div>
+        <!-- Board Theme -->
+        <div class="board-dropdown dropdown visibility-hidden">
+            <div class="dropdown-title">
+                <span class="arrow-head-left"></span>
+                <svg class="svg-board"><use href="#svg-board"></use></svg>
+                <p class="text">Board</p>
+            </div>
+            <div class="theme-list"></div>
+        </div>
+        <!-- Legal Move Shape -->
+        <div class="legalmove-dropdown dropdown visibility-hidden">
+            <div class="dropdown-title">
+                <span class="arrow-head-left"></span>
+                <svg class="svg-legalmove"><use href="#svg-legalmove"></use></svg>
+                <p class="text">Legal Moves</p>
+            </div>
+            <div class="legalmove-options">
+                <div class="legalmove-option squares">
+                    <svg class="svg-squares" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 3780 3780"><path d="M1890 950v940H0v1890h1890V1890h1890v940a34850 34850 0 00 10-950L3780 0H1890v950M0 2840" fill="#777" fill-rule="evenodd"/></svg>
+                    <p class="text">Squares</p>
+                    <svg class="checkmark visibility-hidden"><use href="#checkmark"></use></svg>
+                </div>
+                <div class="legalmove-option dots">
+                    <svg class="svg-legalmove"><use href="#svg-legalmove"></use></svg>
+                    <p class="text">Dots</p>
+                    <svg class="checkmark visibility-hidden"><use href="#checkmark"></use></svg>
+                </div>
+            </div>
+        </div>
+        <!-- Selection Presets -->
+        <div class="selection-dropdown dropdown visibility-hidden">
+            <div class="dropdown-title">
+                <span class="arrow-head-left"></span>
+                <svg class="svg-selection"><use href="#svg-selection"></use></svg>
+                <p class="text">Selection</p>
+            </div>
+            <div class="selection-options">
+                <label class="selection-option drag">
+                    <p class="text">Dragging pieces</p>
+                    <div class="switch">
+                        <input type="checkbox">
+                        <span></span>
+                    </div>
+                </label>
+                <label class="selection-option premove">
+                    <p class="text">Premoves</p>
+                    <div class="switch">
+                        <input type="checkbox" disabled>
+                        <span></span>
+                    </div>
+                </label>
+                <label class="selection-option animations">
+                    <p class="text">Animations</p>
+                    <div class="switch">
+                        <input type="checkbox">
+                        <span></span>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <!-- Perspective -->
+        <div class="perspective-dropdown dropdown visibility-hidden">
+            <div class="dropdown-title">
+                <span class="arrow-head-left"></span>
+                <svg class="svg-perspective"><use href="#svg-perspective"></use></svg>
+                <p class="text">Perspective</p>
+            </div>
+            <div class="perspective-options">
+                <div class="perspective-option mouse-sensitivity">   
+                    <div class="perspective-option-title">
+                        <svg class="svg-mouse"><use href="#svg-mouse"></use></svg>
+                        <p>Mouse Sensitivity</p>
+                    </div>
+                    <div class="slider-container">
+                        <input class="slider" type="range" min="25" max="200" value="100">
+                        <span class="value"></span>
+                    </div>
+                </div>
+                <div class="perspective-option fov">   
+                    <div class="perspective-option-title">
+                        <svg class="svg-camera"><use href="#svg-camera"></use></svg>
+                        <p>Field of View</p>
+                    </div> 
+                    <div class="slider-container">
+                        <input class="slider" type="range" min="60" max="150" value="90">
+                        <span class="value"></span>
+                    </div>
+                    <div class="reset-default-container hidden">
+                        <div class="reset-default">
+                            <svg class="svg-undo"><use href="#svg-undo"></use></svg>
+                            <span>Reset to default</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script defer src="/scripts/esm/components/header/header.js" type="module"></script>
+        <main>
+            <div id="content">
+                <h1 class="center">Conditions d&#39;Utilisation</h1>
+                
+                    <p style="font-weight: bold; color: red; background-color: #feccc9; padding: 5px;">CE DOCUMENT N&#39;A PAS DE VALEUR LÉGALE. Notre responsabilité n&#39;est engagée que par la version anglaise de ce texte. Cette traduction n&#39;a qu&#39;une valeur informationelle et peut contenir des erreurs ou inexactitudes. Vous pouvez accèder à la version Anglaise <a style="color: red" href="/termsofservice?lng=en-US">ici</a>.<p>
+                
+                <p class="center" style="margin-bottom:3em">En utilisant ce site, vous vous engager à respecter les conditions suivantes. Si vous ne les acceptez pas, vous devez immédiatement quitter le site.</p>
+                <p>Si vous avez moins de 18 ans vous devez recevoir l&#39;accord de vos responsables légaux pour utiliser ce site ou vous créer un compte.</p>
+                <h2>Parents</h2>
+                <p>Il y a un système qui empêche les utilisateurs de mettre des certaines insultes en nom d&#39;utilisateur. Pour l&#39;instant il n&#39;y pas de possibilité de communication entre les membres du site.</p>
+                <p>Actuellement, les membres ne peuvent pas mettre de photos de profil personalisées, c&#39;est prévu cependant. Au moment où cette fonctionnalité arrivera nous ferons de notre mieux pour empêcher les photos inappropriées.</p>
+
+                <h2>Fairplay</h2>
+                <p>Vous ne pouvez pas créer plus d&#39;un compte. Si vous voulez changer l&#39;adresse mail associée à votre compte, <a href='mailto:infinitechess.org@gmail.com'>contactez nous.</a></p>
+                <p>Pour garder le jeu amusant et équilibré pour tous, vous ne devez PAS:</p>
+                <ul>
+                    <li><p>Modifier ou manipuler le code ce qui inclut mais n&#39;est pas limité à: l&#39;utilisation de commandes dans la console, la réecriture de données locales, les scripts personnalisés, modifier les requêtes http et tout ce qui peut être fait intentionellement pour empêcher le fonctionnement normal du jeu ou vous donner un avantage.</p></li>
+                    <li><p>Dans les parties classées, recevoir de l&#39;aide ou des conseils d&#39;une autre personne ou d&#39;un programme sur ce que vous devriez jouer. (Créer un programme est autorisé et encouragé mais vous devez vous limitez à l&#39;utiliser dans des parties non classées).</p></li>
+                    <li><p>Échanger des points d&#39;elo avec d&#39;autres personnes en perdant volontairement dans l&#39;objectif d&#39;augmenter le classement de votre adversaire, ou en recevant des points d&#39;elo d&#39;un adversaire qui cherche à perdre pour augmenter votre classement. Ces situations abusent du système et créent des classements non représentatifs de la réalité.</p></li>
+                </ul>
+
+                <h2>Respect</h2>
+                <p>Vous devez rester respecteux sur tout le site, pas de vulgarité ou d&#39;injures. Vous n&#39;êtes pas autorisés à insulter, à harceler ou à menacer quiconque, ou à commettre un quelconque acte illégal. Vous n&#39;êtes pas autorisé à spammer d&#39;autres utilisateurs ou d&#39;autres forums.</p>
+                <p>Vous n&#39;êtes pas autorisé à uploader des images qui peuvent être inappropriés, suggestives ou gores sur votre profil. Le faire pourrait résulter en un bannissement ou en une suppression de votre compte.</p>
+
+                <h2>Confidentialité</h2>
+                <p>Pour l&#39;instant la seule information personnelle que nous collectons est l&#39;adresse mail. Elle nous permet de vérifier les comptes des utilisateurs et nous donne un moyen de prouver qui ils sont lorsqu&#39;ils font une demande de changement de mot de passe. Nous n&#39;envoyons pas de mails ou d&#39;offres promotionelles et nous ne partageons pas vos adresses email avec des tiers.</p>
+                <p>InfiniteChess.org peut collecter des données sur votre utilisation du site comme votre adresse IP. Cette collecte nous aide à empêcher les attaques automatisées ou autres connexions néfastes, et nous permet de collecter des statistiques précises sur l&#39;utilisation du site. Votre adresse IP n&#39;est PAS votre adresse réelle.</p>
+                <p>Toutes les parties que vous jouez sur le site sont publiques. Si vous souhaitez rester anynome, ne partagez pas votre nom d&#39;utilisateur avec vos amis ou votre famille. Si c&#39;est ce que vous souhaitez, il est de votre  responsabilité de vous assurer que personne ne trouve de lien entre votre nom d&#39;utilisateur et votre identité réelle.</p>
+                <p>Le status d&#39;activité de votre compte et la durée approximative depuis votre dernière connexion sur le site sont également publiques.</p>
+                <p>Bien qu&#39;InfiniteChess.org fasse tout son possible pour garder toutes les données personnelles et les comptes sécurisés, dans le cas d&#39;un hack ou d&#39;une fuite de donnée, vous ne pourrez pas nous en tenir responsable. Si une fuite de donnée a lieu, les utilisateurs en seront informés sur la page  <a href='/news'>Actualités</a> .</p>
+                <p>Il n&#39;y pas d&#39;achats intégrés au site. Toute information personnelle non précisée dans cette liste n&#39;est pas collectée.</p>
+                <p>Pour avoir toutes vos informations personnelles supprimées de nos serveurs, vous pouvez supprimer votre compte depuis votre page de profil. La seule chose en lien avec votre nom d&#39;utilisateur que nous ne supprimerons PAS, est votre historique de parties, car toutes les parties jouées sont  publiques.</p>
+                
+                <h2>Utilisation de Cookies</h2>
+                <p>Ce site utilise des cookies, qui sont des petits fichiers textes stockés dans votre navigateur, et envoyés au serveur quand vous vous connectez. Ces cookies servent à: vous authentifier, vérifier que votre navigateur est dans la bonne partie et stocker les préférences de votre compte pour que vous puissez les conserver entre deux visites. Le site n&#39;utilise pas de cookies tierces, les cookies ne sont pas partagé avec des tiers.</p>
+                <p>Les cookies sont nécessaires pour le bon fonctionnement du site. Si vous ne souhaitez pas que ce site stocke des cookies, vous devez arrêter de l&#39;utiliser. Vous pouvez supprimer les cookies existants dans les paramètres de votre navigateur. En continuant d&#39;utiliser  ce site, vous acceptez l&#39;utilisation de cookies.</p>
+
+                <h2>Conclusion</h2>
+                <p>Toute violation de ces termes peut résulter en un bannissement ou en une suppression de votre compte. InfiniteChess.org a pour souhait de donner à tout le monde l&#39;opportunité de jouer et de prendre du plaisir ! Mais, nous nous réservons le droit de bannir ou de supprimer des comptes, pour des raisons que nous ne sommes pas tenus de justifier ou de communiquer et ne ne pourrons légalement pas en être tenu responsables.</p>
+                <p>Ces termes peuvent être modifiés à tout moment. Il est de VOTRE responsabilité de vous tenir au courant des mises à jour de ces derniers ! Quand les conditions d&#39;utilisations seront modifiées nous vous en informerons sur la page  <a href='/news'>Actualités</a> . Si, vous n&#39;adhérez plus aux conditions après une mise à jour de ces dernières vous devez immédiatement quitter le site. Vous pouvez supprimer votre compte depuis votre profil. Si vous supprimez votre compte, toutes vos informations personnelles et les données qui vont concernent seront supprimées SAUF l&#39;historique de vos parties, qui sont associées à votre nom d&#39;utilisateur. Car ces parties sont  publiques.</p>
+                <!-- The licence reference used to link out to docs/COPYING.md on GitHub. It reads as
+                     plain text now; the file itself still ships with the repo. -->
+                <p>Ce site est open-source. Vous pouvez récuperer ou distribuer toutes les ressources qui s&#39;y trouvent tant que vos respectez les conditions décrites dans les  licences ! Si le lien ci dessus n&#39;est pas fonctionnel il est de votre responsabilité de trouver les licences.</p>
+                <p>Nous ne garantissons pas que ce site sera en ligne 100% du temps. Nous ne garantissons pas non plus que les données ne seront jamais corrompues.</p>
+                <p>Vous n&#39;êtes pas autorisé à performer des activités illégales sur ce site.</p>
+                <p>Si vous avez des questions concernant ces conditions, ou à propos du site de manière générale, <a href='mailto:infinitechess.org@gmail.com'>envoyez nous un email !</a></p>
+                
+                <p class="grey">(Dernière mise à jour: 13 Juillet 2024. Ajout de l&#39;avertissement sur le fait que toutes les parties jouées sur le site sont des informations publiques, ce qui inclut une approximation de la durée depuis la dernière activité de votre compte. Ces conditions peuvent être changées à tout instant et il est de votre responsabilité de vous assurez que vous restez à jour.)</p>
+                <h3>Merci !</h3>
+            </div>
+        </main>
+        <footer>
+    <a href="mailto:infinitechess.org@gmail.com">Contactez nous</a>
+    <a href="/termsofservice" id="toslink">Conditions d&#39;utilisation</a>
+</footer>
+    </body>
+</html>

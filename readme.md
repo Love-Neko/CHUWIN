@@ -2,7 +2,7 @@
 
 一个面向 Windows 的无限棋盘网页服务器。项目基于 [Infinite Chess](https://github.com/Infinite-Chess/infinitechess.org) 开源代码，并补充了中文界面、中文文档、Windows 一键启动脚本以及 AI 教练功能。
 
-![CHUWIN 项目预览](图片/项目预览.png)
+![CHUWIN 项目首页](图片/首页.png)
 
 ## 项目简介
 
@@ -52,7 +52,7 @@ HTTPS listening on port 3443
 npm run watch
 ```
 
-首次启动时，`src/server/config/env.js` 会在根目录生成 `.env`（如果文件不存在），并创建随机的访问令牌密钥。`.env`、证书、数据库、日志、`dist` 和 `node_modules` 已加入 `.gitignore`，请不要把真实密钥提交到仓库。
+首次启动时，`src/server/config/env.js` 会在根目录生成 `.env`（如果文件不存在），并创建随机的访问令牌密钥。`.env`、证书、SQLite 数据库文件、日志和 `node_modules` 已加入 `.gitignore`，请不要把真实密钥或运行中的用户数据提交到仓库。`database/` 中的默认 JSON 配置和 `dist/` 构建结果随项目一同提供。
 
 ## AI 教练配置
 
@@ -99,13 +99,15 @@ GITHUB_REPO=Infinite-Chess/infinitechess.org
 | `src/server/api/` | AI 教练、GitHub 贡献者、偏好设置等外部/内部 API |
 | `translation/` | 多语言 TOML 翻译文件和新闻内容 |
 | `dev-utils/` | 棋子 SVG、音频、图片和开发辅助脚本 |
+| `database/` | 默认邀请、封禁和统计 JSON 配置 |
+| `dist/` | 已生成的客户端与服务端构建结果 |
 | `yinpin/` | 中文化界面使用的音频素材 |
 | `图片/` | 项目截图和展示图片 |
 | `docs/` | 原项目开发、导航、部署和翻译指南 |
 | `build.js` | 将 `src` 构建到 `dist` 并执行 TypeScript、打包和压缩 |
 | `启动.bat` | Windows 一键停止旧进程并启动开发监听 |
 | `package.json` | npm 脚本和依赖定义 |
-| `database.db`、`.env`、`dist/` | 本地运行生成内容，默认不会提交 |
+| `database.db`、`.env` | 本地运行数据与私密配置，默认不会提交 |
 
 ## Docker 部署
 
@@ -147,4 +149,4 @@ docker run -d --name chuwin --restart always \\
 
 | 对局 | 演示 |
 | --- | --- |
-| ![游戏](图片/游戏.png) | ![演示](图片/演示.png) |
+| ![对局](图片/对局.png) | ![演示](图片/演示.png) |

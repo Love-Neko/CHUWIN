@@ -1,0 +1,48 @@
+footer {
+    text-align: center;
+    padding: 14px 0 18px;
+    border-top: 1px solid var(--border);
+    background-color: var(--glass);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+footer a {
+    display: inline-block;
+    color: var(--text-dim);
+    margin: 10px 10px;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.16s ease, border-color 0.16s ease;
+}
+
+footer a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+footer label {
+    font-size: 16px;
+    color: var(--text-dim);
+    margin: 10px 2px 10px 10px;
+}
+
+footer select {
+    width: min-content;
+    color: var(--text-dim);
+    font-size: 1em;
+    background-color: rgba(0, 0, 0, 0);
+    margin: 10px 10px 10px 0px;
+    cursor: pointer;
+}
+
+footer select:hover {
+    color: var(--text);
+}
+
+/* Native dropdown lists paint on an OS-drawn surface, so the option rows need
+   their own colours rather than inheriting the dark footer text. */
+footer .language-option {
+    color: var(--text);
+    background-color: var(--surface);
+}

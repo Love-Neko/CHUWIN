@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="pl-PL" dir="ltr" >
+    <head>
+        <script>
+            const translations = {"guest_indicator":"(Gość)","you_indicator":"(Ty)","white_to_move":"Ruch białego","black_to_move":"Ruch czarnego","your_move":"Twój ruch","their_move":"Ruch przeciwnika","lost_network":"Utracenie połączenia.","failed_to_load":"Nie udało się załadować jednego bądź więcej zasobów. Proszę odświeżyć.","planned_feature":"W planach!","main_menu":"Strona Główna","resign_game":"Poddaj się","abort_game":"Porzuć grę","offer_draw":"Remis","accept_draw":"Zaakceptuj remis","arrows_off":"Strzałki: Wyłączone","arrows_defense":"Strzałki: Obrona","arrows_all":"Strzałki: Wszystkie","toggled":"Przełączono","menu_online":"Graj - Online","menu_local":"Graj - Lokalnie","invite_error_digits":"Kod zaproszenia musi składać się z 5 cyfr.","invite_copied":"Skopiowano kod zaproszenia do schowka.","move_counter":"Ruch:","constructing_mesh":"Tworzenie siatki","rotating_mesh":"Obracanie siatki","lost_connection":"Utracono połączenie.","please_wait":"Zaczekaj chwilę.","bigints_unsupported":"BigInts nie są wspierane. Zaktualizuj swoją przeglądarkę.\nBigInts are needed to make the board infinite.","shaders_failed":"Nie udało się uruchomić shadera:","failed_compiling_shaders":"Wystąpił błąd przy kompilowaniu shadera:","copypaste":{"copied_game":"Skopiowano grę do schowka!","cannot_paste_in_public":"Nie można wkleić gry do podczas publicznej rozgrywki!","cannot_paste_after_moves":"Nie można wkleić gry gdy ruch został już wykonany!","clipboard_denied":"Zgoda na używanie schowka odrzucona. Może być to spowodowane przez twoją przeglądarkę.","clipboard_invalid":"Zawartość schowka nie jest poprawną notacją ICN.","game_needs_to_specify":"Gra musi określić metadatę 'Wariant', bądź właściwość 'początkowaPozycja'.","invalid_wincon_white":"Biały gracz ma nieprawidłową zasadę wygranej","invalid_wincon_black":"Czarny gracz ma nieprawidłową zasadę wygranej","pasting_game":"Wklejanie gry...","pasting_in_private":"Wklejenie gry w prywatnym meczu spowoduje desynchronizację jeśli twój przeciwnik nie zrobi tego samego!","piece_count":"Liczba figur","exceeded":"przekroczono","changed_wincon":"Zmieniono zasadę wygranej na royalcapture i wyłączono wyświetlanie ikon. Wciśnij 'P' by włączyć z powrotem (nie zalecane).","loaded_from_clipboard":"Wczytano grę ze schowka!","loaded":"Wczytano grę!","slidelimit_not_number":"Zasada 'slideLimit' musi być liczbą. Otrzymano"},"rendering":{"on":"Włączona","off":"Wyłączona","icon_rendering_off":"Wyłączono wyświetlanie ikon.","icon_rendering_on":"Włączono wyświetlanie ikon.","toggled_edit":"Przełączono tryb edytowania:","perspective":"Perspektywa","perspective_mode_on_desktop":"Tryb perspektywy dostępny na komputerze!","movement_tutorial":"WASD by poruszać planszą. Space & shift by oddalać i przybliżać.","regenerated_pieces":"Odświeżono figury."},"invites":{"move_mouse":"Porusz kursorem by połączyć się ponownie.","unknown_action_received_1":"Nieznana akcja","unknown_action_received_2":"otrzymano subskrypcję zaproszenia od serwera!","cannot_cancel":"Nie można anulować zaproszenia z nieznanym ID.","you_indicator":"(Ty)","you_are_white":"Jesteś: Białym","you_are_black":"Jesteś: Czarnym","random":"Losowy","accept":"Akceptuj","cancel":"Anuluj","create_invite":"Stwórz zaproszenie","cancel_invite":"Anuluj zaproszenie","start_game":"Rozpocznij grę","join_existing_active_games":"Dołącz do istniejącej - Trwające Gry:"},"onlinegame":{"afk_warning":"Jesteś AFK.","opponent_afk":"Przeciwnik jest AFK.","opponent_disconnected":"Przeciwnik rozłączył się.","opponent_lost_connection":"Przeciwnik utracił połączenie.","auto_resigning_in":"Auto-rezygnowanie za","auto_aborting_in":"Auto-porzucanie za","not_logged_in":"Nie jesteś zalogowany. Zaloguj się by polączyć sie ponownie do tej gry.","game_no_longer_exists":"Gra już nie istnieje.","another_window_connected":"Inne okno się połączyło.","server_restarting":"Serwer niedługo się zresetuje...","server_restarting_in":"Reset serwera za","minute":"minutę","minutes":"minut"},"websocket":{"no_connection":"Brak połączenia.","reconnected":"Połączono.","unable_to_identify_ip":"Nie możemy zidentyfikować adresu IP.","online_play_disabled":"Gra online wyłączona. Ciasteczka nie są wspierane. Spróbuj w innej przeglądarce.","too_many_requests":"Zbyt wiele zapytań. Spróbuj ponownie później.","message_too_big":"Wiadomość zbyt długa.","too_many_sockets":"Too many sockets","origin_error":"Origin error.","connection_closed":"Połączenie niespodziewanie przerwane. Wiadomość serwera:","please_report_bug":"Nie powinno się to nigdy zdarzyć. Zgłoś błąd!"},"termination":{"checkmate":"Szach-mat","stalemate":"Pat","repetition":"Potrójne powtórzenie pozycji","moverule":["Zasada "," 50 ruchów"],"insuffmat":"Nie wystarczający materiał","royalcapture":"Królewskie zbicie","allroyalscaptured":"Cała królewska rodzina zbita","allpiecescaptured":"Wszystkie figury zbite","threecheck":"Potrójny szach","koth":"Król wzgórza","resignation":"Poddanie się","agreement":"Remis","time":"Koniec czasu","aborted":"Przerwanie","disconnect":"Porzucenie"},"results":{"you_checkmate":"Wygrałeś przez szacha-mata!","you_time":"Wygrałeś na czas!","you_resignation":"Wygrałeś przez poddanie się przeciwnika!","you_disconnect":"Wygrałeś przez porzucenie!","you_royalcapture":"Wygrałeś przez królewskie zbicie!","you_allroyalscaptured":"Wygrałeś przez zbicie całej rodziny królewskiej!","you_allpiecescaptured":"Wygrałeś przez zbicie wszystkich figur!","you_threecheck":"Wygrałeś przez potrójnego szacha!","you_koth":"Zostałeś królem wzgórza!","you_generic":"Wygrałeś!","draw_stalemate":"Remis przez pata!","draw_repetition":"Remis przez powtórzenie pozycji!","draw_moverule":["Remis przez zasadę "," ruchów!"],"draw_insuffmat":"Remis przez niewystarczający materiał!","draw_agreement":"Remis!","draw_generic":"Remis!","aborted":"Gra porzucona.","opponent_checkmate":"Przegrałeś przez szacha-mata!","opponent_time":"Przegrałeś na czas!","opponent_resignation":"Przegrałeś przez poddanie się!","opponent_disconnect":"Przegrałeś przez porzucenie!","opponent_royalcapture":"Przegrałeś przez królewskie zbicie!","opponent_allroyalscaptured":"Przegrałeś przez zbicie całej rodziny królewskiej!","opponent_allpiecescaptured":"Przegrałeś przez zbicie wszystkich figur!","opponent_threecheck":"Przegrałeś przez potrójnego szacha!","opponent_koth":"Przeciwnik został królem wzgórza!","opponent_generic":"Przegrałeś!","white_checkmate":"Biały wygrał przez szach-mat!","black_checkmate":"Czarny wygrał przez szach-mat!","bug_checkmate":"Jest to błąd, prosimy o zgłoszenie tego. Gra skończona przez szach-mat.","white_time":"Biały wygrał na czas!","black_time":"Czarny wygrał na czas!","bug_time":"Jest to błąd, prosimy o zgłoszenie tego. Gra skończona na czas","white_royalcapture":"Biały wygrał przez królewskie zbicie!","black_royalcapture":"Czarny wygrał przez królewskie zbicie!","bug_royalcapture":"Jest to błąd, prosimy o zgłoszenie tego. Gra skończona przez królewskie zbicie.","white_allroyalscaptured":"Biały wygrał przez zbicie całej rodziny królewskiej!","black_allroyalscaptured":"Czarny wygrał przez zbicie całej rodziny królewskiej!","bug_allroyalscaptured":"Jest to błąd, prosimy o zgłoszenie tego. Gra skończona przez zbicie całej rodziny królewskiej!","white_allpiecescaptured":"Biały wygrał przez zbicie wszystkich figur!","black_allpiecescaptured":"Czarny wygrał przez zbicie wszystkich figur!","bug_allpiecescaptured":"Jest to błąd, prosimy o zgłoszenie tego. Gra skończona przez zbicie wszystkich figur.","white_threecheck":"Biały wygrał przez potrójnego szacha!","black_threecheck":"Czarny wygrał przez potrójnego szacha!","bug_threecheck":"Jest to błąd, prosimy o zgłoszenie tego. Gra skończona przez potrójnego szacha","white_koth":"Biały zostaje królem wzgórza!","black_koth":"Czarny zostaje królem wzgórza!","bug_koth":"Jest to błąd, prosimy o zgłoszenie tego. Gra skończona przez króla wzgórza.","bug_generic":"Jest to błąd, prosimy o zgłoszenie tego!"},"title":"Graj - Online","colors":"Kolor","online":"Online","local":"Lokalnie","computer":"Komputer","variant":"Wariant","Classical":"Klasyczny","Classical_Plus":"Klasyczny+","CoaIP":"Chess on an Infinite Plane","Pawndard":"Pawndard","Knighted_Chess":"Knighted Chess","Knightline":"Knightline","Core":"Core","Standarch":"Standarch","Pawn_Horde":"Pawn Horde","Space_Classic":"Space Classic","Space":"Space","Obstocean":"Obstocean","Abundance":"Abundance","Amazon_Chandelier":"Amazon Chandelier","Containment":"Containment","Classical_Limit_7":"Classical - Limit 7","CoaIP_Limit_7":"Coaip - Limit 7","Chess":"Chess","Classical_KOTH":"Experimental: Classical - KOTH","CoaIP_KOTH":"Experimental: Coaip - KOTH","Omega":"Showcase: Omega","Omega_Squared":"Showcase: Omega^2","Omega_Cubed":"Showcase: Omega^3","Omega_Fourth":"Showcase: Omega^4","no_clock":"Bez czsu","clock":"Czas","minutes":"m","seconds":"s","infinite_time":"Nieskończony czas","color":"Kolor","piece_colors":["Losowy","Biały","Czarny"],"private":"Prywatny","no":"Nie","yes":"Tak","rated":"Rankingowy","casual":"Nierankingowy","join_games":"Dołącz do istniejącej - Trwające gry:","private_invite":"Prywatne zaproszenie:","your_invite":"Twój kod zaproszenia:","create_invite":"Stwórz zaproszenie","join":"Dołącz","copy":"Skopiuj","back":"Powrót","code":"Kod"};
+        </script>
+        <!-- Do not modify the next line under any circumstances!! It is used by build.js as a reference point of where to inject js -->
+        <!-- htmlscript inject here --><script>
+'use strict';
+
+/* global main sound */
+
+/**
+ * The server injects this script directly into the html document
+ * before serving that.
+ * This is so we can execute code that needs to be executed preferrably
+ * before the document fully loads (for example, the loading screen,
+ * or pre-loading the sound spritesheet)
+ * 
+ * This is also what calls our main() function when the page fully loads.
+ */
+// eslint-disable-next-line no-unused-vars
+const htmlscript = (function() {
+
+	// Listen for the first user gesture...
+
+	// *true* if the user has started interacting with the page,
+	// usually after a single mouse click. Some browsers prevent
+	// audio playing until a user gesture, this helps us to
+	// predict if our audio will be prevented from playing.
+	let atleastOneUserGesture = false;
+	let audioContextDefined = false;
+
+	// This stuff needs to be AFTER decoding audio buffer for our audio context
+	// because the 'load' event listener needs to be 2nd in line, not first.
+	document.addEventListener('mousedown', callback_OnUserGesture);
+	document.addEventListener('click', callback_OnUserGesture);
+	function callback_OnUserGesture() {
+		atleastOneUserGesture = true;
+		document.removeEventListener('mousedown', callback_OnUserGesture);
+		document.removeEventListener('click', callback_OnUserGesture);
+		if (audioContextDefined) sound.getAudioContext().resume();
+		else window.addEventListener('load', () => { // resume() the Audio Context as soon as the page loads
+			if (loadingErrorOcurred) return; // Page never finished loading, don't reference sound script.
+			sound.getAudioContext()?.resume();
+		});
+	}
+
+	// Start loading the sound players before the rest of the scripts are loaded,
+	// because we don't know how long that'll take!
+	// We have use a fetch to retrieve the sound instead of a <sound> tag,
+	// because otherwise we can't grab the buffer to duplicate the audio!
+	(async function decodeAudioBuffer() {
+
+		const audioContext = new AudioContext();
+		let audioDecodedBuffer;
+
+		await fetch('/sounds/soundspritesheet.mp3')
+			.then(response => response.arrayBuffer())
+			.then(async arrayBuffer => {
+				// Process the array buffer...
+				// Decode the audio buffer data
+				await audioContext.decodeAudioData(arrayBuffer, function(decodedBuffer) {
+					audioDecodedBuffer = decodedBuffer;
+				});
+			})
+			.catch(error => {
+				console.error(`An error ocurred during loading of sounds: ${error.message}`);
+				callback_LoadingError();
+			});
+
+		// I don't want to miss calling this if the document is ready before this audio is finished loading
+		if (document.readyState === 'complete') sendAudioContextToScript();
+		else window.addEventListener('load', () => { // Send our audio context to our sound script.
+			if (loadingErrorOcurred) return; // Page never finished loading, don't reference sound script.
+			sound.initAudioContext(audioContext, audioDecodedBuffer);
+			audioContextDefined = true;
+		});
+		function sendAudioContextToScript() {
+			if (loadingErrorOcurred) return; // Page never finished loading, don't reference sound script.
+			sound.initAudioContext(audioContext, audioDecodedBuffer);
+			audioContextDefined = true;
+		}
+	})();
+    
+	function hasUserGesturedAtleastOnce() { return atleastOneUserGesture; };
+
+	// If there's an error in loading, stop the loading animation
+	// ...
+
+	let loadingErrorOcurred = false;
+	let lostNetwork = false;
+
+	function callback_LoadingError(event) {
+		// const type = event.type; // Event type: "error"/"abort"
+		// const target = event.target; // Element that triggered the event
+		// const elementType = target?.tagName.toLowerCase();
+		// const sourceURL = target?.src || target?.href; // URL of the resource that failed to load
+		// console.error(`Event ${type} ocurred loading ${elementType} at ${sourceURL}.`);
+
+		if (loadingErrorOcurred) return; // We only need to show the error text once
+		loadingErrorOcurred = true;
+        
+		// Hide the "LOADING" text
+		const element_loadingText = document.getElementById('loading-text');
+		element_loadingText.classList.add('hidden'); // This applies a 'display: none' rule
+
+		// Show the ERROR text
+		const element_loadingError = document.getElementById('loading-error');
+		const element_loadingErrorText = document.getElementById('loading-error-text');
+		element_loadingError.classList.remove('hidden');
+		element_loadingErrorText.textContent = lostNetwork ? translations.lost_network : translations.failed_to_load;
+
+		// Remove the glowing in the background animation
+		const element_loadingGlow = document.getElementById('loading-glow');
+		element_loadingGlow.classList.remove('loadingGlowAnimation');
+		element_loadingGlow.classList.add('loading-glow-error');
+	}
+
+	// Removes the onerror event listener from the "this" object.
+	function removeOnerror() {
+		this.removeAttribute('onerror');
+		this.removeAttribute('onload');
+	}
+
+	// Add event listeners for when connection is dropped when loading
+
+	(function initLoadingScreenListeners() {
+		window.addEventListener('offline', callback_Offline);
+		window.addEventListener('online', callback_Online);
+	})();
+	function closeLoadingScreenListeners() {
+		window.removeEventListener('offline', callback_Offline);
+		window.removeEventListener('online', callback_Online);
+	}
+
+	function callback_Offline() {
+		console.log('Network connection lost');
+		lostNetwork = true;
+		callback_LoadingError();
+	}
+	function callback_Online() {
+		console.log('Network connection regained');
+		lostNetwork = false;
+		if (loadingErrorOcurred) window.location.reload(); // Refresh the page
+	}
+    
+	// When the document is loaded, start the game!
+
+	window.addEventListener('load', function() {
+		if (loadingErrorOcurred) return; // Page never finished loading, don't start the game.
+		closeLoadingScreenListeners(); // Remove document event listeners for the loading screen
+		main.start(); // Start the game!
+	});
+
+	return Object.freeze({
+		callback_LoadingError,
+		removeOnerror,
+		hasUserGesturedAtleastOnce,
+	});
+
+})();</script>
+
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable = no" />
+        <title>Infinite Chess - Graj</title>
+        <link rel='stylesheet' href='/css/header.css'>
+        <link rel='stylesheet' href='/css/play.css' onerror="htmlscript.callback_LoadingError(event)" onload="htmlscript.removeOnerror.call(this);"> <!-- NEEDS TO BE ABOVE JAVASCRIPT-INJECTED STYLINGS SO THAT TAKES PRECEDENCE -->
+        <link rel="icon" href="/img/favicon-light.png" media="(prefers-color-scheme: light)" />
+        <link rel="icon" href="/img/favicon-dark.png" media="(prefers-color-scheme: dark)" id="favicon" />
+        <!-- Custom fonts: Merriweather, Open Sans -->
+        <link href="css2.css" rel="stylesheet">
+        <script defer src="/scripts/esm/game/main.js" type="module" onerror="htmlscript.callback_LoadingError(event)" onload="(() => { htmlscript.removeOnerror.call(this); })()"></script>
+        <!-- Javascript will add future styles in here. NEEDS TO BE BELOW OTHER STYLESHEET SO THIS TAKES PRECEDENCE -->
+        <style id="style"></style>
+    </head>
+    <body>
+        <header>
+    <!-- Reusable SVGs (here to reduce redundancy) -->
+    <div class="hidden"> 
+        <!-- The pawn svg and loading animation svg we use in several places -->
+        <svg>
+            <symbol id="svg-pawn" viewBox="0 0 45 45">
+                <path d="M22.5 9c-2.21 0-4 1.79-4 4 0 .89.29 1.71.78 2.38C17.33 16.5 16 18.59 16 21c0 2.03.94 3.84 2.41 5.03-3 1.06-7.41 5.55-7.41 13.47h23c0-7.92-4.41-12.41-7.41-13.47 1.47-1.19 2.41-3 2.41-5.03 0-2.41-1.33-4.5-3.28-5.62.49-.67.78-1.49.78-2.38 0-2.21-1.79-4-4-4z" fill-opacity="1" fill-rule="nonzero" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" stroke-opacity="1" stroke-width="1.5" opacity="1"/>
+            </symbol>
+        </svg>
+        <!-- Checkmark svg commonly found in the settings dropdowns -->
+        <svg>
+            <symbol id="checkmark" viewBox="0 0 320 320">
+                <path d="m290 85-21-21a10 10 0 00-15 0L126 192l-60-61A10 10 0 00 50 130l-20 20a10 10 0 00 0 15l88 90c4 4 10 4 15 0L290 100c4-4 4-10 0-15"/>
+            </symbol>
+        </svg>
+        <!-- Language globe svg -->
+        <svg>
+            <symbol id="svg-language" fill="none" viewBox="0 0 240 240">
+                <path d="m30 75 44 30 4 3h3l4-4 9-12V90h2s0 0 0 0l40-18 3-2v0l1-4 3-42m-8 112 26 11 6 3v4l-2 5-13 18c0 2 0 2-2 3h0l-3 1h-24l-2-2-2-3-7-22v-7l6-10c0-3 2-4 2-5h8l8 3ZM220 120a100 100 0 11-200 0 100 100 0 01 200 0Z" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+            </symbol>
+        </svg>
+        <!-- 2x2 Board tile theme selection svg -->
+        <svg>
+            <symbol id="svg-board" viewBox="0 0 479 479">
+                <path d="M0 240v239h480V0H0v240m0 0v240l1-120V120L0 1v239m60-90v90h180v180h180V240H240V60H60v90" fill="#777" fill-rule="evenodd"/>
+            </symbol>
+        </svg>
+        <!-- Dot and corner tris legal move selection svg -->
+        <svg>
+            <symbol id="svg-legalmove" viewBox="0 0 3710 3700">
+                <path d="M0 740v730l740-730 730-740H0v740m2980-10 730 730V0H2250l730 730m-1260 360h-40l-30 10-10 10h-30l-20 10-20 10h-10l-90 50-20 10-50 30-30 20a840 840 0 00-200 230v10l-10 20-30 50-10 30-40 120a1420 1420 0 00 10 340l20 60v20l10 20 20 50 30 50 10 10 60 90a740 740 0 00 340 250l140 40a1500 1500 0 00 330-20l30-10h20l20-10 10-10c10 10 150-60 200-110 90-80 200-210 190-230l10-10a430 430 0 00 70-160l10-80 10-40a670 670 0 00 0-230l-10-40-10-10a540 540 0 00-90-220c0-30-110-150-190-210l-100-70-40-20c-40-20-120-50-130-40l-10-10c-20-20-310-30-320-10M0 2970v730h1480l-730-730-740-740-10 740m2980 0-730 730h1460V2240l-730 730" fill="#666" fill-rule="evenodd"/>
+            </symbol>
+        </svg>
+        <!-- Perspective mode svg -->
+        <svg>
+            <symbol id="svg-perspective" fill="none" viewBox="0 0 480 480">
+                <path d="M0 0h480v480H0" fill="none"/><path d="M440 280v80l-130 26M440 280 40 320m400-40v-80M40 320v120l130-26M40 320V160m400 40v-80L310 94M440 200 40 160m0 0V40l130 26m140 28v292m0-292L170 66m140 320-140 28m0-348v348" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="40"/>
+            </symbol>
+        </svg>
+        <!-- Mouse svg -->
+        <svg>
+            <symbol id="svg-mouse" viewBox="0 0 240 240" fill="none">
+                <path d="M120 70v20m53.3 70 4.8-71.9.1-2a50 50 0 00-19.1-41.5l-1.7-1.2a60 60 0 00-72.2-2l-2.6 2-1.7 1.3a50 50 0 00-19 43.8l4.8 72a53.4 53.4 0 00 106.6 0Z" stroke="#555" stroke-linecap="round" stroke-width="20"/></svg>
+            </symbol>
+        </svg>
+        <!-- Camera perspective fov svg -->
+        <svg>
+            <symbol id="svg-camera" fill="none" viewBox="0 0 240 240">
+                <path d="M120 160a30 30 0 10 0-60 30 30 0 00 0 60Z" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/><path d="M30 168V92c0-11.2 0-16.8 2.2-21a20 20 0 01 8.7-8.8C45.2 60 50.9 60 62 60h13a10 10 0 00 7.2-4.5l1.1-2.2 2.3-4.2a20 20 0 01 14.5-9h39.8a20 20 0 01 14.5 9l2.3 4.2 1.1 2.2a10 10 0 00 7.2 4.4h13c11.2 0 16.8 0 21 2.3 3.8 2 7 5 8.8 8.7 2.2 4.3 2.2 10 2.2 21v76.1c0 11.2 0 16.8-2.2 21a20 20 0 01-8.7 8.8c-4.3 2.2-9.9 2.2-21 2.2H62c-11.2 0-16.8 0-21-2.2a20 20 0 01-8.8-8.7C30 184.8 30 179.2 30 168.1Z" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+            </symbol>
+        </svg>
+        <!-- Selection svg -->
+        <svg>
+            <symbol id="svg-selection" fill="none" viewBox="0 0 24 24">
+              <path d="M7.92098 2.29951C6.93571 1.5331 5.5 2.23523 5.5 3.48349V20.4923C5.5 21.9145 7.2945 22.5382 8.17661 21.4226L12.3676 16.1224C12.6806 15.7267 13.1574 15.4958 13.6619 15.4958H20.5143C21.9425 15.4958 22.5626 13.6887 21.4353 12.8119L7.92098 2.29951Z" stroke="#555" stroke-linecap="round" stroke-width="3"/>
+            </symbol>
+        </svg>          
+        <!-- Undo arrow for resetting to default -->
+        <svg>
+            <symbol id="svg-undo" fill="none" viewBox="-200 0 1900 1900">
+                <path d="M910 1473c147-169 90-414-136-388 9 56 18 110 20 130 9 47-30 54-30 54l-438-310 423-378s43 0 35 64l-16 128C1142 724 1372 1230 940 1490l-30-17Z" fill="#555" fill-rule="evenodd" clip-rule="evenodd"/>
+            </symbol>
+        </svg>
+    </div>
+    <a class="home compact-1" href="/">
+        <!-- <img class="headerlogo" src="img/logo/light-theme.png"/> -->
+        <picture class="headerlogo" >
+            <source srcset="/img/logo/light-theme.avif" type="image/avif" />
+            <source srcset="/img/logo/light-theme.webp" type="image/webp" />
+            <img src="img/logo/light-theme.png" alt="Omega one, the logo of Infinite Chess.">
+        </picture>
+        <p>Infinite Chess</p>
+    </a>
+    <nav class="compact-3">
+        <a href="/play">
+            <span>Graj</span>
+            <svg class="svg-pawn"><use href="#svg-pawn"></use></svg>
+        </a>
+        <a id="login-link" href="/login">
+            <span id="login" class="login">Zaloguj się</span>
+            <span id="profile" class="hidden">Profil</span>
+            <svg id="svg-login" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 240 240"><path d="M150 165V190a20 20 0 01-20 20H60a20 20 0 01-20-20V50c0-11 9-20 20-20h70a20 20 0 01 20 20v30m50 40H90m0 0 25 25M90 120l25-25" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg>
+            <svg id="svg-profile" class="hidden" xmlns="http://www.w3.org/2000/svg" fill="#000" stroke="#000" version="1.1" viewBox="0 0 2000 2000"><path d="M1656 1800H344c-70 0-123-70-96-134C370 1370 662 1200 1000 1200s629 170 752 466c27 64-25 134-96 134M592 600c0-220 183-400 408-400s408 180 408 400-183 400-408 400a405 405 0 01-408-400m1404 1164a952 952 0 00-612-697 593 593 0 00 220-560 610 610 0 00-530-503A608 608 0 00 388 600c0 190 89 357 228 467a952 952 0 00-612 697c-27 122 74 236 200 236h1590c128 0 229-114 200-236" fill="#555" fill-rule="evenodd" stroke="none"/></svg>
+        </a>
+        <a id="createaccount-link" href="/createaccount">
+            <span id="createaccount">Utwórz konto</span>
+            <span id="logout" class="hidden">Wyloguj się</span>
+            <svg id="svg-createaccount" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill="#555" stroke="#555" version="1.1" viewBox="0 0 3100 3100"><path d="m3006 1597-453-453a150 150 0 00-212 0l-91 90V150a150 150 0 00-150-150H200A150 150 0 00 50 150v2400a150 150 0 00 150 150h850v250a150 150 0 00 150 150h453c40 0 78-16 106-44L3006 1810a150 150 0 00 0-212zM350 300h1600v1235L1094 2390l-9 10H350V300zm1241 2500H1350v-241l1097-1097 240 241L1592 2800"/></svg>
+            <svg id="svg-logout" class="hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 240 240"><path d="m160 170 50-50m0 0-50-50m50 50H90m30 50-.1 5.7a30 30 0 01-24 26.9l-5.7.7-10.2 1.1c-15.4 1.8-23 2.6-29.1.7a30 30 0 01-18.3-16.4C30 183 30 175.2 30 159.7V80.3c0-15.5 0-23.2 2.6-29A30 30 0 01 51 34.9c6-2 13.7-1 29 .7l10.3 1 5.7.8A30 30 0 01 120 64.3V70" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg>
+        </a>
+    </nav>
+    <!-- gear svg for settings -->
+    <div id="settings" class="settings">
+        <svg class="gear" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 240 240"><path d="M128 4c10 0 20 8 21 18v4a30 30 0 00 40 22l4-2c10-3 21 0 26 10l8 13c5 9 3 20-4 26l-4 3a28 28 0 00 0 44l4 3c7 6 10 17 4 26l-8 13c-5 10-16 13-26 10l-4-2a30 30 0 00-40 22v4c-2 10-10 18-21 18h-16c-10 0-20-8-21-18v-4a30 30 0 00-40-22l-4 2c-10 3-21 0-26-10l-8-13a20 20 0 01 4-26l4-3a28 28 0 00 0-44l-4-3A20 20 0 01 13 70L20 56c5-10 16-13 26-10l4 2a30 30 0 00 40-22v-4c2-10 10-18 21-18h16ZM120 153a33 33 0 10 0-66 33 33 0 00 0 66Z" fill="#555" fill-rule="evenodd" clip-rule="evenodd"/></svg>
+        <div class="settings-dropdown dropdown visibility-hidden">
+            <div id="language-settings-dropdown-item" class="settings-dropdown-item">
+                <svg class="svg-language"><use href="#svg-language"></use></svg>
+                <p class="text">Język</p>
+                <span class="arrow-head-right"></span>
+            </div>
+            <div id="board-settings-dropdown-item" class="settings-dropdown-item">
+                <svg class="svg-board"><use href="#svg-board"></use></svg>
+                <p class="text">Motywy</p>
+                <span class="arrow-head-right"></span>
+            </div>
+            <div id="legalmove-settings-dropdown-item" class="settings-dropdown-item">
+                <svg class="svg-legalmove"><use href="#svg-legalmove"></use></svg>
+                <p class="text">Wskaźnik ruchów</p>
+                <span class="arrow-head-right"></span>
+            </div>
+            <div id="selection-settings-dropdown-item" class="settings-dropdown-item">
+                <svg class="svg-selection"><use href="#svg-selection"></use></svg>
+                <p class="text">Selection</p>
+                <span class="arrow-head-right"></span>
+            </div>
+            <div id="perspective-settings-dropdown-item" class="settings-dropdown-item hidden"> <!-- Hidden Initially until we test if mouse (& perspective mode) is supported -->
+                <svg class="svg-perspective"><use href="#svg-perspective"></use></svg>
+                <p class="text">Widok 3D</p>
+                <span class="arrow-head-right"></span>
+            </div>
+            <div class="ping-meter hidden">
+                <div>
+                    <span class="ping">Ping</span>
+                    <strong class="ping-value">-</strong>
+                    <span class="ms">ms</span>
+                </div>
+                <div class="ping-bars">
+                    <div class="ping-bar" style="height: 6px;"></div>
+                    <div class="ping-bar" style="height: 12px;"></div>
+                    <div class="ping-bar" style="height: 18px;"></div>
+                    <div class="ping-bar" style="height: 24px;"></div>
+                    <div class="ping-glow"></div>
+                </div>
+                <svg class="svg-pawn spinny-pawn hidden"><use href="#svg-pawn"></use></svg>
+            </div>
+        </div>
+        <!-- Language -->
+        <div class="language-dropdown dropdown visibility-hidden">
+            <div class="dropdown-title">
+                <span class="arrow-head-left"></span>
+                <svg class="svg-language"><use href="#svg-language"></use></svg>
+                <p class="text">Język</p>
+            </div>
+            
+                <div class="language-dropdown-item " value="en-US">
+                    <div class="language-names">
+                        <p class="name">English</p>
+                        <p class="englishName">English</p>
+                    </div>
+                    
+                </div>
+            
+                <div class="language-dropdown-item " value="es-ES">
+                    <div class="language-names">
+                        <p class="name">Español</p>
+                        <p class="englishName">Spanish</p>
+                    </div>
+                    
+                </div>
+            
+                <div class="language-dropdown-item " value="fr-FR">
+                    <div class="language-names">
+                        <p class="name">Français</p>
+                        <p class="englishName">French</p>
+                    </div>
+                    
+                </div>
+            
+                <div class="language-dropdown-item selected" value="pl-PL">
+                    <div class="language-names">
+                        <p class="name">Polski</p>
+                        <p class="englishName">Polish</p>
+                    </div>
+                    <svg class="checkmark"><use href="#checkmark"></use></svg>
+                </div>
+            
+                <div class="language-dropdown-item " value="pt-BR">
+                    <div class="language-names">
+                        <p class="name">Português</p>
+                        <p class="englishName">Portuguese</p>
+                    </div>
+                    
+                </div>
+            
+                <div class="language-dropdown-item " value="zh-CN">
+                    <div class="language-names">
+                        <p class="name">简体中文</p>
+                        <p class="englishName">Simplified Chinese</p>
+                    </div>
+                    
+                </div>
+            
+                <div class="language-dropdown-item " value="zh-TW">
+                    <div class="language-names">
+                        <p class="name">繁體中文</p>
+                        <p class="englishName">Traditional Chinese</p>
+                    </div>
+                    
+                </div>
+            
+        </div>
+        <!-- Board Theme -->
+        <div class="board-dropdown dropdown visibility-hidden">
+            <div class="dropdown-title">
+                <span class="arrow-head-left"></span>
+                <svg class="svg-board"><use href="#svg-board"></use></svg>
+                <p class="text">Motywy</p>
+            </div>
+            <div class="theme-list"></div>
+        </div>
+        <!-- Legal Move Shape -->
+        <div class="legalmove-dropdown dropdown visibility-hidden">
+            <div class="dropdown-title">
+                <span class="arrow-head-left"></span>
+                <svg class="svg-legalmove"><use href="#svg-legalmove"></use></svg>
+                <p class="text">Wskaźnik ruchów</p>
+            </div>
+            <div class="legalmove-options">
+                <div class="legalmove-option squares">
+                    <svg class="svg-squares" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 3780 3780"><path d="M1890 950v940H0v1890h1890V1890h1890v940a34850 34850 0 00 10-950L3780 0H1890v950M0 2840" fill="#777" fill-rule="evenodd"/></svg>
+                    <p class="text">Pola</p>
+                    <svg class="checkmark visibility-hidden"><use href="#checkmark"></use></svg>
+                </div>
+                <div class="legalmove-option dots">
+                    <svg class="svg-legalmove"><use href="#svg-legalmove"></use></svg>
+                    <p class="text">Kropki</p>
+                    <svg class="checkmark visibility-hidden"><use href="#checkmark"></use></svg>
+                </div>
+            </div>
+        </div>
+        <!-- Selection Presets -->
+        <div class="selection-dropdown dropdown visibility-hidden">
+            <div class="dropdown-title">
+                <span class="arrow-head-left"></span>
+                <svg class="svg-selection"><use href="#svg-selection"></use></svg>
+                <p class="text">Selection</p>
+            </div>
+            <div class="selection-options">
+                <label class="selection-option drag">
+                    <p class="text">Dragging pieces</p>
+                    <div class="switch">
+                        <input type="checkbox">
+                        <span></span>
+                    </div>
+                </label>
+                <label class="selection-option premove">
+                    <p class="text">Premoves</p>
+                    <div class="switch">
+                        <input type="checkbox" disabled>
+                        <span></span>
+                    </div>
+                </label>
+                <label class="selection-option animations">
+                    <p class="text">Animations</p>
+                    <div class="switch">
+                        <input type="checkbox">
+                        <span></span>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <!-- Perspective -->
+        <div class="perspective-dropdown dropdown visibility-hidden">
+            <div class="dropdown-title">
+                <span class="arrow-head-left"></span>
+                <svg class="svg-perspective"><use href="#svg-perspective"></use></svg>
+                <p class="text">Widok 3D</p>
+            </div>
+            <div class="perspective-options">
+                <div class="perspective-option mouse-sensitivity">   
+                    <div class="perspective-option-title">
+                        <svg class="svg-mouse"><use href="#svg-mouse"></use></svg>
+                        <p>Czułość myszki</p>
+                    </div>
+                    <div class="slider-container">
+                        <input class="slider" type="range" min="25" max="200" value="100">
+                        <span class="value"></span>
+                    </div>
+                </div>
+                <div class="perspective-option fov">   
+                    <div class="perspective-option-title">
+                        <svg class="svg-camera"><use href="#svg-camera"></use></svg>
+                        <p>Pole widzenia</p>
+                    </div> 
+                    <div class="slider-container">
+                        <input class="slider" type="range" min="60" max="150" value="90">
+                        <span class="value"></span>
+                    </div>
+                    <div class="reset-default-container hidden">
+                        <div class="reset-default">
+                            <svg class="svg-undo"><use href="#svg-undo"></use></svg>
+                            <span>Domyślne</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script defer src="/scripts/esm/components/header/header.js" type="module"></script>
+        <main>
+
+            <!-- Loading Screen -->
+
+            <div id="loading-animation" class="animation-container">
+                <div id="loading-glow" class="loading-glow loadingGlowAnimation"></div>
+                <span id="loading-text" class="loading-text pulsing">ŁADOWANIE</span>
+                <div id="loading-error" class="loading-error hidden">
+                    <h1>BŁĄD</h1>
+                    <p id="loading-error-text"></p>
+                </div>
+                <div class="checkerboard"></div>
+            </div>
+
+            <!-- The webgl context will render the game onto here -->
+            <canvas id="game"></canvas>
+
+            <!-- The spinny pawn loading animation when a game is loading,
+            whil the svgs are being requested and spritesheet generated -->
+            <div class="game-loading-screen transparent">
+                <svg class="svg-pawn spinny-pawn"><use href="#svg-pawn"></use></svg>
+                <div class="loading-error hidden">
+                    <h1>BŁĄD</h1>
+                    <p class="loading-error-text"></p>
+                </div>
+            </div>
+
+            <div id="overlay" class="overlay">
+
+                <!-- Empty on purpose. The credits link that used to sit here is gone, but the
+                wrapper div has to stay: guiplay/guipractice/guititle all toggle it by id, and
+                they throw on a null element. -->
+                <div id="menu-external-links" class="menu-external-links hidden"></div>
+
+                <!-- Menu screen UI -->
+                <div id="title" class="title hidden">
+                    <h1>无限棋</h1>
+                    <button id="play" class="play titlebubble button">Graj</button>
+                    <button id="practice" class="practice titlebubble button">Practice</button>
+                    <button id="rules" class="rules titlebubble button">Poradnik</button>
+                    <button id="board-editor" class="board-editor titlebubble button opacity-0_5">Edytor planszy</button>
+                </div>
+
+                <!-- Guide -->
+                <div id="guide" class="guide hidden">
+                    <div class="guide-contents titlebubble">
+                        <h1 class="center">Poradnik</h1>
+
+                        <h2>Zasady</h2>
+                        <hr class="line-break">
+                        <p>Zasady Nieskończonych Szachów są niemal identyczne do zwykłych szachów, z jednym wyjątkiem - plansza ma nieskończony rozmiar! To są jedyne zmiany, o których musisz wiedzieć:</p>
+                        <picture>
+                            <source srcset="/img/game/guide/promotionlines.avif" type="image/avif" />
+                            <source srcset="/img/game/guide/promotionlines.webp" type="image/webp" />
+                            <img loading="lazy" src="/img/game/guide/promotionlines.png" class="img-promotionlines">
+                        </picture>
+                        <ul>
+                            <li>Figury, takie jak wieże, gońce, i hetman nie mają ograniczeń co do odległości ruchu. Tak długo jak nie mają przeszkód na drodze, możesz poruszyć się nawet o milion pól i więcej!</li>
+                            <li>W &#34;Klasycznym&#34; wariancie, białe pionki awansują na wierszu 8, a czarne pionki na wierszu 1. Na zdjęciu, jest to wskazane przez cienkie czarne linie. Pionki muszą jedynie stanąć naprzeciwko linii<em>nie</em> jest konieczne jej przekroczenie.</li>
+                        </ul>
+                        <p>Notacja pól nie jest już opisana jako litera i cyfra (np. a1), ale jako koordynaty x i y. Na przykład, pole a1 ma teraz notację (1,1), a h8 notację (8,8). Na komputerach, koordynaty nad którymi znajduję się kursor znajdują się w górnej części ekranu.</p>
+                        <p>Pozostałe zasady klasycznych szachów, takie jak: szach-mat, pat, trzykrotne powtórzenie pozycji, zasada 50 ruchów, roszada, en passant, oraz inne, pozostają takie same!</p>
+                        <div class="clear-float"></div>
+                        
+                        <h2>Uważaj!</h2>
+                        <hr class="line-break">
+                        <picture>
+                            <source srcset="/img/game/guide/kingrookfork.avif" type="image/avif" />
+                            <source srcset="/img/game/guide/kingrookfork.webp" type="image/webp" />
+                            <img loading="lazy" src="/img/game/guide/kingrookfork.png" class="img-kingrookfork">
+                        </picture>
+                        <p>Przestronność nieskończonej planszy oznacza, że łatwo wpaść w pułapki takie jak: podwójne bicie czy przypięcie. Tyły twojej armii są teraz bardziej podatne an ataki przeciwnika. Uważaj na te startegie! Myśl nieszablonowo w trakcie formowania obrony dla twojego króla i wież! Otwarcia mogą się znacząco róznić od tych znanych z klasycznych szachów.</p>
+                        <p>Wiele innych wariantów zostało stowrzoych by zbalansować słaby punkt twojej armii, czyli tyły. Sprawdź je!</p>
+                        <div class="clear-float"></div>
+
+                        <h2>Sterowanie</h2>
+                        <hr class="line-break">
+                        <p>Kliknij i przeciągnij planszę by poruszyć kamerę. Użyj scrolla by oddalić i przybliżyć. Klkinij dowolną figurę (również przeciwnika) by zobaczyć legalne ruchy. Dodatkowe klawisze sterowania:</p>
+                        <ul>
+                            <li><strong>WASD</strong> aby się poruszać.</li>
+                            <li><strong>Spacja</strong> i <strong>Shift</strong> aby przybliżać i oddalać.</li>
+                            <li><strong>Escape</strong> aby zatrzymać grę.</li>
+                            <picture>
+                                <source srcset="/img/game/guide/arrowindicators.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/arrowindicators.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/arrowindicators.png" class="img-arrowindicators">
+                            </picture>
+                            <li><strong>Tab</strong> przełącza wskaźnik strzałek na granicy twojego ekranu, wskazujące położenie twoich figur poza ekranem. Domyślnie, opcja ta jest ustawiona na tryb &#34;Obrona&#34;, który pokazuje strzałki dla figur, które mogą się bezpośrednio poruszyć do twojej lokalizacji. Klawisz <strong>tab</strong> może przełączyć tą opcję na tryby &#34;Wszystko&#34; lub &#34;Wyłączone&#34;, gdzie tryb &#34;Wszystko&#34; pokazuje wszystkie figury, które mogą się poruszać prostopadle lub przekątnie po planszy. Opcja ta, może być również przełączona w menu pauzy.</li>
+                            <li><strong>Control</strong> will force-drag the board instead of dragging a piece, if dragging is enabled in the settings.</li>
+                            <li><strong>1</strong> will toggle &#34;Edit Mode&#34; in local games. This allows you to move any piece anywhere else on the board! Very useful for analyzing.</li>
+                        </ul>
+                        <p>To są najpotrzebniejsze klawisze sterowania jakie musisz znać, ale są też dodatkowe jeśli będziesz ich kiedykolwiek potrzebować!</p>
+                        <ul>
+                            <li><strong>R</strong> zresetuje wyświetlanie figur. Przydatne gdy figury znikną. Ten błąd może przytrafić się na dalekich dystansach (np. 1e21).</li>
+                            <li><strong>N</strong> przełączy menu nawigacji i statystyk gry. Przydatne przy nagrywaniu. Nagrywanie oraz transmisje na żywo z gry są mile widziane!</li>
+                            <li><strong>M</strong> przełączy wskaźnik klatek na sekundę. Wyświetla on ile razy na sekundę gra się odświeża, niekoniecznie jak często gra wyświetla nowy obraz, gdyż gra czasami pomija wyświtlanie nowego obrazu gdy nic się nie zmienia, by oszcządzać zasoby.</li>
+                            <li><strong>P</strong> przełączy wyświetlanie ikon. Są to miniatury figur gdy oddalisz wystarczająco daleko, możesz je kliknąć. W grach z ponad 50,000 figur jest to automatycznie wyłączone, gdyż często powoduje to spadek wydajności, natomiast można je włączyć z powrotem za pomocą <strong>P</strong>.</li>
+                            <li><strong>`</strong> (backtick, bądź ten sam klawisz co <strong>~</strong>) przełączy tryb debugowania.</li>
+                        </ul>
+                        <div class="clear-float"></div>
+
+                        <h2>Alternatywne Figury</h2>
+                        <hr class="line-break">
+                        <p>Wiesz już wszytko co muszisz wiedzieć by móc grać podstawowy wariant &#34;Klasyczny&#34;. Alternatywne figury nie są używane w podstawowych szachach, lecz są używane w innych wariantach! Gdy natrafisz na figurę, której nigdy nie widziałeś i nie wiesz jak działa, spójrz tutaj by się dowiedzieć!</p>
+                        <div id="fairy-pieces" class="fairy-pieces">
+                            <picture id="ch-img" class="img-fairymoveset">
+                                <source srcset="/img/game/guide/fairy/chancellor.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/chancellor.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/chancellor.png">
+                            </picture>
+                            <picture id="ar-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/archbishop.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/archbishop.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/archbishop.png">
+                            </picture>
+                            <picture id="am-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/amazon.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/amazon.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/amazon.png">
+                            </picture>
+                            <picture id="gu-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/guard.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/guard.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/guard.png">
+                            </picture>
+                            <picture id="ha-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/hawk.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/hawk.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/hawk.png">
+                            </picture>
+                            <picture id="ce-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/centaur.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/centaur.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/centaur.png">
+                            </picture>
+                            <picture id="nr-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/knightrider.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/knightrider.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/knightrider.png">
+                            </picture>
+                            <picture id="hu-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/huygen.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/huygen.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/huygen.png">
+                            </picture>
+                            <picture id="ob-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/obstacle.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/obstacle.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/obstacle.png">
+                            </picture>
+                            <picture id="vo-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/void.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/void.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/void.png">
+                            </picture>
+                            <div class="fairy-card-container">
+                                <div id="fairy-back" class="left-arrow opacity-0_25 unselectable">
+                                    <svg viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" stroke="#000000" stroke-width="46.08"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="#000000"></path></g></svg>
+                                </div>
+                                <div id="fairy-card" class="fairy-card">
+                                    <div class="space-1"></div>
+                                    <div id="ch-desc" class="fairy-card-desc">
+                                        <p class="fairy-card-title">Kanclerz</p>
+                                        <p class="fairy-card-description">Porusza się jak połączenie wieży oraz skoczka.</p>
+                                    </div>
+                                    <div id="ar-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">Arcybiskup</p>
+                                        <p class="fairy-card-description">Porusza się jak połączenie gońca oraz skoczka.</p>
+                                    </div>
+                                    <div id="am-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">Amazonka</p>
+                                        <p class="fairy-card-description">Porusza się jak połączenie hetmana oraz skoczka. Najsilniejsza figura w grze!</p>
+                                    </div>
+                                    <div id="gu-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">Strażnik</p>
+                                        <p class="fairy-card-description">Porusza się jak król, lecz nie można go szachować ani matować.</p>
+                                    </div>
+                                    <div id="ha-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">Jastrząb</p>
+                                        <p class="fairy-card-description">Skacze dokładnie 2 bądź 3 pola w dowolnym kierunku.</p>
+                                    </div>
+                                    <div id="ce-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">Centaur</p>
+                                        <p class="fairy-card-description">Porusza się jak połączenie skoczka oraz strażnika.</p>
+                                    </div>
+                                    <div id="nr-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">Jeździec</p>
+                                        <p class="fairy-card-description">Skacze jak skoczek nieskończenie w jednym kierunku, dopóki nic nie stanie mu na drodze.</p>
+                                    </div>
+                                    <div id="hu-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">Huygen</p>
+                                        <p class="fairy-card-description">Hops infinitely in one of the four cardinal directions, visiting only squares with a prime numbered distance from its start square, until obstructed.</p>
+                                    </div>
+                                    <div id="ob-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">Blokada</p>
+                                        <p class="fairy-card-description">Neutralna figura (niekantrolowana przez żadnego z graczy), która blokuje ruch, lecz może być zbita.</p>
+                                    </div>
+                                    <div id="vo-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">Pustka</p>
+                                        <p class="fairy-card-description">Neutralna figura (niekantrolowana przez żadnego z graczy), która reprezentuje &#34;dziurę&#34; w planszy. Figury nie mogą na niej stawać, ani się przez nią poruszać.</p>
+                                    </div>
+                                    <div class="space-2"></div>
+                                </div>
+                                <div id="fairy-forward"  class="right-arrow unselectable">
+                                    <svg viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" stroke="#000000" stroke-width="46.08"><g stroke-width="0"></g><g stroke-linecap="round" stroke-linejoin="round"></g><g transform="scale(-1, 1) translate(-1035,0)"><path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="#000000"></path></g></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h2>Edytowanie planszy</h2>
+                        <hr class="line-break">
+                        <p>Istnieje zewnętrzny <a href="https://docs.google.com/spreadsheets/d/1Eo1SIo2esUijZ3LQzGy8QLKTOVh77DdDQuqEBILec9I/edit?usp=sharing" target="_blank">edytor planszy</a> aktuanie dostępny na publicznym arkuszu google! zawiera instrukcje jak go używać. Wymaga podstawowej znajomości arkusza google. Po ustawieniu, będziesz w stanie tworzyć i importować niestandardowe pozycje do gry za pomocą przycisku &#34;Wklej Grę&#34; w menu opcji!</p>
+                        <p>By zagrać niestandardową pozycję ze znajomym, zaproś go do prywatnej gry, a następnie obydwoje wklejcie grę przed rozpoczęciem rozgrywki!</p>
+                        <p>Wewnętrzny edytor jest na etapie planowania.</p>
+                    </div>
+                    <button id="guide-back" class="guide-back titlebubble button">Powrót</button>
+                </div>
+
+                <!-- Play selection -->
+                <div id="play-selection" class="play-selection hidden">
+                    <p id="play-name" class="play-name">Graj - Online</p>
+                    <!-- Only two modes remain: a local two-player game, and a game against the
+                         configured LLM. Online play and the built-in engine were removed — this is a
+                         single-user local install, so a lobby of strangers had nothing to offer. -->
+                    <button id="local" class="local titlebubble button">Lokalnie</button>
+                    <button id="aiplay" class="aiplay titlebubble button">AI Opponent</button>
+                    <div class="game-options titlebubble">
+                        <div class="options">
+                            <div class="option-card">
+                                <p>Wariant</p>
+                                <div class="option">
+                                    <select id="option-variant" class="button">
+                                        <!-- Chess is first, so it is what a <select> selects by default: a walled 8x8
+                                             board that pieces cannot leave. Classical is the unbounded board this
+                                             project is built around — it's one line down, not gone. -->
+                                        <option value="Chess">Chess</option>
+                                        <option value="Classical">Klasyczny</option>
+                                        <option value="Confined_Classical">Confined Classical (8x8 board)</option>
+                                        <option value="Classical_Plus">Klasyczny+</option>
+                                        <option value="CoaIP">Chess on an Infinite Plane</option>
+                                        <option value="CoaIP_HO">Chess on an Infinite Plane - Huygens Option</option>
+                                        <option value="Knighted_Chess">Knighted Chess</option>
+                                        <option value="Pawndard">Pawndard</option>
+                                        <option value="Knightline">Knightline</option>
+                                        <option value="Core">Core</option>
+                                        <option value="Standarch">Standarch</option>
+                                        <option value="Pawn_Horde">Pawn Horde</option>
+                                        <option value="Space_Classic">Space Classic</option>
+                                        <option value="Space">Space</option>
+                                        <option value="Obstocean">Obstocean</option>
+                                        <option value="Abundance">Abundance</option>
+                                        <!-- <option value="Amazon_Chandelier">Amazon Chandelier</option> -->
+                                        <!-- <option value="Containment">Containment</option> -->
+                                        <!-- <option value="Classical_Limit_7">Classical - Limit 7</option>
+                                        <option value="CoaIP_Limit_7">Coaip - Limit 7</option> -->
+                                        <!-- <option value="Classical_KOTH">Experimental: Classical - KOTH</option>
+                                        <option value="CoaIP_KOTH">Experimental: Coaip - KOTH</option> -->
+                                        <option value="4x4x4x4_Chess">4×4×4×4 Chess</option>
+										<option value="5D_Chess">5D Chess</option>
+                                        <option value="Omega">Showcase: Omega</option>
+                                        <option value="Omega_Squared">Showcase: Omega^2</option>
+                                        <option value="Omega_Cubed">Showcase: Omega^3</option>
+                                        <option value="Omega_Fourth">Showcase: Omega^4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="option-card-clock" class="option-card">
+                                <p>Czas</p>
+                                <div class="option">
+                                    <select id="option-clock" class="button">
+                                        <!-- Developmental time control: 20 seconds -->
+                                        <!-- <option value="15+2">0.25m+2s</option> -->
+                                        <option value="60+2">1m+2s</option>
+                                        <option value="120+2">2m+2s</option>
+                                        <option value="180+2">3m+2s</option>
+                                        <option value="300+2">5m+2s</option>
+                                        <option value="480+3">8m+3s</option>
+                                        <option value="600+6" selected>10m+6s</option>
+                                        <option value="720+5">12m+5s</option>
+                                        <option value="900+6">15m+6s</option>
+                                        <option value="1200+8">20m+8s</option>
+                                        <option value="1500+10">25m+10s</option>
+                                        <option value="1800+15">30m+15s</option>
+                                        <option value="2400+20">40m+20s</option>
+                                        <option value="-">Nieskończony czas</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="option-card-color" class="option-card">
+                                <p>Kolor</p>
+                                <div class="option">
+                                    <select id="option-color" class="button">
+                                        <option value="Random">Losowy</option>
+                                        <option value="White">Biały</option>
+                                        <option value="Black">Czarny</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="option-card-private" class="option-card">
+                                <p>Prywatny</p>
+                                <div class="option">
+                                    <select id="option-private" class="button">
+                                        <option value="public">Nie</option>
+                                        <option value="private">Tak</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="option-card-rated" class="option-card">
+                                <p>Rankingowy</p>
+                                <div class="option">
+                                    <select id="option-rated" class="button">
+                                        <option value="casual">Nie</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Online play is gone, so there is no lobby to show. The children stay in the
+                             DOM because invites.js grabs them by id at module load — hidden, not deleted. -->
+                        <div class="invite-list hidden">
+                            <p id="join-existing" class="join-existing">Dołącz do istniejącej - Trwające gry: </p>
+                            <div id="our-invite"></div>
+                            <div id="invites">
+                                <!-- Example invite -->
+                                <!-- <div class="invite">
+                                    <div class="invite-child">Playername (elo)</div>
+                                    <div class="invite-child">Standard</div>
+                                    <div class="invite-child">15m+15s</div>
+                                    <div class="invite-child">Random</div>
+                                    <div class="invite-child">Casual</div>
+                                    <div class="invite-child accept">Accept</div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div id="join-private" class="join-private hidden">
+                            <p>Prywatne zaproszenie:</p>
+                            <input type="text" id="textbox-private" class="textbox-private" placeholder="Kod" maxlength="5">
+                            <button id="join-button" class="join-button">Dołącz</button>
+                        </div>
+                        <div id="invite-code" class="invite-code hidden">
+                            <p>Twój kod zaproszenia:</p>
+                            <p id="invite-code-code" class="invite-code-code"></p>
+                            <button id="copy-button" class="copy-button">Skopiuj</button>
+                        </div>
+                    </div>
+                    <button id="create-invite" class="create-invite titlebubble button">Stwórz zaproszenie</button>
+                    <button id="play-back" class="play-back titlebubble button">Powrót</button>
+                </div>
+
+                <!-- Practice selection -->
+                <div id="practice-selection" class="practice-selection hidden">
+                    <p id="practice-name" class="practice-name">Practice - Checkmates</p>
+                    <div class="practice-box titlebubble">
+                        <div class="practice-head">
+                            <div class="checkmate-progress"></div>
+                            <div class="checkmate-progress-bar">
+                                <picture id="checkmate-badge-bronze" class="badge tooltip-u unselectable" data-tooltip="Checkmate Veteran: Complete 50% of all practice checkmates.">
+                                    <div class="shine-clockwise hidden"></div>
+                                    <div class="shine-anticlockwise hidden"></div>
+                                    <source srcset="/img/badges/checkmate-badge-bronze.webp" type="image/webp" />
+                                    <source srcset="/img/badges/checkmate-badge-bronze.avif" type="image/avif" />
+                                    <img loading="lazy" src="/img/badges/checkmate-badge-bronze.png" class="unearned">
+                                </picture>
+                                <picture id="checkmate-badge-silver" class="badge tooltip-u unselectable" data-tooltip="Checkmate Pro: Complete 75% of all practice checkmates.">
+                                    <div class="shine-clockwise hidden"></div>
+                                    <div class="shine-anticlockwise hidden"></div>
+                                    <source srcset="/img/badges/checkmate-badge-silver.webp" type="image/webp" />
+                                    <source srcset="/img/badges/checkmate-badge-silver.avif" type="image/avif" />
+                                    <img loading="lazy" src="/img/badges/checkmate-badge-silver.png" class="unearned">
+                                </picture>
+                                <picture id="checkmate-badge-gold" class="badge tooltip-u unselectable" data-tooltip="Checkmate Master: Complete 100% of all practice checkmates.">
+                                    <div class="shine-clockwise hidden"></div>
+                                    <div class="shine-anticlockwise hidden"></div>
+                                    <source srcset="/img/badges/checkmate-badge-gold.webp" type="image/webp" />
+                                    <source srcset="/img/badges/checkmate-badge-gold.avif" type="image/avif" />
+                                    <img loading="lazy" src="/img/badges/checkmate-badge-gold.png" class="unearned">
+                                </picture>
+                            </div>
+                            <div class="checkmate-difficulty difficulty-title">Difficulty</div>
+                        </div>
+                        <div class="checkmate-list">
+                            <div id="checkmates">
+                                <!-- Checkmate list is inserted dynamically here on demand. -->
+                                <!-- Example looks like: -->
+                                <!-- <div class="checkmate unselectable selected" id="2R1N1P-1k">
+                                    <div class="completion-mark"></div>
+                                    <div class="piecelistW">
+                                        <div class="checkmate-child checkmatepiececontainer">
+                                            <div class="checkmatepiece rooksW"><svg></svg></div>
+                                        </div>
+                                        <div class="checkmate-child checkmatepiececontainer collated-strong">
+                                            <div class="checkmatepiece rooksW"><svg></svg></div>
+                                        </div>
+                                        <div class="checkmate-child checkmatepiececontainer">
+                                            <div class="checkmatepiece knightsW"><svg></svg></div>
+                                        </div>
+                                        <div class="checkmate-child checkmatepiececontainer">
+                                            <div class="checkmatepiece pawnsW"><svg></svg></div>
+                                        </div>
+                                    </div>
+                                    <div class="checkmate-child versus">vs</div>
+                                    <div class="piecelistB">
+                                        <div class="checkmate-child checkmatepiececontainer">
+                                            <div class="checkmatepiece kingsB"></div>
+                                        </div>
+                                    </div>
+                                    <div class="checkmate-difficulty">Medium</div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <button id="practice-play" class="practice-play titlebubble button">Play</button>
+                    <button id="practice-back" class="practice-back titlebubble button">Back</button>
+                </div>
+
+                <!-- Stats below navigation bar -->
+                <!-- This is absolutely positioned. Our javascript will udate it's 'top' ruleset based
+                on the height of the navigation bar. -->
+                <div id="stats">
+                    <p id="status-fps" class="status hidden"></p>
+                    <p id="status-moves" class="status hidden"></p>
+                </div>
+
+                <!-- Navigation controls -->
+                <div id="navigation-bar" class="navigation-bar hidden unselectable">
+                    <div class="teleport">
+                        <div class="buttoncontainer">
+                            <div id="back" class="button tooltip-dr" data-tooltip="Cofnij">
+                                <svg viewBox="-1.68 -1.68 27.36 27.36" fill="none" stroke="#333" stroke-width="0.45600000000000007"><g stroke-width="0"></g><g stroke-linecap="round" stroke-linejoin="round"></g><g> <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5303 5.46967C10.8232 5.76256 10.8232 6.23744 10.5303 6.53033L5.81066 11.25H20C20.4142 11.25 20.75 11.5858 20.75 12C20.75 12.4142 20.4142 12.75 20 12.75H5.81066L10.5303 17.4697C10.8232 17.7626 10.8232 18.2374 10.5303 18.5303C10.2374 18.8232 9.76256 18.8232 9.46967 18.5303L3.46967 12.5303C3.17678 12.2374 3.17678 11.7626 3.46967 11.4697L9.46967 5.46967C9.76256 5.17678 10.2374 5.17678 10.5303 5.46967Z" fill="#333"></path> </g></svg>
+                            </div>
+                        </div>
+                        <div class="buttoncontainer">
+                            <div id="expand" class="button tooltip-d" data-tooltip="Oddal by zobaczyć wszystko">
+                                <svg viewBox="-3.84 -3.84 31.68 31.68" fill="none"><g stroke-width="0"></g><g stroke-linecap="round" stroke-linejoin="round"></g><g><path d="M3 7C3 7.55228 2.55228 8 2 8C1.44772 8 1 7.55228 1 7V3C1 1.89543 1.89543 1 3 1H7C7.55228 1 8 1.44772 8 2C8 2.55228 7.55228 3 7 3H4.41421L10.7071 9.29289C11.0976 9.68342 11.0976 10.3166 10.7071 10.7071C10.3166 11.0976 9.68342 11.0976 9.29289 10.7071L3 4.41422V7Z" fill="#333"></path> <path d="M21 17C21 16.4477 21.4477 16 22 16C22.5523 16 23 16.4477 23 17V21C23 22.1046 22.1046 23 21 23H17C16.4477 23 16 22.5523 16 22C16 21.4477 16.4477 21 17 21H19.5858L13.2929 14.7071C12.9024 14.3166 12.9024 13.6834 13.2929 13.2929C13.6834 12.9024 14.3166 12.9024 14.7071 13.2929L21 19.5858V17Z" fill="#333"></path> <path d="M21 7C21 7.55228 21.4477 8 22 8C22.5523 8 23 7.55228 23 7V3C23 1.89543 22.1046 1 21 1H17C16.4477 1 16 1.44772 16 2C16 2.55228 16.4477 3 17 3H19.5858L13.2929 9.29289C12.9024 9.68342 12.9024 10.3166 13.2929 10.7071C13.6834 11.0976 14.3166 11.0976 14.7071 10.7071L21 4.41421V7Z" fill="#333"></path> <path d="M3 17C3 16.4477 2.55228 16 2 16C1.44772 16 1 16.4477 1 17V21C1 22.1046 1.89543 23 3 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H4.41421L10.7071 14.7071C11.0976 14.3166 11.0976 13.6834 10.7071 13.2929C10.3166 12.9024 9.68342 12.9024 9.29289 13.2929L3 19.5858V17Z" fill="#333"></path> </g></svg>
+                            </div>
+                        </div>
+                        <div class="buttoncontainer">
+                            <div id="recenter" class="button tooltip-d" data-tooltip="Wyśrodkuj">
+                                <svg fill="#333" viewBox="-59.11 -59.11 610.81 610.81" stroke="#333" stroke-width="0.0049258900000000005"><g><path d="M468.467,222.168h-28.329c-9.712-89.679-80.46-161.18-169.71-172.258V24.135c0-13.338-10.791-24.134-24.134-24.134 c-13.311,0-24.117,10.796-24.117,24.134V49.91C132.924,60.988,62.177,132.488,52.482,222.168H24.153 C10.806,222.168,0,232.964,0,246.286c0,13.336,10.806,24.132,24.153,24.132h29.228c12.192,86.816,81.551,155.4,168.797,166.229 v31.804c0,13.336,10.806,24.135,24.117,24.135c13.343,0,24.134-10.799,24.134-24.135v-31.804 c87.228-10.829,156.607-79.413,168.775-166.229h29.264c13.33,0,24.122-10.796,24.122-24.132 C492.589,232.964,481.797,222.168,468.467,222.168z M246.294,398.093c-85.345,0-154.804-69.453-154.804-154.813 c0-85.363,69.459-154.813,154.804-154.813c85.376,0,154.823,69.45,154.823,154.813 C401.117,328.639,331.671,398.093,246.294,398.093z"></path> <path d="M246.294,176.93c-36.628,0-66.34,29.704-66.34,66.349c0,36.635,29.711,66.349,66.34,66.349 c36.66,0,66.34-29.713,66.34-66.349C312.634,206.635,282.955,176.93,246.294,176.93z"></path></g></svg>
+                            </div>
+                        </div>
+                        <div class="buttoncontainer">
+                            <div id="move-left" class="button opacity-0_5 tooltip-d" data-tooltip="Cofnij">
+                                <svg fill="#333" viewBox="-15.84 -15.84 55.68 55.68" stroke="#333" stroke-width="2.4"><g stroke-width="0"></g><g stroke-linecap="round" stroke-linejoin="round"></g><g><path d="m4.431 12.822 13 9A1 1 0 0 0 19 21V3a1 1 0 0 0-1.569-.823l-13 9a1.003 1.003 0 0 0 0 1.645z"></path></g></svg>
+                            </div>
+                        </div>
+                        <div class="buttoncontainer">
+                            <div id="move-right" class="button opacity-0_5 tooltip-d" data-tooltip="Następny">
+                                <svg fill="#333" viewBox="-15.84 -15.84 55.68 55.68" stroke="#333" stroke-width="2.4">
+                                    <g transform="scale(-1, 1) translate(-25.16, 0)">
+                                        <path d="m4.431 12.822 13 9A1 1 0 0 0 19 21V3a1 1 0 0 0-1.569-.823l-13 9a1.003 1.003 0 0 0 0 1.645z"></path>
+                                    </g>
+                                    </svg>
+                            </div>
+                        </div>
+                        <div class="buttoncontainer">
+                            <div id="pause" class="button tooltip-d" data-tooltip="Pauza">
+                                <svg viewBox="-2.5 -2.5 29 29" version="1.2" fill="#333" stroke-width="2.4"><g stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6H20M4 12H20M4 18H20"></path></g></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="coords selectable" >
+                        <div id="position">
+                            <div class="x">X: <input type="number" id='x'></input></div>
+                            <div class="y">Y: <input type="number" id='y'></input></div>
+                        </div>
+                    </div>
+                    <div class="right-nav">
+                        <!-- Opens the AI coach side panel. Far right, so tooltip-dl keeps the bubble on screen. -->
+                        <div class="buttoncontainer">
+                            <div id="nav-aicoach" class="button tooltip-dl" data-tooltip="Talk to the AI coach">
+                                <svg viewBox="-2 -2 28 28" fill="#333"><path d="M20 2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h2.5v3.4a.6.6 0 0 0 .98.46L12.6 18H20a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"></path><circle cx="8" cy="10" r="1.45" fill="#fff"></circle><circle cx="12" cy="10" r="1.45" fill="#fff"></circle><circle cx="16" cy="10" r="1.45" fill="#fff"></circle></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game info, clocks, player names, whos turn -->
+                <div id="game-info-bar" class="game-info-bar hidden">
+                    <div id="timer-container-white" class="timerwhitecontainer">
+                        <div id="timer-white" class="timerwhite">10:00</div>
+                    </div>
+                    <div id="playerwhite" class="playerwhite"></div>
+                    <div class="whosturn">
+                        <div id="dot" class="dotwhite"></div>
+                        <div id="whosturn"></div>
+
+                        <!-- Draw Offer UI -->
+                        <div id="draw_offer_ui" class="draw_offer_ui hidden">
+                            <p class="offer_title">Akceptujesz remis?</p>
+                            <button id="acceptdraw" class="acceptdraw button icon" alt="Accept draw offer">
+                                <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none">
+                                    <path d="M19 7.34189C18.6095 6.95136 17.9763 6.95136 17.5858 7.34189L10.3407 14.587C9.95016 14.9775 9.31699 14.9775 8.92647 14.587L6.38507 12.0456C5.99454 11.6551 5.36138 11.6551 4.97085 12.0456C4.58033 12.4361 4.58033 13.0693 4.97085 13.4598L7.51774 16C8.68969 17.1689 10.5869 17.1677 11.7574 15.9974L19 8.7561C19.3905 8.36558 19.3905 7.73241 19 7.34189Z" fill="#0F0F0F"/>
+                                </svg>
+                            </button>
+                            <button id="declinedraw" class="declinedraw button icon" alt="Decline draw offer">
+                                <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none">
+                                    <path d="M17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289Z" fill="#000000"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Practice engine game game undo move + restart buttons -->
+                    <div class="practice-engine-buttons hidden">
+                        <button id="undobutton" class="game-control tooltip-u" data-tooltip="Undo move">
+                            <svg class="svg-undo"><use href="#svg-undo"></use></svg>
+                        </button>
+                        <button id="restartbutton" class="game-control tooltip-ul" data-tooltip="Restart game">
+                            <svg class="svg-restart" fill="none" viewBox="0 0 240 240"><g stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" clip-path="url(#a)"><path d="M120 30a90 90 0 11-57 20"/><path d="M30 45h40v40"/></g><defs><clipPath id="a"><path d="M0 0h240v240H0" fill="#555"/></clipPath></defs></svg>
+
+                        </button>
+                    </div>
+                    <div id="playerblack" class="playerblack"></div>
+                    <div id="timer-container-black" class="timerblackcontainer">
+                        <div id="timer-black" class="timerblack">10:00</div>
+                    </div>
+                </div>
+
+                <!-- Promotion UI -->
+                <div id="promote" class="center hidden">
+                    <div id="promotewhite" class="promotecolor hidden">
+                        <!-- <svg id="knightsW" class="promotepiececontainer"></svg> -->
+                    </div>
+                    <div id="promoteblack" class="promotecolor hidden">
+                        <!-- <svg id="knightsB" class="promotepiececontainer"></svg> -->
+                    </div>
+                </div>
+
+                <!-- Pause UI -->
+                <div id="pauseUI" class="pauseUI hidden">
+                    <p class="paused">Pauza</p>
+                    <button id="resume" class="resume button">Wznów</button>
+                    <button id="togglepointers" class="togglepointers button">Strzałki: Obrona</button>
+                    <button id="toggleperspective" class="toggleperspective button">Perspektywa: Wyłączona</button>
+                    <button id="copygame" class="copygame button">Skopiuj Grę</button>
+                    <button id="pastegame" class="pastegame button">Wklej Grę</button>
+                    <button id="aicoach" class="aicoach button">AI Coach</button>
+                    <button id="offerdraw" class="offerdraw button">Remis</button>
+                    <button id="practicemenu" class="practicemenu button hidden">Practice Menu</button>
+                    <button id="mainmenu" class="mainmenu button">Strona Główna</button>
+                </div>
+
+                <!-- Win / loss easter egg. guieasteregg fills this in; empty until a game ends. -->
+                <div id="egg-layer" class="egg-layer hidden"></div>
+
+                <!-- Game Over UI. Opened once, by gameslot.concludeGame(). -->
+                <div id="gameoverUI" class="gameoverUI hidden">
+                    <div class="gameover-card">
+                        <p id="gameover-headline" class="gameover-headline"></p>
+                        <p id="gameover-detail" class="gameover-detail"></p>
+                        <button id="gameover-rematch" class="gameover-rematch button">Play again</button>
+                        <button id="gameover-mainmenu" class="gameover-mainmenu button">Main menu</button>
+                        <button id="gameover-dismiss" class="gameover-dismiss button">Keep looking at the board</button>
+                    </div>
+                </div>
+
+                <!-- AI Coach UI. A side panel, so the board stays usable while it's open. -->
+                <div id="aicoachUI" class="aicoachUI hidden">
+                    <div class="aicoach-header">
+                        <span class="aicoach-title">AI Coach</span>
+                        <button id="aicoach-toggle-settings" class="aicoach-icon-button" title="Settings">&#9881;</button>
+                        <button id="aicoach-close" class="aicoach-icon-button" title="Close">&times;</button>
+                    </div>
+
+                    <!-- Collapsed by default. guiaicoach opens this automatically when there's no config yet. -->
+                    <div id="aicoach-settings" class="aicoach-settings hidden">
+                        <label class="aicoach-field">
+                            <span>API format</span>
+                            <select id="aicoach-protocol">
+                                <option value="openai">OpenAI-compatible (/v1/chat/completions)</option>
+                                <option value="anthropic">Anthropic (/v1/messages)</option>
+                            </select>
+                        </label>
+                        <label class="aicoach-field">
+                            <span>API request URL</span>
+                            <input id="aicoach-url" type="text" spellcheck="false" autocomplete="off" placeholder="https://api.openai.com/v1">
+                        </label>
+                        <label class="aicoach-field">
+                            <span>API key</span>
+                            <input id="aicoach-key" type="password" spellcheck="false" autocomplete="off" placeholder="sk-...">
+                        </label>
+                        <label class="aicoach-field">
+                            <span>Model name</span>
+                            <input id="aicoach-model" type="text" spellcheck="false" autocomplete="off" placeholder="gpt-4o">
+                        </label>
+                        <label class="aicoach-field">
+                            <span>Move model (optional)</span>
+                            <input id="aicoach-move-model" type="text" spellcheck="false" autocomplete="off" placeholder="gpt-4o-mini">
+                        </label>
+                        <p class="aicoach-hint">Used only when the AI plays against you. Leave blank to reuse the model above. Choosing a move is the one thing you sit and wait for, so a fast model here is what makes the game playable.</p>
+                        <label class="aicoach-field">
+                            <span>Thinking effort</span>
+                            <select id="aicoach-reasoning">
+                                <option value="">Don&#39;t send (most compatible)</option>
+                                <option value="minimal">Minimal - fastest</option>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High - slowest</option>
+                            </select>
+                        </label>
+                        <p class="aicoach-hint">Your API key is kept in this browser&#39;s localStorage and is only forwarded by your own local server. Don&#39;t enter it on a shared computer.</p>
+                        <div class="aicoach-buttons">
+                            <button id="aicoach-save" class="aicoach-button">Save</button>
+                            <button id="aicoach-test" class="aicoach-button">Test connection</button>
+                        </div>
+                    </div>
+
+                    <div class="aicoach-actions">
+                        <button id="aicoach-analyze" class="aicoach-button aicoach-analyze">Analyze position</button>
+                        <label class="aicoach-checkbox">
+                            <input id="aicoach-auto" type="checkbox">
+                            <span>Analyze every move</span>
+                        </label>
+                        <!-- The coach commenting on your play unprompted, once per round. -->
+                        <label class="aicoach-checkbox">
+                            <input id="aicoach-autocoach" type="checkbox">
+                            <span>Coach reviews my moves</span>
+                        </label>
+                    </div>
+
+                    <!-- Only shown in an AI game, when the AI owes us a move but isn't thinking. -->
+                    <button id="aicoach-aimove" class="aicoach-button aicoach-aimove hidden">AI, make your move</button>
+
+                    <p id="aicoach-status" class="aicoach-status"></p>
+
+                    <!-- The level the coach settled on, kept between games so it only asks once. -->
+                    <p id="aicoach-profile" class="aicoach-profile hidden">
+                        <span id="aicoach-profile-text"></span>
+                        <button id="aicoach-reassess" class="aicoach-link-button">Re-assess</button>
+                    </p>
+
+                    <!-- The scrolling middle. The composer below stays pinned. -->
+                    <div class="aicoach-scroll">
+                        <div id="aicoach-results" class="aicoach-results"></div>
+                        <div id="aicoach-chat" class="aicoach-chat"></div>
+                    </div>
+
+                    <div class="aicoach-composer">
+                        <textarea id="aicoach-question" class="aicoach-question" rows="2" spellcheck="false"
+                            placeholder="Ask the AI about the position..."></textarea>
+                        <div class="aicoach-composer-buttons">
+                            <button id="aicoach-send" class="aicoach-button aicoach-send">Send</button>
+                            <button id="aicoach-clear-chat" class="aicoach-icon-button" title="Clear the conversation">&#128465;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status message -->
+                <div id="statusmessage" class="statusmessage hidden">
+                    <p id="statustext" class="statustext"></p>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

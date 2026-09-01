@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr" >
+    <head>
+        <script>
+            const translations = {"guest_indicator":"(游客)","you_indicator":"(您)","white_to_move":"白方走棋","black_to_move":"黑方走棋","your_move":"轮到您走棋","their_move":"轮到他走棋","lost_network":"网络丢失。","failed_to_load":"一个或多个资源加载失败。请刷新页面。","planned_feature":"此功能已计划！","main_menu":"主页","resign_game":"认输","abort_game":"放弃游戏","offer_draw":"提和","accept_draw":"接受和棋","arrows_off":"箭头: 关闭","arrows_defense":"箭头: 防御","arrows_all":"箭头: 全部","toggled":"切换","menu_online":"玩 - 网上","menu_local":"玩 - 本地","menu_computer":"玩 - 计算机","menu_ai":"玩 - AI 对局","invite_error_digits":"邀请码需要5位数字。","invite_copied":"邀请码已复制到剪贴板。","move_counter":"步数:","constructing_mesh":"构建网格","rotating_mesh":"旋转网格","lost_connection":"连接丢失。","please_wait":"请稍等，正在执行此任务。","bigints_unsupported":"BigInts 不受支持。请升级您的浏览器。\nBigInts 用于使棋盘无限。","shaders_failed":"无法初始化着色器程序：","failed_compiling_shaders":"编译着色器时发生错误：","aicoach":{"profile_level":"已记录的水平","profile_cleared":"已清除记录的水平，教练下次会重新评估你。","needs_config":"请先填写 API 请求地址、API Key 和模型名称，然后点击保存。","saved":"设置已保存。","testing":"正在测试连接……","test_ok":"连接正常。回复：","test_failed":"连接失败：","analyzing":"正在思考……","busy":"已有一次分析正在进行。","not_at_front":"请先前进到最新一步再分析。","done":"推荐走法：","done_no_move":"分析完成，但没有给出走法。","unparsed":"无法从回复中解析出结构化结果，下面是原文。","assessment":"局面评估","threats":"对方的威胁","best_move":"推荐走法","reasoning":"理由","alternatives":"备选走法","illegal_title":"模型给出的走法不合法","illegal_body":"重试后仍未给出合法走法，因此棋盘上没有高亮。文字分析可能仍有参考价值。","moved_in":"AI 走完这一步用了","upstream_requests":"次上游请求","ai_thinking":"AI 正在思考走法……","ai_move_failed":"AI 无法走棋：","ai_random_move":"AI 未能给出合法走法，已随机走一步合法的棋。","ai_random_played":"已随机走一步合法的棋，以便对局继续。","timed_out":"AI 接口未在规定时间内响应","fail_timeout":"AI 接口在以下时间内未响应：","fail_timeout_hint":"请检查请求地址和模型名称，或在“走棋模型”里填一个更快的模型。","fail_request":"请求 AI 失败","fail_illegal":"AI 已回复，但它给出的走法全部不合法。","asking":"正在向 AI 提问……","chat_empty":"请先输入问题。","chat_you":"我","chat_ai":"AI","coach_starting":"教练正在准备……","coach_start_failed":"教练无法开始：","persona_failed":"读取教练提示词文件（tsc.md）失败：","chat_coach":"教练","idle_nudge":"你已经一分钟没走棋了 —— 教练来帮你看看。","idle_suggestion":"试试","critiquing":"教练正在看你的局面……","reviewing":"教练正在复盘……","critique_failed":"教练没能给出点评："},"gameover":{"draw":"和局","white_wins":"白方获胜","black_wins":"黑方获胜","you_win":"你赢了！","you_lose":"你输了"},"copypaste":{"copied_game":"游戏已复制到剪贴板！","cannot_paste_in_public":"不能在公共比赛中粘贴游戏！","cannot_paste_after_moves":"移动后不能粘贴游戏！","clipboard_denied":"剪贴板权限被拒绝。这可能是您的浏览器问题。","clipboard_invalid":"剪贴板内容不符合有效的ICN格式。","game_needs_to_specify":"游戏需要指定 'Variant' 元数据或 'startingPosition' 属性。","invalid_wincon_white":"白方有无效的胜利条件","invalid_wincon_black":"黑方有无效的胜利条件","pasting_game":"正在粘贴游戏...","pasting_in_private":"在私人比赛中粘贴游戏会导致不同步，如果对手没有做同样的操作！","piece_count":"棋子数量","exceeded":"超过了","changed_wincon":"将将死胜利条件更改为royalcapture，并关闭了图标渲染。按 'P' 重新启用（不推荐）。","loaded_from_clipboard":"从剪贴板加载了游戏！","loaded":"游戏已加载！","slidelimit_not_number":"slideLimit 游戏规则必须是数字。收到"},"rendering":{"on":"开启","off":"关闭","icon_rendering_off":"图标渲染已关闭。","icon_rendering_on":"图标渲染已开启。","toggled_edit":"编辑模式已切换：","perspective":"视角","perspective_mode_on_desktop":"桌面版支持视角模式！","movement_tutorial":"WASD 移动。空格 & Shift 缩放。","regenerated_pieces":"重新生成了棋子。"},"invites":{"move_mouse":"移动鼠标以重新连接。","unknown_action_received_1":"未知操作","unknown_action_received_2":"从邀请订阅中接收到的服务器消息！","cannot_cancel":"无法取消未定义 ID 的邀请。","you_indicator":"(你)","you_are_white":"你是白方","you_are_black":"你是黑方","random":"随机","accept":"接受","cancel":"取消","create_invite":"创建邀请函","cancel_invite":"取消邀请函","start_game":"开始","join_existing_active_games":"加入现有 - 活跃游戏："},"onlinegame":{"afk_warning":"你是AFK.","opponent_afk":"对手是AFK.","opponent_disconnected":"对手断开连接了","opponent_lost_connection":"对手断开连接了","auto_resigning_in":"将很快自动认输","auto_aborting_in":"将很快自动中止","not_logged_in":"您未登录。请登录以重新连接到此游戏。","game_no_longer_exists":"游戏不再存在。","another_window_connected":"另一个窗口已连接。","server_restarting":"服务器即将重新启动...","server_restarting_in":"服务器即将重新启动","minute":"分钟","minutes":"分钟"},"websocket":{"no_connection":"没有连接","reconnected":"重新连接了","unable_to_identify_ip":"无法识别IP地址","online_play_disabled":"在线游戏已禁用。不支持Cookie。请尝试其他浏览器。","too_many_requests":"请求次数过多，请稍后再试。","message_too_big":"消息太大。","too_many_sockets":"套接字太多。","origin_error":"来源错误。","connection_closed":"连接意外关闭。服务器消息。","please_report_bug":"这不应该发生，请报告此错误！"},"termination":{"checkmate":"将死","stalemate":"僵局","repetition":"三次重复","moverule":["","-回合规则"],"insuffmat":"棋子不足","royalcapture":"王被吃","allroyalscaptured":"所有王被吃","allpiecescaptured":"所有棋子被吃","threecheck":"三次将军","koth":"山丘之王","resignation":"认输","agreement":"同意","time":"超时","aborted":"已中止","disconnect":"弃赛"},"results":{"you_checkmate":"你赢了，将死！","you_time":"你超时赢了！","you_resignation":"你赢了，对手认输！","you_disconnect":"你赢了，对手弃权！","you_royalcapture":"你赢了，皇族棋子被捕！","you_allroyalscaptured":"你赢了，所有皇族棋子被捕！","you_allpiecescaptured":"你赢了，全军覆没！","you_threecheck":"你赢了，三步将军！","you_koth":"你赢了，山顶王！","you_generic":"你赢了！","draw_stalemate":"和棋，僵局！","draw_repetition":"和棋，局面重复！","draw_moverule":["和棋，","步规则！"],"draw_insuffmat":"和棋，因棋子不足！","draw_agreement":"协议和棋","draw_generic":"和棋!","aborted":"游戏中止","opponent_checkmate":"你输了，将死！","opponent_time":"你超时输了！","opponent_resignation":"你输了，对手认输！","opponent_disconnect":"你输了，对手弃权！","opponent_royalcapture":"你输了，皇族棋子被捕！","opponent_allroyalscaptured":"你输了，所有皇族棋子被捕！","opponent_allpiecescaptured":"你输了，全军覆没！","opponent_threecheck":"你输了，被三步将军！","opponent_koth":"你输了山顶王！","opponent_generic":"你输了!","white_checkmate":"白方将死获胜!","black_checkmate":"黑方将死获胜!","bug_checkmate":"这是一个错误，请报告。游戏以将死结束。","white_time":"白方超时胜","black_time":"黑方超时胜!","bug_time":"这是一个错误，请报告！游戏因超时结束。","white_royalcapture":"白方通过捕获皇族棋子获胜！","black_royalcapture":"黑方通过捕获皇族棋子获胜！","bug_royalcapture":"这是一个错误，请报告！游戏因皇族棋子被捕获而结束。","white_allroyalscaptured":"白方通过吃掉所有皇族棋子获胜！","black_allroyalscaptured":"黑方通过吃掉所有皇族棋子获胜！","bug_allroyalscaptured":"这是一个错误，请报告！游戏因所有皇族棋子被捕获而结束。","white_allpiecescaptured":"白方通过吃掉所有棋子获胜！","black_allpiecescaptured":"黑方通过吃掉所有棋子获胜！","bug_allpiecescaptured":"这是一个错误，请报告！游戏因所有棋子被捕获而结束。","white_threecheck":"白方通过三步将军获胜！","black_threecheck":"黑方通过三步将军获胜！","bug_threecheck":"这是一个错误，请报告！游戏被三步将军结束。","white_koth":"白方通过山顶之王获胜！","black_koth":"黑方通过山顶之王获胜！","bug_koth":"这是一个错误，请报告！游戏被山顶之王结束。","bug_generic":"这是一个错误，请报告！"},"title":"玩 - 网上","colors":"颜色","online":"网上","local":"本地","computer":"计算机","ai":"AI 对局","variant":"变体","Classical":"经典（无限棋盘）","Confined_Classical":"受限经典（8×8 棋盘）","Classical_Plus":"经典+","CoaIP":"无限棋盘上的国际象棋","Pawndard":"兵棋","Knighted_Chess":"骑士国际象棋","Knightline":"骑士线","Core":"核心","Standarch":"标准弧","Pawn_Horde":"兵群","Space_Classic":"太空经典","Space":"太空","Obstocean":"障碍海洋","Abundance":"丰饶","Amazon_Chandelier":"亚马逊吊灯","Containment":"遏制","Classical_Limit_7":"经典 - 限制 7","CoaIP_Limit_7":"无限棋盘 - 限制 7","Chess":"国际象棋（8×8 棋盘）","Classical_KOTH":"实验: 经典 - 王者争夺","CoaIP_KOTH":"实验: 无限棋盘 - 王者争夺","Omega":"展示: 欧米伽","Omega_Squared":"展示: 欧米伽²","Omega_Cubed":"展示: 欧米伽³","Omega_Fourth":"展示: 欧米伽⁴","no_clock":"没有表","clock":"表","minutes":"分钟","seconds":"秒","infinite_time":"无限时间","color":"颜色","piece_colors":["随机","白","黑"],"private":"未发布","no":"不","yes":"是","rated":"评级","casual":"休闲","join_games":"加入现有 - 活跃游戏:","private_invite":"私人邀请:","your_invite":"您的邀请码:","create_invite":"创建邀请","join":"加入","copy":"复制","back":"返回","code":"邀请码"};
+        </script>
+        <!-- Do not modify the next line under any circumstances!! It is used by build.js as a reference point of where to inject js -->
+        <!-- htmlscript inject here --><script>
+'use strict';
+
+/* global main sound */
+
+/**
+ * The server injects this script directly into the html document
+ * before serving that.
+ * This is so we can execute code that needs to be executed preferrably
+ * before the document fully loads (for example, the loading screen,
+ * or pre-loading the sound spritesheet)
+ * 
+ * This is also what calls our main() function when the page fully loads.
+ */
+// eslint-disable-next-line no-unused-vars
+const htmlscript = (function() {
+
+	// Listen for the first user gesture...
+
+	// *true* if the user has started interacting with the page,
+	// usually after a single mouse click. Some browsers prevent
+	// audio playing until a user gesture, this helps us to
+	// predict if our audio will be prevented from playing.
+	let atleastOneUserGesture = false;
+	let audioContextDefined = false;
+
+	// This stuff needs to be AFTER decoding audio buffer for our audio context
+	// because the 'load' event listener needs to be 2nd in line, not first.
+	document.addEventListener('mousedown', callback_OnUserGesture);
+	document.addEventListener('click', callback_OnUserGesture);
+	function callback_OnUserGesture() {
+		atleastOneUserGesture = true;
+		document.removeEventListener('mousedown', callback_OnUserGesture);
+		document.removeEventListener('click', callback_OnUserGesture);
+		if (audioContextDefined) sound.getAudioContext().resume();
+		else window.addEventListener('load', () => { // resume() the Audio Context as soon as the page loads
+			if (loadingErrorOcurred) return; // Page never finished loading, don't reference sound script.
+			sound.getAudioContext()?.resume();
+		});
+	}
+
+	// Start loading the sound players before the rest of the scripts are loaded,
+	// because we don't know how long that'll take!
+	// We have use a fetch to retrieve the sound instead of a <sound> tag,
+	// because otherwise we can't grab the buffer to duplicate the audio!
+	(async function decodeAudioBuffer() {
+
+		const audioContext = new AudioContext();
+		let audioDecodedBuffer;
+
+		await fetch('/sounds/soundspritesheet.mp3')
+			.then(response => response.arrayBuffer())
+			.then(async arrayBuffer => {
+				// Process the array buffer...
+				// Decode the audio buffer data
+				await audioContext.decodeAudioData(arrayBuffer, function(decodedBuffer) {
+					audioDecodedBuffer = decodedBuffer;
+				});
+			})
+			.catch(error => {
+				console.error(`An error ocurred during loading of sounds: ${error.message}`);
+				callback_LoadingError();
+			});
+
+		// I don't want to miss calling this if the document is ready before this audio is finished loading
+		if (document.readyState === 'complete') sendAudioContextToScript();
+		else window.addEventListener('load', () => { // Send our audio context to our sound script.
+			if (loadingErrorOcurred) return; // Page never finished loading, don't reference sound script.
+			sound.initAudioContext(audioContext, audioDecodedBuffer);
+			audioContextDefined = true;
+		});
+		function sendAudioContextToScript() {
+			if (loadingErrorOcurred) return; // Page never finished loading, don't reference sound script.
+			sound.initAudioContext(audioContext, audioDecodedBuffer);
+			audioContextDefined = true;
+		}
+	})();
+    
+	function hasUserGesturedAtleastOnce() { return atleastOneUserGesture; };
+
+	// If there's an error in loading, stop the loading animation
+	// ...
+
+	let loadingErrorOcurred = false;
+	let lostNetwork = false;
+
+	function callback_LoadingError(event) {
+		// const type = event.type; // Event type: "error"/"abort"
+		// const target = event.target; // Element that triggered the event
+		// const elementType = target?.tagName.toLowerCase();
+		// const sourceURL = target?.src || target?.href; // URL of the resource that failed to load
+		// console.error(`Event ${type} ocurred loading ${elementType} at ${sourceURL}.`);
+
+		if (loadingErrorOcurred) return; // We only need to show the error text once
+		loadingErrorOcurred = true;
+        
+		// Hide the "LOADING" text
+		const element_loadingText = document.getElementById('loading-text');
+		element_loadingText.classList.add('hidden'); // This applies a 'display: none' rule
+
+		// Show the ERROR text
+		const element_loadingError = document.getElementById('loading-error');
+		const element_loadingErrorText = document.getElementById('loading-error-text');
+		element_loadingError.classList.remove('hidden');
+		element_loadingErrorText.textContent = lostNetwork ? translations.lost_network : translations.failed_to_load;
+
+		// Remove the glowing in the background animation
+		const element_loadingGlow = document.getElementById('loading-glow');
+		element_loadingGlow.classList.remove('loadingGlowAnimation');
+		element_loadingGlow.classList.add('loading-glow-error');
+	}
+
+	// Removes the onerror event listener from the "this" object.
+	function removeOnerror() {
+		this.removeAttribute('onerror');
+		this.removeAttribute('onload');
+	}
+
+	// Add event listeners for when connection is dropped when loading
+
+	(function initLoadingScreenListeners() {
+		window.addEventListener('offline', callback_Offline);
+		window.addEventListener('online', callback_Online);
+	})();
+	function closeLoadingScreenListeners() {
+		window.removeEventListener('offline', callback_Offline);
+		window.removeEventListener('online', callback_Online);
+	}
+
+	function callback_Offline() {
+		console.log('Network connection lost');
+		lostNetwork = true;
+		callback_LoadingError();
+	}
+	function callback_Online() {
+		console.log('Network connection regained');
+		lostNetwork = false;
+		if (loadingErrorOcurred) window.location.reload(); // Refresh the page
+	}
+    
+	// When the document is loaded, start the game!
+
+	window.addEventListener('load', function() {
+		if (loadingErrorOcurred) return; // Page never finished loading, don't start the game.
+		closeLoadingScreenListeners(); // Remove document event listeners for the loading screen
+		main.start(); // Start the game!
+	});
+
+	return Object.freeze({
+		callback_LoadingError,
+		removeOnerror,
+		hasUserGesturedAtleastOnce,
+	});
+
+})();</script>
+
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable = no" />
+        <title>无限棋 - 对局</title>
+        <link rel='stylesheet' href='/css/header.css'>
+        <link rel='stylesheet' href='/css/play.css' onerror="htmlscript.callback_LoadingError(event)" onload="htmlscript.removeOnerror.call(this);"> <!-- NEEDS TO BE ABOVE JAVASCRIPT-INJECTED STYLINGS SO THAT TAKES PRECEDENCE -->
+        <link rel="icon" href="/img/favicon-light.png" media="(prefers-color-scheme: light)" />
+        <link rel="icon" href="/img/favicon-dark.png" media="(prefers-color-scheme: dark)" id="favicon" />
+        <!-- Custom fonts: Merriweather, Open Sans -->
+        <link href="css2.css" rel="stylesheet">
+        <script defer src="/scripts/esm/game/main.js" type="module" onerror="htmlscript.callback_LoadingError(event)" onload="(() => { htmlscript.removeOnerror.call(this); })()"></script>
+        <!-- Javascript will add future styles in here. NEEDS TO BE BELOW OTHER STYLESHEET SO THIS TAKES PRECEDENCE -->
+        <style id="style"></style>
+    </head>
+    <body>
+        <header>
+    <!-- Reusable SVGs (here to reduce redundancy) -->
+    <div class="hidden"> 
+        <!-- The pawn svg and loading animation svg we use in several places -->
+        <svg>
+            <symbol id="svg-pawn" viewBox="0 0 45 45">
+                <path d="M22.5 9c-2.21 0-4 1.79-4 4 0 .89.29 1.71.78 2.38C17.33 16.5 16 18.59 16 21c0 2.03.94 3.84 2.41 5.03-3 1.06-7.41 5.55-7.41 13.47h23c0-7.92-4.41-12.41-7.41-13.47 1.47-1.19 2.41-3 2.41-5.03 0-2.41-1.33-4.5-3.28-5.62.49-.67.78-1.49.78-2.38 0-2.21-1.79-4-4-4z" fill-opacity="1" fill-rule="nonzero" stroke-dasharray="none" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" stroke-opacity="1" stroke-width="1.5" opacity="1"/>
+            </symbol>
+        </svg>
+        <!-- Checkmark svg commonly found in the settings dropdowns -->
+        <svg>
+            <symbol id="checkmark" viewBox="0 0 320 320">
+                <path d="m290 85-21-21a10 10 0 00-15 0L126 192l-60-61A10 10 0 00 50 130l-20 20a10 10 0 00 0 15l88 90c4 4 10 4 15 0L290 100c4-4 4-10 0-15"/>
+            </symbol>
+        </svg>
+        <!-- Language globe svg -->
+        <svg>
+            <symbol id="svg-language" fill="none" viewBox="0 0 240 240">
+                <path d="m30 75 44 30 4 3h3l4-4 9-12V90h2s0 0 0 0l40-18 3-2v0l1-4 3-42m-8 112 26 11 6 3v4l-2 5-13 18c0 2 0 2-2 3h0l-3 1h-24l-2-2-2-3-7-22v-7l6-10c0-3 2-4 2-5h8l8 3ZM220 120a100 100 0 11-200 0 100 100 0 01 200 0Z" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+            </symbol>
+        </svg>
+        <!-- 2x2 Board tile theme selection svg -->
+        <svg>
+            <symbol id="svg-board" viewBox="0 0 479 479">
+                <path d="M0 240v239h480V0H0v240m0 0v240l1-120V120L0 1v239m60-90v90h180v180h180V240H240V60H60v90" fill="#777" fill-rule="evenodd"/>
+            </symbol>
+        </svg>
+        <!-- Dot and corner tris legal move selection svg -->
+        <svg>
+            <symbol id="svg-legalmove" viewBox="0 0 3710 3700">
+                <path d="M0 740v730l740-730 730-740H0v740m2980-10 730 730V0H2250l730 730m-1260 360h-40l-30 10-10 10h-30l-20 10-20 10h-10l-90 50-20 10-50 30-30 20a840 840 0 00-200 230v10l-10 20-30 50-10 30-40 120a1420 1420 0 00 10 340l20 60v20l10 20 20 50 30 50 10 10 60 90a740 740 0 00 340 250l140 40a1500 1500 0 00 330-20l30-10h20l20-10 10-10c10 10 150-60 200-110 90-80 200-210 190-230l10-10a430 430 0 00 70-160l10-80 10-40a670 670 0 00 0-230l-10-40-10-10a540 540 0 00-90-220c0-30-110-150-190-210l-100-70-40-20c-40-20-120-50-130-40l-10-10c-20-20-310-30-320-10M0 2970v730h1480l-730-730-740-740-10 740m2980 0-730 730h1460V2240l-730 730" fill="#666" fill-rule="evenodd"/>
+            </symbol>
+        </svg>
+        <!-- Perspective mode svg -->
+        <svg>
+            <symbol id="svg-perspective" fill="none" viewBox="0 0 480 480">
+                <path d="M0 0h480v480H0" fill="none"/><path d="M440 280v80l-130 26M440 280 40 320m400-40v-80M40 320v120l130-26M40 320V160m400 40v-80L310 94M440 200 40 160m0 0V40l130 26m140 28v292m0-292L170 66m140 320-140 28m0-348v348" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="40"/>
+            </symbol>
+        </svg>
+        <!-- Mouse svg -->
+        <svg>
+            <symbol id="svg-mouse" viewBox="0 0 240 240" fill="none">
+                <path d="M120 70v20m53.3 70 4.8-71.9.1-2a50 50 0 00-19.1-41.5l-1.7-1.2a60 60 0 00-72.2-2l-2.6 2-1.7 1.3a50 50 0 00-19 43.8l4.8 72a53.4 53.4 0 00 106.6 0Z" stroke="#555" stroke-linecap="round" stroke-width="20"/></svg>
+            </symbol>
+        </svg>
+        <!-- Camera perspective fov svg -->
+        <svg>
+            <symbol id="svg-camera" fill="none" viewBox="0 0 240 240">
+                <path d="M120 160a30 30 0 10 0-60 30 30 0 00 0 60Z" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/><path d="M30 168V92c0-11.2 0-16.8 2.2-21a20 20 0 01 8.7-8.8C45.2 60 50.9 60 62 60h13a10 10 0 00 7.2-4.5l1.1-2.2 2.3-4.2a20 20 0 01 14.5-9h39.8a20 20 0 01 14.5 9l2.3 4.2 1.1 2.2a10 10 0 00 7.2 4.4h13c11.2 0 16.8 0 21 2.3 3.8 2 7 5 8.8 8.7 2.2 4.3 2.2 10 2.2 21v76.1c0 11.2 0 16.8-2.2 21a20 20 0 01-8.7 8.8c-4.3 2.2-9.9 2.2-21 2.2H62c-11.2 0-16.8 0-21-2.2a20 20 0 01-8.8-8.7C30 184.8 30 179.2 30 168.1Z" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+            </symbol>
+        </svg>
+        <!-- Selection svg -->
+        <svg>
+            <symbol id="svg-selection" fill="none" viewBox="0 0 24 24">
+              <path d="M7.92098 2.29951C6.93571 1.5331 5.5 2.23523 5.5 3.48349V20.4923C5.5 21.9145 7.2945 22.5382 8.17661 21.4226L12.3676 16.1224C12.6806 15.7267 13.1574 15.4958 13.6619 15.4958H20.5143C21.9425 15.4958 22.5626 13.6887 21.4353 12.8119L7.92098 2.29951Z" stroke="#555" stroke-linecap="round" stroke-width="3"/>
+            </symbol>
+        </svg>          
+        <!-- Undo arrow for resetting to default -->
+        <svg>
+            <symbol id="svg-undo" fill="none" viewBox="-200 0 1900 1900">
+                <path d="M910 1473c147-169 90-414-136-388 9 56 18 110 20 130 9 47-30 54-30 54l-438-310 423-378s43 0 35 64l-16 128C1142 724 1372 1230 940 1490l-30-17Z" fill="#555" fill-rule="evenodd" clip-rule="evenodd"/>
+            </symbol>
+        </svg>
+    </div>
+    <a class="home compact-1" href="/">
+        <!-- <img class="headerlogo" src="img/logo/light-theme.png"/> -->
+        <picture class="headerlogo" >
+            <source srcset="/img/logo/light-theme.avif" type="image/avif" />
+            <source srcset="/img/logo/light-theme.webp" type="image/webp" />
+            <img src="img/logo/light-theme.png" alt="Omega one, the logo of Infinite Chess.">
+        </picture>
+        <p>无限棋</p>
+    </a>
+    <nav class="compact-3">
+        <a href="/play">
+            <span>开始</span>
+            <svg class="svg-pawn"><use href="#svg-pawn"></use></svg>
+        </a>
+        <a id="login-link" href="/login">
+            <span id="login" class="login">登录</span>
+            <span id="profile" class="hidden">个人资料</span>
+            <svg id="svg-login" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 240 240"><path d="M150 165V190a20 20 0 01-20 20H60a20 20 0 01-20-20V50c0-11 9-20 20-20h70a20 20 0 01 20 20v30m50 40H90m0 0 25 25M90 120l25-25" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg>
+            <svg id="svg-profile" class="hidden" xmlns="http://www.w3.org/2000/svg" fill="#000" stroke="#000" version="1.1" viewBox="0 0 2000 2000"><path d="M1656 1800H344c-70 0-123-70-96-134C370 1370 662 1200 1000 1200s629 170 752 466c27 64-25 134-96 134M592 600c0-220 183-400 408-400s408 180 408 400-183 400-408 400a405 405 0 01-408-400m1404 1164a952 952 0 00-612-697 593 593 0 00 220-560 610 610 0 00-530-503A608 608 0 00 388 600c0 190 89 357 228 467a952 952 0 00-612 697c-27 122 74 236 200 236h1590c128 0 229-114 200-236" fill="#555" fill-rule="evenodd" stroke="none"/></svg>
+        </a>
+        <a id="createaccount-link" href="/createaccount">
+            <span id="createaccount">注册</span>
+            <span id="logout" class="hidden">登出</span>
+            <svg id="svg-createaccount" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill="#555" stroke="#555" version="1.1" viewBox="0 0 3100 3100"><path d="m3006 1597-453-453a150 150 0 00-212 0l-91 90V150a150 150 0 00-150-150H200A150 150 0 00 50 150v2400a150 150 0 00 150 150h850v250a150 150 0 00 150 150h453c40 0 78-16 106-44L3006 1810a150 150 0 00 0-212zM350 300h1600v1235L1094 2390l-9 10H350V300zm1241 2500H1350v-241l1097-1097 240 241L1592 2800"/></svg>
+            <svg id="svg-logout" class="hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 240 240"><path d="m160 170 50-50m0 0-50-50m50 50H90m30 50-.1 5.7a30 30 0 01-24 26.9l-5.7.7-10.2 1.1c-15.4 1.8-23 2.6-29.1.7a30 30 0 01-18.3-16.4C30 183 30 175.2 30 159.7V80.3c0-15.5 0-23.2 2.6-29A30 30 0 01 51 34.9c6-2 13.7-1 29 .7l10.3 1 5.7.8A30 30 0 01 120 64.3V70" stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg>
+        </a>
+    </nav>
+    <!-- gear svg for settings -->
+    <div id="settings" class="settings">
+        <svg class="gear" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 240 240"><path d="M128 4c10 0 20 8 21 18v4a30 30 0 00 40 22l4-2c10-3 21 0 26 10l8 13c5 9 3 20-4 26l-4 3a28 28 0 00 0 44l4 3c7 6 10 17 4 26l-8 13c-5 10-16 13-26 10l-4-2a30 30 0 00-40 22v4c-2 10-10 18-21 18h-16c-10 0-20-8-21-18v-4a30 30 0 00-40-22l-4 2c-10 3-21 0-26-10l-8-13a20 20 0 01 4-26l4-3a28 28 0 00 0-44l-4-3A20 20 0 01 13 70L20 56c5-10 16-13 26-10l4 2a30 30 0 00 40-22v-4c2-10 10-18 21-18h16ZM120 153a33 33 0 10 0-66 33 33 0 00 0 66Z" fill="#555" fill-rule="evenodd" clip-rule="evenodd"/></svg>
+        <div class="settings-dropdown dropdown visibility-hidden">
+            <div id="language-settings-dropdown-item" class="settings-dropdown-item">
+                <svg class="svg-language"><use href="#svg-language"></use></svg>
+                <p class="text">语言</p>
+                <span class="arrow-head-right"></span>
+            </div>
+            <div id="board-settings-dropdown-item" class="settings-dropdown-item">
+                <svg class="svg-board"><use href="#svg-board"></use></svg>
+                <p class="text">棋盘</p>
+                <span class="arrow-head-right"></span>
+            </div>
+            <div id="legalmove-settings-dropdown-item" class="settings-dropdown-item">
+                <svg class="svg-legalmove"><use href="#svg-legalmove"></use></svg>
+                <p class="text">合法移动</p>
+                <span class="arrow-head-right"></span>
+            </div>
+            <div id="selection-settings-dropdown-item" class="settings-dropdown-item">
+                <svg class="svg-selection"><use href="#svg-selection"></use></svg>
+                <p class="text">Selection</p>
+                <span class="arrow-head-right"></span>
+            </div>
+            <div id="perspective-settings-dropdown-item" class="settings-dropdown-item hidden"> <!-- Hidden Initially until we test if mouse (& perspective mode) is supported -->
+                <svg class="svg-perspective"><use href="#svg-perspective"></use></svg>
+                <p class="text">视角</p>
+                <span class="arrow-head-right"></span>
+            </div>
+            <div class="ping-meter hidden">
+                <div>
+                    <span class="ping">延迟</span>
+                    <strong class="ping-value">-</strong>
+                    <span class="ms">毫秒</span>
+                </div>
+                <div class="ping-bars">
+                    <div class="ping-bar" style="height: 6px;"></div>
+                    <div class="ping-bar" style="height: 12px;"></div>
+                    <div class="ping-bar" style="height: 18px;"></div>
+                    <div class="ping-bar" style="height: 24px;"></div>
+                    <div class="ping-glow"></div>
+                </div>
+                <svg class="svg-pawn spinny-pawn hidden"><use href="#svg-pawn"></use></svg>
+            </div>
+        </div>
+        <!-- Language -->
+        <div class="language-dropdown dropdown visibility-hidden">
+            <div class="dropdown-title">
+                <span class="arrow-head-left"></span>
+                <svg class="svg-language"><use href="#svg-language"></use></svg>
+                <p class="text">语言</p>
+            </div>
+            
+                <div class="language-dropdown-item " value="en-US">
+                    <div class="language-names">
+                        <p class="name">English</p>
+                        <p class="englishName">English</p>
+                    </div>
+                    
+                </div>
+            
+                <div class="language-dropdown-item " value="es-ES">
+                    <div class="language-names">
+                        <p class="name">Español</p>
+                        <p class="englishName">Spanish</p>
+                    </div>
+                    
+                </div>
+            
+                <div class="language-dropdown-item " value="fr-FR">
+                    <div class="language-names">
+                        <p class="name">Français</p>
+                        <p class="englishName">French</p>
+                    </div>
+                    
+                </div>
+            
+                <div class="language-dropdown-item " value="pl-PL">
+                    <div class="language-names">
+                        <p class="name">Polski</p>
+                        <p class="englishName">Polish</p>
+                    </div>
+                    
+                </div>
+            
+                <div class="language-dropdown-item " value="pt-BR">
+                    <div class="language-names">
+                        <p class="name">Português</p>
+                        <p class="englishName">Portuguese</p>
+                    </div>
+                    
+                </div>
+            
+                <div class="language-dropdown-item selected" value="zh-CN">
+                    <div class="language-names">
+                        <p class="name">简体中文</p>
+                        <p class="englishName">Simplified Chinese</p>
+                    </div>
+                    <svg class="checkmark"><use href="#checkmark"></use></svg>
+                </div>
+            
+                <div class="language-dropdown-item " value="zh-TW">
+                    <div class="language-names">
+                        <p class="name">繁體中文</p>
+                        <p class="englishName">Traditional Chinese</p>
+                    </div>
+                    
+                </div>
+            
+        </div>
+        <!-- Board Theme -->
+        <div class="board-dropdown dropdown visibility-hidden">
+            <div class="dropdown-title">
+                <span class="arrow-head-left"></span>
+                <svg class="svg-board"><use href="#svg-board"></use></svg>
+                <p class="text">棋盘</p>
+            </div>
+            <div class="theme-list"></div>
+        </div>
+        <!-- Legal Move Shape -->
+        <div class="legalmove-dropdown dropdown visibility-hidden">
+            <div class="dropdown-title">
+                <span class="arrow-head-left"></span>
+                <svg class="svg-legalmove"><use href="#svg-legalmove"></use></svg>
+                <p class="text">合法移动</p>
+            </div>
+            <div class="legalmove-options">
+                <div class="legalmove-option squares">
+                    <svg class="svg-squares" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 3780 3780"><path d="M1890 950v940H0v1890h1890V1890h1890v940a34850 34850 0 00 10-950L3780 0H1890v950M0 2840" fill="#777" fill-rule="evenodd"/></svg>
+                    <p class="text">方块</p>
+                    <svg class="checkmark visibility-hidden"><use href="#checkmark"></use></svg>
+                </div>
+                <div class="legalmove-option dots">
+                    <svg class="svg-legalmove"><use href="#svg-legalmove"></use></svg>
+                    <p class="text">点</p>
+                    <svg class="checkmark visibility-hidden"><use href="#checkmark"></use></svg>
+                </div>
+            </div>
+        </div>
+        <!-- Selection Presets -->
+        <div class="selection-dropdown dropdown visibility-hidden">
+            <div class="dropdown-title">
+                <span class="arrow-head-left"></span>
+                <svg class="svg-selection"><use href="#svg-selection"></use></svg>
+                <p class="text">Selection</p>
+            </div>
+            <div class="selection-options">
+                <label class="selection-option drag">
+                    <p class="text">Dragging pieces</p>
+                    <div class="switch">
+                        <input type="checkbox">
+                        <span></span>
+                    </div>
+                </label>
+                <label class="selection-option premove">
+                    <p class="text">Premoves</p>
+                    <div class="switch">
+                        <input type="checkbox" disabled>
+                        <span></span>
+                    </div>
+                </label>
+                <label class="selection-option animations">
+                    <p class="text">Animations</p>
+                    <div class="switch">
+                        <input type="checkbox">
+                        <span></span>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <!-- Perspective -->
+        <div class="perspective-dropdown dropdown visibility-hidden">
+            <div class="dropdown-title">
+                <span class="arrow-head-left"></span>
+                <svg class="svg-perspective"><use href="#svg-perspective"></use></svg>
+                <p class="text">视角</p>
+            </div>
+            <div class="perspective-options">
+                <div class="perspective-option mouse-sensitivity">   
+                    <div class="perspective-option-title">
+                        <svg class="svg-mouse"><use href="#svg-mouse"></use></svg>
+                        <p>鼠标灵敏度</p>
+                    </div>
+                    <div class="slider-container">
+                        <input class="slider" type="range" min="25" max="200" value="100">
+                        <span class="value"></span>
+                    </div>
+                </div>
+                <div class="perspective-option fov">   
+                    <div class="perspective-option-title">
+                        <svg class="svg-camera"><use href="#svg-camera"></use></svg>
+                        <p>视野范围</p>
+                    </div> 
+                    <div class="slider-container">
+                        <input class="slider" type="range" min="60" max="150" value="90">
+                        <span class="value"></span>
+                    </div>
+                    <div class="reset-default-container hidden">
+                        <div class="reset-default">
+                            <svg class="svg-undo"><use href="#svg-undo"></use></svg>
+                            <span>恢复默认</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script defer src="/scripts/esm/components/header/header.js" type="module"></script>
+        <main>
+
+            <!-- Loading Screen -->
+
+            <div id="loading-animation" class="animation-container">
+                <div id="loading-glow" class="loading-glow loadingGlowAnimation"></div>
+                <span id="loading-text" class="loading-text pulsing">加载中</span>
+                <div id="loading-error" class="loading-error hidden">
+                    <h1>错误</h1>
+                    <p id="loading-error-text"></p>
+                </div>
+                <div class="checkerboard"></div>
+            </div>
+
+            <!-- The webgl context will render the game onto here -->
+            <canvas id="game"></canvas>
+
+            <!-- The spinny pawn loading animation when a game is loading,
+            whil the svgs are being requested and spritesheet generated -->
+            <div class="game-loading-screen transparent">
+                <svg class="svg-pawn spinny-pawn"><use href="#svg-pawn"></use></svg>
+                <div class="loading-error hidden">
+                    <h1>错误</h1>
+                    <p class="loading-error-text"></p>
+                </div>
+            </div>
+
+            <div id="overlay" class="overlay">
+
+                <!-- Empty on purpose. The credits link that used to sit here is gone, but the
+                wrapper div has to stay: guiplay/guipractice/guititle all toggle it by id, and
+                they throw on a null element. -->
+                <div id="menu-external-links" class="menu-external-links hidden"></div>
+
+                <!-- Menu screen UI -->
+                <div id="title" class="title hidden">
+                    <h1>无限棋</h1>
+                    <button id="play" class="play titlebubble button">开始</button>
+                    <button id="practice" class="practice titlebubble button">练习</button>
+                    <button id="rules" class="rules titlebubble button">指南</button>
+                    <button id="board-editor" class="board-editor titlebubble button opacity-0_5">棋盘编辑器</button>
+                </div>
+
+                <!-- Guide -->
+                <div id="guide" class="guide hidden">
+                    <div class="guide-contents titlebubble">
+                        <h1 class="center">指南</h1>
+
+                        <h2>规则</h2>
+                        <hr class="line-break">
+                        <p>无限国际象棋的规则与经典国际象棋几乎相同，唯一的区别是棋盘在所有方向上都是无限的！以下是您需要注意的更改和说明：</p>
+                        <picture>
+                            <source srcset="/img/game/guide/promotionlines.avif" type="image/avif" />
+                            <source srcset="/img/game/guide/promotionlines.webp" type="image/webp" />
+                            <img loading="lazy" src="/img/game/guide/promotionlines.png" class="img-promotionlines">
+                        </picture>
+                        <ul>
+                            <li>滑动移动的棋子，如车、主教和皇后，每回合移动的距离没有限制！只要路径畅通无阻，您可以移动数百万格！</li>
+                            <li>在“经典”默认变体中，白兵在第8排晋升，黑兵在第1排晋升。在这张图片中，细黑线表示这一点，它们很微弱，看看您是否能找到它们！兵只需要到达相对的线即可晋升，<em>不需要</em>越过它。</li>
+                        </ul>
+                        <p>棋盘方格不再用字母和数字（例如a1）表示，而是用x和y坐标对来定义。a1方格变成了(1,1)，h8方格变成了(8,8)。在桌面设备上，鼠标悬停的坐标会显示在屏幕顶部。</p>
+                        <p>其他规则与经典国际象棋相同，例如将军、逼和、三次重复、50步规则、王车易位、“吃过路兵”等！</p>
+                        <div class="clear-float"></div>
+                        
+                        <h2>小心!</h2>
+                        <hr class="line-break">
+                        <picture>
+                            <source srcset="/img/game/guide/kingrookfork.avif" type="image/avif" />
+                            <source srcset="/img/game/guide/kingrookfork.webp" type="image/webp" />
+                            <img loading="lazy" src="/img/game/guide/kingrookfork.png" class="img-kingrookfork">
+                        </picture>
+                        <p>无限棋盘的开放性意味着很容易利用叉子、钉子和斜线攻击。您的后方通常非常脆弱。小心这样的战术！在保护国王和车的过程中要有创造力！开局策略与经典国际象棋非常不同。</p>
+                        <p>为了增强您的后方，已经创建了许多其他变体。</p>
+                        <div class="clear-float"></div>
+
+                        <h2>控制</h2>
+                        <hr class="line-break">
+                        <p>点击并拖动棋盘来移动。滚动鼠标滚轮进行缩放。点击任何棋子，包括对手的棋子，在任何时候查看它们的合法移动！其他控制如下：</p>
+                        <ul>
+                            <li><strong>WASD</strong> 来移动棋盘。</li>
+                            <li><strong>空格键</strong> 和 <strong>Shift键</strong> 来缩放。</li>
+                            <li><strong>Esc键</strong> 来暂停游戏。</li>
+                            <picture>
+                                <source srcset="/img/game/guide/arrowindicators.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/arrowindicators.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/arrowindicators.png" class="img-arrowindicators">
+                            </picture>
+                            <li><strong>Tab键</strong> 切换屏幕边缘的箭头指示器，用于指向屏幕外的棋子。默认情况下，此模式设置为“防御”，显示从当前位置可以移动到您所在位置的棋子的箭头。但按<strong>Tab键</strong>可以将此模式切换为“全部”或“关闭”。“全部”模式显示所有在那些直线和斜线上的棋子，无论它们是否可以直线或斜线移动。此设置也可以在暂停菜单中切换。点击这些箭头会将您传送到它们指向的棋子位置。</li>
+                            <li><strong>Control</strong> will force-drag the board instead of dragging a piece, if dragging is enabled in the settings.</li>
+                            <li><strong>1</strong> will toggle &#34;Edit Mode&#34; in local games. This allows you to move any piece anywhere else on the board! Very useful for analyzing.</li>
+                        </ul>
+                        <p>这些是您需要了解的主要控制。但如果您需要，这里还有一些额外的操作！</p>
+                        <ul>
+                            <li><strong>R</strong> 将重置棋子的渲染。如果它们变得不可见，这将非常有用。如果您移动极远的距离（例如1e21），可能会发生此错误。</li>
+                            <li><strong>N</strong> 将切换导航和游戏信息栏的渲染，这对录制很有用。欢迎在游戏中进行流媒体或制作视频！</li>
+                            <li><strong>M</strong> 将切换FPS计数器。这显示游戏每秒更新的次数，而不总是显示渲染的帧数，因为游戏在没有可见变化时跳过渲染以节省计算资源。</li>
+                            <li><strong>P</strong> 将切换图标渲染。这些是在您足够远地缩小时棋子的可点击缩略图。在导入超过50,000个棋子的游戏中，这将自动关闭，因为它是性能瓶颈，但您可以使用 <strong>P</strong>.</li>
+                            <li><strong>`</strong> （反引号，或与 <strong>~</strong>相同的键）将切换调试模式。</li>
+                        </ul>
+                        <div class="clear-float"></div>
+
+                        <h2>仙子棋子</h2>
+                        <hr class="line-break">
+                        <p>您已经掌握了玩默认“经典”变体所需的知识。仙子棋子不用于常规国际象棋，但被整合到其他变体中！如果您发现自己在某个变体中遇到了一些以前没见过的棋子，让我们在这里学习它们的工作原理！</p>
+                        <div id="fairy-pieces" class="fairy-pieces">
+                            <picture id="ch-img" class="img-fairymoveset">
+                                <source srcset="/img/game/guide/fairy/chancellor.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/chancellor.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/chancellor.png">
+                            </picture>
+                            <picture id="ar-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/archbishop.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/archbishop.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/archbishop.png">
+                            </picture>
+                            <picture id="am-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/amazon.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/amazon.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/amazon.png">
+                            </picture>
+                            <picture id="gu-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/guard.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/guard.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/guard.png">
+                            </picture>
+                            <picture id="ha-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/hawk.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/hawk.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/hawk.png">
+                            </picture>
+                            <picture id="ce-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/centaur.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/centaur.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/centaur.png">
+                            </picture>
+                            <picture id="nr-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/knightrider.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/knightrider.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/knightrider.png">
+                            </picture>
+                            <picture id="hu-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/huygen.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/huygen.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/huygen.png">
+                            </picture>
+                            <picture id="ob-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/obstacle.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/obstacle.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/obstacle.png">
+                            </picture>
+                            <picture id="vo-img" class="img-fairymoveset hidden">
+                                <source srcset="/img/game/guide/fairy/void.avif" type="image/avif" />
+                                <source srcset="/img/game/guide/fairy/void.webp" type="image/webp" />
+                                <img loading="lazy" src="/img/game/guide/fairy/void.png">
+                            </picture>
+                            <div class="fairy-card-container">
+                                <div id="fairy-back" class="left-arrow opacity-0_25 unselectable">
+                                    <svg viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" stroke="#000000" stroke-width="46.08"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="#000000"></path></g></svg>
+                                </div>
+                                <div id="fairy-card" class="fairy-card">
+                                    <div class="space-1"></div>
+                                    <div id="ch-desc" class="fairy-card-desc">
+                                        <p class="fairy-card-title">大臣</p>
+                                        <p class="fairy-card-description">像车和骑士的组合一样移动。</p>
+                                    </div>
+                                    <div id="ar-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">主教骑士</p>
+                                        <p class="fairy-card-description">像主教和骑士的组合一样移动。</p>
+                                    </div>
+                                    <div id="am-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">女皇</p>
+                                        <p class="fairy-card-description">像皇后和骑士的组合一样移动。这是游戏中最强大的棋子！</p>
+                                    </div>
+                                    <div id="gu-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">护卫</p>
+                                        <p class="fairy-card-description">像国王一样移动，但不易受将军或将死。</p>
+                                    </div>
+                                    <div id="ha-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">鹰</p>
+                                        <p class="fairy-card-description">在任何方向上跳跃2或3格。</p>
+                                    </div>
+                                    <div id="ce-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">人马</p>
+                                        <p class="fairy-card-description">像骑士和护卫的组合一样移动。</p>
+                                    </div>
+                                    <div id="nr-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">骑士骑士</p>
+                                        <p class="fairy-card-description">像骑士一样在一个方向上无限跳跃，直到被阻挡。</p>
+                                    </div>
+                                    <div id="hu-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">Huygen</p>
+                                        <p class="fairy-card-description">Hops infinitely in one of the four cardinal directions, visiting only squares with a prime numbered distance from its start square, until obstructed.</p>
+                                    </div>
+                                    <div id="ob-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">障碍物</p>
+                                        <p class="fairy-card-description">一个中立棋子（不由任何玩家控制），阻挡移动，但可以被捕获。</p>
+                                    </div>
+                                    <div id="vo-desc" class="fairy-card-desc hidden">
+                                        <p class="fairy-card-title">虚空</p>
+                                        <p class="fairy-card-description">一个中立棋子（不由任何玩家控制），表示棋盘的缺失。棋子不能穿过或移动到它上面。</p>
+                                    </div>
+                                    <div class="space-2"></div>
+                                </div>
+                                <div id="fairy-forward"  class="right-arrow unselectable">
+                                    <svg viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" stroke="#000000" stroke-width="46.08"><g stroke-width="0"></g><g stroke-linecap="round" stroke-linejoin="round"></g><g transform="scale(-1, 1) translate(-1035,0)"><path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="#000000"></path></g></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h2>棋盘编辑</h2>
+                        <hr class="line-break">
+                        <p>目前有一个外部 <a href="https://docs.google.com/spreadsheets/d/1Eo1SIo2esUijZ3LQzGy8QLKTOVh77DdDQuqEBILec9I/edit?usp=sharing" target="_blank">棋盘编辑器</a>，可在公共Google表单上使用！它包含使用说明。此工具需要一些基本的Google表单知识。设置后，您将能够通过选项菜单中的“粘贴游戏”按钮创建和导入自定义棋局位置！</p>
+                        <p>要与朋友玩自定义棋局，请让他们加入私人邀请，然后在开始游戏之前，双方都粘贴游戏代码！</p>
+                        <p>游戏内棋盘编辑器仍在计划中。</p>
+                    </div>
+                    <button id="guide-back" class="guide-back titlebubble button">返回</button>
+                </div>
+
+                <!-- Play selection -->
+                <div id="play-selection" class="play-selection hidden">
+                    <p id="play-name" class="play-name">玩 - 网上</p>
+                    <!-- Only two modes remain: a local two-player game, and a game against the
+                         configured LLM. Online play and the built-in engine were removed — this is a
+                         single-user local install, so a lobby of strangers had nothing to offer. -->
+                    <button id="local" class="local titlebubble button">本地</button>
+                    <button id="aiplay" class="aiplay titlebubble button">AI 对局</button>
+                    <div class="game-options titlebubble">
+                        <div class="options">
+                            <div class="option-card">
+                                <p>变体</p>
+                                <div class="option">
+                                    <select id="option-variant" class="button">
+                                        <!-- Chess is first, so it is what a <select> selects by default: a walled 8x8
+                                             board that pieces cannot leave. Classical is the unbounded board this
+                                             project is built around — it's one line down, not gone. -->
+                                        <option value="Chess">国际象棋（8×8 棋盘）</option>
+                                        <option value="Classical">经典（无限棋盘）</option>
+                                        <option value="Confined_Classical">受限经典（8×8 棋盘）</option>
+                                        <option value="Classical_Plus">经典+</option>
+                                        <option value="CoaIP">无限棋盘上的国际象棋</option>
+                                        <option value="CoaIP_HO">Chess on an Infinite Plane - Huygens Option</option>
+                                        <option value="Knighted_Chess">骑士国际象棋</option>
+                                        <option value="Pawndard">兵棋</option>
+                                        <option value="Knightline">骑士线</option>
+                                        <option value="Core">核心</option>
+                                        <option value="Standarch">标准弧</option>
+                                        <option value="Pawn_Horde">兵群</option>
+                                        <option value="Space_Classic">太空经典</option>
+                                        <option value="Space">太空</option>
+                                        <option value="Obstocean">障碍海洋</option>
+                                        <option value="Abundance">丰饶</option>
+                                        <!-- <option value="Amazon_Chandelier">亚马逊吊灯</option> -->
+                                        <!-- <option value="Containment">遏制</option> -->
+                                        <!-- <option value="Classical_Limit_7">经典 - 限制 7</option>
+                                        <option value="CoaIP_Limit_7">无限棋盘 - 限制 7</option> -->
+                                        <!-- <option value="Classical_KOTH">实验: 经典 - 王者争夺</option>
+                                        <option value="CoaIP_KOTH">实验: 无限棋盘 - 王者争夺</option> -->
+                                        <option value="4x4x4x4_Chess">4×4×4×4 Chess</option>
+										<option value="5D_Chess">5D Chess</option>
+                                        <option value="Omega">展示: 欧米伽</option>
+                                        <option value="Omega_Squared">展示: 欧米伽²</option>
+                                        <option value="Omega_Cubed">展示: 欧米伽³</option>
+                                        <option value="Omega_Fourth">展示: 欧米伽⁴</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="option-card-clock" class="option-card">
+                                <p>表</p>
+                                <div class="option">
+                                    <select id="option-clock" class="button">
+                                        <!-- Developmental time control: 20 seconds -->
+                                        <!-- <option value="15+2">0.25分钟+2秒</option> -->
+                                        <option value="60+2">1分钟+2秒</option>
+                                        <option value="120+2">2分钟+2秒</option>
+                                        <option value="180+2">3分钟+2秒</option>
+                                        <option value="300+2">5分钟+2秒</option>
+                                        <option value="480+3">8分钟+3秒</option>
+                                        <option value="600+6" selected>10分钟+6秒</option>
+                                        <option value="720+5">12分钟+5秒</option>
+                                        <option value="900+6">15分钟+6秒</option>
+                                        <option value="1200+8">20分钟+8秒</option>
+                                        <option value="1500+10">25分钟+10秒</option>
+                                        <option value="1800+15">30分钟+15秒</option>
+                                        <option value="2400+20">40分钟+20秒</option>
+                                        <option value="-">无限时间</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="option-card-color" class="option-card">
+                                <p>颜色</p>
+                                <div class="option">
+                                    <select id="option-color" class="button">
+                                        <option value="Random">随机</option>
+                                        <option value="White">白</option>
+                                        <option value="Black">黑</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="option-card-private" class="option-card">
+                                <p>未发布</p>
+                                <div class="option">
+                                    <select id="option-private" class="button">
+                                        <option value="public">不</option>
+                                        <option value="private">是</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="option-card-rated" class="option-card">
+                                <p>评级</p>
+                                <div class="option">
+                                    <select id="option-rated" class="button">
+                                        <option value="casual">不</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Online play is gone, so there is no lobby to show. The children stay in the
+                             DOM because invites.js grabs them by id at module load — hidden, not deleted. -->
+                        <div class="invite-list hidden">
+                            <p id="join-existing" class="join-existing">加入现有 - 活跃游戏: </p>
+                            <div id="our-invite"></div>
+                            <div id="invites">
+                                <!-- Example invite -->
+                                <!-- <div class="invite">
+                                    <div class="invite-child">Playername (elo)</div>
+                                    <div class="invite-child">Standard</div>
+                                    <div class="invite-child">15m+15s</div>
+                                    <div class="invite-child">Random</div>
+                                    <div class="invite-child">Casual</div>
+                                    <div class="invite-child accept">Accept</div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div id="join-private" class="join-private hidden">
+                            <p>私人邀请:</p>
+                            <input type="text" id="textbox-private" class="textbox-private" placeholder="邀请码" maxlength="5">
+                            <button id="join-button" class="join-button">加入</button>
+                        </div>
+                        <div id="invite-code" class="invite-code hidden">
+                            <p>您的邀请码:</p>
+                            <p id="invite-code-code" class="invite-code-code"></p>
+                            <button id="copy-button" class="copy-button">复制</button>
+                        </div>
+                    </div>
+                    <button id="create-invite" class="create-invite titlebubble button">创建邀请</button>
+                    <button id="play-back" class="play-back titlebubble button">返回</button>
+                </div>
+
+                <!-- Practice selection -->
+                <div id="practice-selection" class="practice-selection hidden">
+                    <p id="practice-name" class="practice-name">练习 - 将杀</p>
+                    <div class="practice-box titlebubble">
+                        <div class="practice-head">
+                            <div class="checkmate-progress"></div>
+                            <div class="checkmate-progress-bar">
+                                <picture id="checkmate-badge-bronze" class="badge tooltip-u unselectable" data-tooltip="Checkmate Veteran: Complete 50% of all practice checkmates.">
+                                    <div class="shine-clockwise hidden"></div>
+                                    <div class="shine-anticlockwise hidden"></div>
+                                    <source srcset="/img/badges/checkmate-badge-bronze.webp" type="image/webp" />
+                                    <source srcset="/img/badges/checkmate-badge-bronze.avif" type="image/avif" />
+                                    <img loading="lazy" src="/img/badges/checkmate-badge-bronze.png" class="unearned">
+                                </picture>
+                                <picture id="checkmate-badge-silver" class="badge tooltip-u unselectable" data-tooltip="Checkmate Pro: Complete 75% of all practice checkmates.">
+                                    <div class="shine-clockwise hidden"></div>
+                                    <div class="shine-anticlockwise hidden"></div>
+                                    <source srcset="/img/badges/checkmate-badge-silver.webp" type="image/webp" />
+                                    <source srcset="/img/badges/checkmate-badge-silver.avif" type="image/avif" />
+                                    <img loading="lazy" src="/img/badges/checkmate-badge-silver.png" class="unearned">
+                                </picture>
+                                <picture id="checkmate-badge-gold" class="badge tooltip-u unselectable" data-tooltip="Checkmate Master: Complete 100% of all practice checkmates.">
+                                    <div class="shine-clockwise hidden"></div>
+                                    <div class="shine-anticlockwise hidden"></div>
+                                    <source srcset="/img/badges/checkmate-badge-gold.webp" type="image/webp" />
+                                    <source srcset="/img/badges/checkmate-badge-gold.avif" type="image/avif" />
+                                    <img loading="lazy" src="/img/badges/checkmate-badge-gold.png" class="unearned">
+                                </picture>
+                            </div>
+                            <div class="checkmate-difficulty difficulty-title">难度</div>
+                        </div>
+                        <div class="checkmate-list">
+                            <div id="checkmates">
+                                <!-- Checkmate list is inserted dynamically here on demand. -->
+                                <!-- Example looks like: -->
+                                <!-- <div class="checkmate unselectable selected" id="2R1N1P-1k">
+                                    <div class="completion-mark"></div>
+                                    <div class="piecelistW">
+                                        <div class="checkmate-child checkmatepiececontainer">
+                                            <div class="checkmatepiece rooksW"><svg></svg></div>
+                                        </div>
+                                        <div class="checkmate-child checkmatepiececontainer collated-strong">
+                                            <div class="checkmatepiece rooksW"><svg></svg></div>
+                                        </div>
+                                        <div class="checkmate-child checkmatepiececontainer">
+                                            <div class="checkmatepiece knightsW"><svg></svg></div>
+                                        </div>
+                                        <div class="checkmate-child checkmatepiececontainer">
+                                            <div class="checkmatepiece pawnsW"><svg></svg></div>
+                                        </div>
+                                    </div>
+                                    <div class="checkmate-child versus">vs</div>
+                                    <div class="piecelistB">
+                                        <div class="checkmate-child checkmatepiececontainer">
+                                            <div class="checkmatepiece kingsB"></div>
+                                        </div>
+                                    </div>
+                                    <div class="checkmate-difficulty">Medium</div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <button id="practice-play" class="practice-play titlebubble button">开始游戏</button>
+                    <button id="practice-back" class="practice-back titlebubble button">返回</button>
+                </div>
+
+                <!-- Stats below navigation bar -->
+                <!-- This is absolutely positioned. Our javascript will udate it's 'top' ruleset based
+                on the height of the navigation bar. -->
+                <div id="stats">
+                    <p id="status-fps" class="status hidden"></p>
+                    <p id="status-moves" class="status hidden"></p>
+                </div>
+
+                <!-- Navigation controls -->
+                <div id="navigation-bar" class="navigation-bar hidden unselectable">
+                    <div class="teleport">
+                        <div class="buttoncontainer">
+                            <div id="back" class="button tooltip-dr" data-tooltip="撤销过渡">
+                                <svg viewBox="-1.68 -1.68 27.36 27.36" fill="none" stroke="#333" stroke-width="0.45600000000000007"><g stroke-width="0"></g><g stroke-linecap="round" stroke-linejoin="round"></g><g> <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5303 5.46967C10.8232 5.76256 10.8232 6.23744 10.5303 6.53033L5.81066 11.25H20C20.4142 11.25 20.75 11.5858 20.75 12C20.75 12.4142 20.4142 12.75 20 12.75H5.81066L10.5303 17.4697C10.8232 17.7626 10.8232 18.2374 10.5303 18.5303C10.2374 18.8232 9.76256 18.8232 9.46967 18.5303L3.46967 12.5303C3.17678 12.2374 3.17678 11.7626 3.46967 11.4697L9.46967 5.46967C9.76256 5.17678 10.2374 5.17678 10.5303 5.46967Z" fill="#333"></path> </g></svg>
+                            </div>
+                        </div>
+                        <div class="buttoncontainer">
+                            <div id="expand" class="button tooltip-d" data-tooltip="展开以适应所有">
+                                <svg viewBox="-3.84 -3.84 31.68 31.68" fill="none"><g stroke-width="0"></g><g stroke-linecap="round" stroke-linejoin="round"></g><g><path d="M3 7C3 7.55228 2.55228 8 2 8C1.44772 8 1 7.55228 1 7V3C1 1.89543 1.89543 1 3 1H7C7.55228 1 8 1.44772 8 2C8 2.55228 7.55228 3 7 3H4.41421L10.7071 9.29289C11.0976 9.68342 11.0976 10.3166 10.7071 10.7071C10.3166 11.0976 9.68342 11.0976 9.29289 10.7071L3 4.41422V7Z" fill="#333"></path> <path d="M21 17C21 16.4477 21.4477 16 22 16C22.5523 16 23 16.4477 23 17V21C23 22.1046 22.1046 23 21 23H17C16.4477 23 16 22.5523 16 22C16 21.4477 16.4477 21 17 21H19.5858L13.2929 14.7071C12.9024 14.3166 12.9024 13.6834 13.2929 13.2929C13.6834 12.9024 14.3166 12.9024 14.7071 13.2929L21 19.5858V17Z" fill="#333"></path> <path d="M21 7C21 7.55228 21.4477 8 22 8C22.5523 8 23 7.55228 23 7V3C23 1.89543 22.1046 1 21 1H17C16.4477 1 16 1.44772 16 2C16 2.55228 16.4477 3 17 3H19.5858L13.2929 9.29289C12.9024 9.68342 12.9024 10.3166 13.2929 10.7071C13.6834 11.0976 14.3166 11.0976 14.7071 10.7071L21 4.41421V7Z" fill="#333"></path> <path d="M3 17C3 16.4477 2.55228 16 2 16C1.44772 16 1 16.4477 1 17V21C1 22.1046 1.89543 23 3 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H4.41421L10.7071 14.7071C11.0976 14.3166 11.0976 13.6834 10.7071 13.2929C10.3166 12.9024 9.68342 12.9024 9.29289 13.2929L3 19.5858V17Z" fill="#333"></path> </g></svg>
+                            </div>
+                        </div>
+                        <div class="buttoncontainer">
+                            <div id="recenter" class="button tooltip-d" data-tooltip="重新居中">
+                                <svg fill="#333" viewBox="-59.11 -59.11 610.81 610.81" stroke="#333" stroke-width="0.0049258900000000005"><g><path d="M468.467,222.168h-28.329c-9.712-89.679-80.46-161.18-169.71-172.258V24.135c0-13.338-10.791-24.134-24.134-24.134 c-13.311,0-24.117,10.796-24.117,24.134V49.91C132.924,60.988,62.177,132.488,52.482,222.168H24.153 C10.806,222.168,0,232.964,0,246.286c0,13.336,10.806,24.132,24.153,24.132h29.228c12.192,86.816,81.551,155.4,168.797,166.229 v31.804c0,13.336,10.806,24.135,24.117,24.135c13.343,0,24.134-10.799,24.134-24.135v-31.804 c87.228-10.829,156.607-79.413,168.775-166.229h29.264c13.33,0,24.122-10.796,24.122-24.132 C492.589,232.964,481.797,222.168,468.467,222.168z M246.294,398.093c-85.345,0-154.804-69.453-154.804-154.813 c0-85.363,69.459-154.813,154.804-154.813c85.376,0,154.823,69.45,154.823,154.813 C401.117,328.639,331.671,398.093,246.294,398.093z"></path> <path d="M246.294,176.93c-36.628,0-66.34,29.704-66.34,66.349c0,36.635,29.711,66.349,66.34,66.349 c36.66,0,66.34-29.713,66.34-66.349C312.634,206.635,282.955,176.93,246.294,176.93z"></path></g></svg>
+                            </div>
+                        </div>
+                        <div class="buttoncontainer">
+                            <div id="move-left" class="button opacity-0_5 tooltip-d" data-tooltip="倒回操作">
+                                <svg fill="#333" viewBox="-15.84 -15.84 55.68 55.68" stroke="#333" stroke-width="2.4"><g stroke-width="0"></g><g stroke-linecap="round" stroke-linejoin="round"></g><g><path d="m4.431 12.822 13 9A1 1 0 0 0 19 21V3a1 1 0 0 0-1.569-.823l-13 9a1.003 1.003 0 0 0 0 1.645z"></path></g></svg>
+                            </div>
+                        </div>
+                        <div class="buttoncontainer">
+                            <div id="move-right" class="button opacity-0_5 tooltip-d" data-tooltip="前进操作">
+                                <svg fill="#333" viewBox="-15.84 -15.84 55.68 55.68" stroke="#333" stroke-width="2.4">
+                                    <g transform="scale(-1, 1) translate(-25.16, 0)">
+                                        <path d="m4.431 12.822 13 9A1 1 0 0 0 19 21V3a1 1 0 0 0-1.569-.823l-13 9a1.003 1.003 0 0 0 0 1.645z"></path>
+                                    </g>
+                                    </svg>
+                            </div>
+                        </div>
+                        <div class="buttoncontainer">
+                            <div id="pause" class="button tooltip-d" data-tooltip="暂停">
+                                <svg viewBox="-2.5 -2.5 29 29" version="1.2" fill="#333" stroke-width="2.4"><g stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6H20M4 12H20M4 18H20"></path></g></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="coords selectable" >
+                        <div id="position">
+                            <div class="x">X: <input type="number" id='x'></input></div>
+                            <div class="y">Y: <input type="number" id='y'></input></div>
+                        </div>
+                    </div>
+                    <div class="right-nav">
+                        <!-- Opens the AI coach side panel. Far right, so tooltip-dl keeps the bubble on screen. -->
+                        <div class="buttoncontainer">
+                            <div id="nav-aicoach" class="button tooltip-dl" data-tooltip="与 AI 教练对话">
+                                <svg viewBox="-2 -2 28 28" fill="#333"><path d="M20 2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h2.5v3.4a.6.6 0 0 0 .98.46L12.6 18H20a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"></path><circle cx="8" cy="10" r="1.45" fill="#fff"></circle><circle cx="12" cy="10" r="1.45" fill="#fff"></circle><circle cx="16" cy="10" r="1.45" fill="#fff"></circle></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game info, clocks, player names, whos turn -->
+                <div id="game-info-bar" class="game-info-bar hidden">
+                    <div id="timer-container-white" class="timerwhitecontainer">
+                        <div id="timer-white" class="timerwhite">10:00</div>
+                    </div>
+                    <div id="playerwhite" class="playerwhite"></div>
+                    <div class="whosturn">
+                        <div id="dot" class="dotwhite"></div>
+                        <div id="whosturn"></div>
+
+                        <!-- Draw Offer UI -->
+                        <div id="draw_offer_ui" class="draw_offer_ui hidden">
+                            <p class="offer_title">接受和棋提议</p>
+                            <button id="acceptdraw" class="acceptdraw button icon" alt="Accept draw offer">
+                                <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none">
+                                    <path d="M19 7.34189C18.6095 6.95136 17.9763 6.95136 17.5858 7.34189L10.3407 14.587C9.95016 14.9775 9.31699 14.9775 8.92647 14.587L6.38507 12.0456C5.99454 11.6551 5.36138 11.6551 4.97085 12.0456C4.58033 12.4361 4.58033 13.0693 4.97085 13.4598L7.51774 16C8.68969 17.1689 10.5869 17.1677 11.7574 15.9974L19 8.7561C19.3905 8.36558 19.3905 7.73241 19 7.34189Z" fill="#0F0F0F"/>
+                                </svg>
+                            </button>
+                            <button id="declinedraw" class="declinedraw button icon" alt="Decline draw offer">
+                                <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none">
+                                    <path d="M17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289Z" fill="#000000"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Practice engine game game undo move + restart buttons -->
+                    <div class="practice-engine-buttons hidden">
+                        <button id="undobutton" class="game-control tooltip-u" data-tooltip="Undo move">
+                            <svg class="svg-undo"><use href="#svg-undo"></use></svg>
+                        </button>
+                        <button id="restartbutton" class="game-control tooltip-ul" data-tooltip="Restart game">
+                            <svg class="svg-restart" fill="none" viewBox="0 0 240 240"><g stroke="#555" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" clip-path="url(#a)"><path d="M120 30a90 90 0 11-57 20"/><path d="M30 45h40v40"/></g><defs><clipPath id="a"><path d="M0 0h240v240H0" fill="#555"/></clipPath></defs></svg>
+
+                        </button>
+                    </div>
+                    <div id="playerblack" class="playerblack"></div>
+                    <div id="timer-container-black" class="timerblackcontainer">
+                        <div id="timer-black" class="timerblack">10:00</div>
+                    </div>
+                </div>
+
+                <!-- Promotion UI -->
+                <div id="promote" class="center hidden">
+                    <div id="promotewhite" class="promotecolor hidden">
+                        <!-- <svg id="knightsW" class="promotepiececontainer"></svg> -->
+                    </div>
+                    <div id="promoteblack" class="promotecolor hidden">
+                        <!-- <svg id="knightsB" class="promotepiececontainer"></svg> -->
+                    </div>
+                </div>
+
+                <!-- Pause UI -->
+                <div id="pauseUI" class="pauseUI hidden">
+                    <p class="paused">暂停</p>
+                    <button id="resume" class="resume button">继续</button>
+                    <button id="togglepointers" class="togglepointers button">箭头: 防御</button>
+                    <button id="toggleperspective" class="toggleperspective button">视角: 关闭</button>
+                    <button id="copygame" class="copygame button">复制棋局</button>
+                    <button id="pastegame" class="pastegame button">粘贴棋局</button>
+                    <button id="aicoach" class="aicoach button">AI 教练</button>
+                    <button id="offerdraw" class="offerdraw button">提和</button>
+                    <button id="practicemenu" class="practicemenu button hidden">Practice Menu</button>
+                    <button id="mainmenu" class="mainmenu button">主页</button>
+                </div>
+
+                <!-- Win / loss easter egg. guieasteregg fills this in; empty until a game ends. -->
+                <div id="egg-layer" class="egg-layer hidden"></div>
+
+                <!-- Game Over UI. Opened once, by gameslot.concludeGame(). -->
+                <div id="gameoverUI" class="gameoverUI hidden">
+                    <div class="gameover-card">
+                        <p id="gameover-headline" class="gameover-headline"></p>
+                        <p id="gameover-detail" class="gameover-detail"></p>
+                        <button id="gameover-rematch" class="gameover-rematch button">再来一局</button>
+                        <button id="gameover-mainmenu" class="gameover-mainmenu button">返回主页</button>
+                        <button id="gameover-dismiss" class="gameover-dismiss button">留在棋盘上看看</button>
+                    </div>
+                </div>
+
+                <!-- AI Coach UI. A side panel, so the board stays usable while it's open. -->
+                <div id="aicoachUI" class="aicoachUI hidden">
+                    <div class="aicoach-header">
+                        <span class="aicoach-title">AI 教练</span>
+                        <button id="aicoach-toggle-settings" class="aicoach-icon-button" title="设置">&#9881;</button>
+                        <button id="aicoach-close" class="aicoach-icon-button" title="关闭">&times;</button>
+                    </div>
+
+                    <!-- Collapsed by default. guiaicoach opens this automatically when there's no config yet. -->
+                    <div id="aicoach-settings" class="aicoach-settings hidden">
+                        <label class="aicoach-field">
+                            <span>接口格式</span>
+                            <select id="aicoach-protocol">
+                                <option value="openai">OpenAI 兼容 (/v1/chat/completions)</option>
+                                <option value="anthropic">Anthropic (/v1/messages)</option>
+                            </select>
+                        </label>
+                        <label class="aicoach-field">
+                            <span>API 请求地址</span>
+                            <input id="aicoach-url" type="text" spellcheck="false" autocomplete="off" placeholder="https://api.openai.com/v1">
+                        </label>
+                        <label class="aicoach-field">
+                            <span>API Key</span>
+                            <input id="aicoach-key" type="password" spellcheck="false" autocomplete="off" placeholder="sk-...">
+                        </label>
+                        <label class="aicoach-field">
+                            <span>模型名称</span>
+                            <input id="aicoach-model" type="text" spellcheck="false" autocomplete="off" placeholder="gpt-4o">
+                        </label>
+                        <label class="aicoach-field">
+                            <span>走棋模型（可选）</span>
+                            <input id="aicoach-move-model" type="text" spellcheck="false" autocomplete="off" placeholder="gpt-4o-mini">
+                        </label>
+                        <p class="aicoach-hint">只在 AI 和你对局时使用；留空则沿用上面的模型。你真正在等的只有“它该走哪步”，所以这里填一个快模型对体验的改善最大。</p>
+                        <label class="aicoach-field">
+                            <span>思考强度</span>
+                            <select id="aicoach-reasoning">
+                                <option value="">不发送（兼容性最好）</option>
+                                <option value="minimal">极低 - 最快</option>
+                                <option value="low">低</option>
+                                <option value="medium">中</option>
+                                <option value="high">高 - 最慢</option>
+                            </select>
+                        </label>
+                        <p class="aicoach-hint">API Key 保存在本浏览器的 localStorage 中，仅通过你本机的服务器转发。请勿在公用电脑上填写。</p>
+                        <div class="aicoach-buttons">
+                            <button id="aicoach-save" class="aicoach-button">保存</button>
+                            <button id="aicoach-test" class="aicoach-button">测试连接</button>
+                        </div>
+                    </div>
+
+                    <div class="aicoach-actions">
+                        <button id="aicoach-analyze" class="aicoach-button aicoach-analyze">分析当前局面</button>
+                        <label class="aicoach-checkbox">
+                            <input id="aicoach-auto" type="checkbox">
+                            <span>每步自动分析</span>
+                        </label>
+                        <!-- The coach commenting on your play unprompted, once per round. -->
+                        <label class="aicoach-checkbox">
+                            <input id="aicoach-autocoach" type="checkbox">
+                            <span>教练点评我的走法</span>
+                        </label>
+                    </div>
+
+                    <!-- Only shown in an AI game, when the AI owes us a move but isn't thinking. -->
+                    <button id="aicoach-aimove" class="aicoach-button aicoach-aimove hidden">让 AI 走棋</button>
+
+                    <p id="aicoach-status" class="aicoach-status"></p>
+
+                    <!-- The level the coach settled on, kept between games so it only asks once. -->
+                    <p id="aicoach-profile" class="aicoach-profile hidden">
+                        <span id="aicoach-profile-text"></span>
+                        <button id="aicoach-reassess" class="aicoach-link-button">重新评估</button>
+                    </p>
+
+                    <!-- The scrolling middle. The composer below stays pinned. -->
+                    <div class="aicoach-scroll">
+                        <div id="aicoach-results" class="aicoach-results"></div>
+                        <div id="aicoach-chat" class="aicoach-chat"></div>
+                    </div>
+
+                    <div class="aicoach-composer">
+                        <textarea id="aicoach-question" class="aicoach-question" rows="2" spellcheck="false"
+                            placeholder="向 AI 提问当前局面……"></textarea>
+                        <div class="aicoach-composer-buttons">
+                            <button id="aicoach-send" class="aicoach-button aicoach-send">发送</button>
+                            <button id="aicoach-clear-chat" class="aicoach-icon-button" title="清空对话">&#128465;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status message -->
+                <div id="statusmessage" class="statusmessage hidden">
+                    <p id="statustext" class="statustext"></p>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana;
+    border: 0;
+    /* Enable temporarily during dev to see the borders of all elements */
+    /* outline: 1px solid rgba(0, 0, 0, 0.214); */
+}
+
+html {
+    height: 100%;
+    background-color: var(--bg);
+    color-scheme: dark;
+}
+
+
+
+main {
+    background-color: var(--bg);
+    /* The dark gradient sits ON TOP of the board photo — the light board image
+       would otherwise fight the dark content card in front of it. */
+    background-image:
+        linear-gradient(180deg, rgba(16, 18, 22, 0.82) 0%, rgba(16, 18, 22, 0.93) 55%, rgba(16, 18, 22, 0.97) 100%),
+        url('/img/blank_board.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-attachment: fixed;
+
+    margin-top: var(--header-height);
+    min-height: 425px;
+}
+
+#content {
+    background-color: var(--glass);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    color: var(--text);
+    min-height: 425px;
+    margin: auto;
+    box-shadow: var(--shadow-2);
+    padding: 30px 20px;
+}
+
+#content h1 {
+    font-size: 40px;
+    font-family: georgia;
+    margin-bottom: 60px;
+}
+
+.formfield {
+    width: fit-content;
+    text-align: right;
+    margin: auto;
+    line-height: 2.2em;
+}
+
+#usernameinputline {
+    text-align: center;
+}
+
+#passwordinputline {
+    margin-top: 12px;
+    display: inline-block;
+    text-align: center;
+    width: fit-content;
+}
+
+label {
+    font-size: 18px;
+    vertical-align: middle;
+    margin-right: 2px;
+}
+
+form input {
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    padding: 0.5em 0.6em;
+    background-color: rgba(0, 0, 0, 0.35);
+    color: var(--text);
+    box-shadow: var(--shadow-1);
+    font-size: 15px;
+    width: 180px;
+}
+
+form input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+form input[type='text']:hover, form input[type='password']:hover {
+    box-shadow: 0 0 0 1px var(--border-strong), var(--shadow-1);
+}
+
+div.error {
+    font-size: 16px;
+    text-align: center;
+    color: var(--danger);
+    margin-top: 1.0em;
+    line-height: 1em;
+}
+
+.forgothidden {
+    display: none;
+}
+
+.forgotvisible {
+    display: block;
+    font-size: 13px;
+    margin-top: 0.5em;
+}
+
+form input[type='submit'] {
+    height: 30px;
+    min-width: 0;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 999px;
+    padding: 0.6em 1.8em;
+    color: #0b1016;
+    font-weight: bold;
+    background: linear-gradient(180deg, var(--accent) 0%, var(--accent-strong) 100%);
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.1s;
+    margin: 25px;
+    outline: 0;
+}
+
+form input[type='submit'].ready:hover {
+    transition: 0.1s;
+    font-size: 18px;
+    box-shadow: 0 0 0 1px var(--border-strong), var(--shadow-1);
+    margin: 23px;
+}
+
+form input[type='submit'].ready:focus {
+    outline: solid 2px var(--accent);
+}
+
+
+.center {
+    text-align: center;
+}
+
+.unavailable {
+    color: var(--text-faint);
+}
+
+a {
+    -webkit-tap-highlight-color: rgba(106, 169, 255, 0.16);
+    color: var(--accent);
+}
+
+a:hover {
+    color: var(--text);
+}
+
+
+
+/* Start increasing header links width */
+@media only screen and (min-width: 450px) {
+    #content h1 {
+        font-size: calc(40px + 0.027 * (100vw - 450px));
+    }
+
+    form input {
+        width: calc(180px + 0.15 * (100vw - 450px));
+    }
+}
+
+/* Stop increasing header links width */
+@media only screen and (min-width: 715px) {
+    form input {
+        width: 220px;
+    }
+}
+
+/* Cap content width size, revealing image on the sides */
+@media only screen and (min-width: 810px) {
+    #content {
+        max-width: calc(810px - 60px); /* 60px less than 810 to account for padding */
+        padding: 40px 30px;
+        min-height: 800px;
+    }
+
+    #content h1 {
+        font-size: 50px;
+        margin-bottom: 70px;
+    }
+}

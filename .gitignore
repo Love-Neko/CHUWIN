@@ -2,10 +2,6 @@
 cert
 logs
 *.log
-dist
-# Old json data storage "database"
-/database
-
 # SQLite Database Files
 *.db
 *.sqlite
