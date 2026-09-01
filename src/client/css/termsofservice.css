@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana; /* Helvetica */
+    border: 0;
+    /* Enable temporarily during dev to see the borders of all elements */
+    /* outline: 1px solid rgba(0, 0, 0, 0.191); */
+}
+
+html {
+    height: 100%;
+    background-color: var(--bg);
+    color-scheme: dark;
+}
+
+
+
+main {
+    background-color: var(--bg);
+    /* The dark gradient sits ON TOP of the board photo — the light board image
+       would otherwise fight the dark content card in front of it. */
+    background-image:
+        linear-gradient(180deg, rgba(16, 18, 22, 0.82) 0%, rgba(16, 18, 22, 0.93) 55%, rgba(16, 18, 22, 0.97) 100%),
+        url('/img/blank_board.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-attachment: fixed;
+
+    margin-top: var(--header-height);
+    min-height: 400px;
+}
+
+#content {
+    background-color: var(--glass);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    min-height: 450px;
+    margin: auto;
+    box-shadow: var(--shadow-2);
+    padding: 30px 20px;
+    color: var(--text);
+}
+
+#content h1 {
+    font-size: 40px;
+    font-family: georgia;
+    margin-bottom: 40px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 1.5em;
+}
+
+h3 {
+    font-size: 18px;
+    text-align: center;
+    font-weight: normal;
+}
+
+#content p {
+    line-height: 1.5;
+    font-size: 16px;
+    margin: 20px 0px;
+}
+
+
+a {
+    color: var(--accent);
+    -webkit-tap-highlight-color: rgba(106, 169, 255, 0.16);
+}
+
+a:hover {
+    color: var(--text);
+}
+
+.grey {
+    color: var(--text-faint);
+}
+
+.center {
+    text-align: center;
+}
+
+
+
+/* Start increasing header links width */
+@media only screen and (min-width: 450px) {
+    #content h1 {
+        font-size: calc(40px + 0.028 * (100vw - 450px));
+    }
+}
+
+/* Cap content width size, revealing image on the sides */
+@media only screen and (min-width: 810px) {
+    #content {
+        max-width: calc(810px - 60px); /* 60px less than 810 to account for padding */
+        padding: 40px 30px;
+        min-height: 800px;
+    }
+
+    #content h1 {
+        font-size: 50px;
+        margin-bottom: 50px;
+    }
+}

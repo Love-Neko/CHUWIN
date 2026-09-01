@@ -1,0 +1,215 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana;
+    border: 0;
+    /* Enable temporarily during dev to see the borders of all elements */
+    /* outline: 1px solid rgba(0, 0, 0, 0.102); */
+}
+
+html {
+    height: 100%;
+    background-color: var(--bg);
+    color-scheme: dark;
+}
+
+main {
+    background-color: var(--bg);
+    /* Using PNG because it was the smallest after compression.
+       The gradient sits ON TOP of the board photo — without it, the light board
+       image fights the dark content card behind it. */
+    background-image:
+        linear-gradient(180deg, rgba(16, 18, 22, 0.82) 0%, rgba(16, 18, 22, 0.93) 55%, rgba(16, 18, 22, 0.97) 100%),
+        url('/img/blank_board.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    background-attachment: fixed;
+
+    margin-top: var(--header-height);
+    color: var(--text);
+}
+
+.content {
+    background-color: var(--glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    margin: auto;
+    box-shadow: var(--shadow-2);
+    padding: 30px 20px;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.logo h1 {
+    display: inline-block;
+    vertical-align: bottom;
+    font-size: 40px;
+    font-family: georgia;
+    color: var(--text);
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 24px rgba(106, 169, 255, 0.28);
+}
+
+.logo img {
+    display: inline-block;
+    vertical-align: bottom;
+    display: none;
+    width: 70px;
+}
+
+.logo p {
+    margin-top: 15px;
+    color: var(--text-dim);
+}
+
+/* Primary call to action, in place of the old promo video */
+
+.hero-cta {
+    margin: 34px 0 10px;
+}
+
+a.cta {
+    display: inline-block;
+    padding: 0.85em 2.4em;
+    font-size: 19px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #0b1016;
+    background: linear-gradient(180deg, var(--accent) 0%, var(--accent-strong) 100%);
+    border-radius: 999px;
+    box-shadow: 0 6px 22px rgba(61, 134, 240, 0.35);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+a.cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(61, 134, 240, 0.48);
+    filter: brightness(1.06);
+}
+
+a.cta:active {
+    transform: translateY(0);
+}
+
+.content h2 {
+    font-size: 30px;
+    margin: 35px 0 20px;
+    color: var(--text);
+}
+
+.content h3 {
+    font-size: 25px;
+    margin: 35px 0 20px;
+    color: var(--text);
+}
+
+.content h4 {
+    font-size: 19px;
+    margin: 0 0 10px;
+    color: var(--accent);
+}
+
+.content p {
+    line-height: 1.65;
+    font-size: 17px;
+    margin: 20px 0px;
+    color: var(--text-dim);
+}
+
+.content em {
+    color: var(--text);
+    font-style: normal;
+    font-weight: bold;
+}
+
+.content strong {
+    color: var(--accent);
+}
+
+/* Feature cards */
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 16px;
+    margin: 24px 0 10px;
+}
+
+.feature-card {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px 18px;
+    box-shadow: var(--shadow-1);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-2);
+}
+
+.content .feature-card p {
+    font-size: 15px;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.grey {
+    color: var(--text-faint);
+}
+
+.center {
+    text-align: center;
+}
+
+a {
+    color: var(--accent);
+    -webkit-tap-highlight-color: rgba(106, 169, 255, 0.16);
+}
+
+a:hover {
+    color: var(--text);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/* Reveal pictures in logo */
+@media only screen and (min-width: 480px) {
+    .logo img {
+        display: unset;
+        width: calc(70px + 0.09 * (100vw - 475px));
+    }
+
+    .logo h1 {
+        font-size: calc(40px + 0.059 * (100vw - 475px));
+    }
+}
+
+/* Cap content width size */
+@media only screen and (min-width: 810px) {
+    .content {
+        max-width: calc(810px - 60px); /* 60px less than 810 to account for padding */
+        padding: 40px 30px 100px;
+        min-height: 800px;
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    }
+
+    .logo h1 {
+        font-size: 60px;
+    }
+
+    .logo img {
+        width: 100px;
+    }
+}
