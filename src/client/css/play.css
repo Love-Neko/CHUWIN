@@ -191,7 +191,9 @@ canvas {
 
 
 
-/* Game Credits link on title screen and invite creation screen */
+/* Bottom strip of the title screen and the invite creation screen. Empty since the
+   credits link was removed, but the div it positions is still there — three scripts
+   toggle it by id. */
 
 .menu-external-links {
     position: absolute;
@@ -199,24 +201,6 @@ canvas {
     right: 0;
     left: 0;
     z-index: 1;
-}
-
-.menu-external-links .credits {
-    opacity: 0.75;
-    font-weight: bold;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    color: var(--text);
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
-    text-decoration: none;
-    margin: 12px 17px;
-    font-size: calc(16px + var(--vw-capped) * 0.012)
-}
-
-.menu-external-links .credits:hover {
-    opacity: 1;
-    color: var(--accent);
 }
 
 

@@ -167,7 +167,7 @@ header label {
 
 
 
-/* The navigation hyperlinks, middle of header. Play, News, Login, Create Account */
+/* The navigation hyperlinks, middle of header. Play, Login, Create Account */
 
 nav {
     display: flex;
@@ -186,11 +186,6 @@ nav span {
 
 nav .svg-pawn {
     bottom: 1px;
-}
-
-nav #svg-news {
-    height: 55%;
-    padding: 0 5px;
 }
 
 nav #svg-login {
@@ -230,9 +225,6 @@ nav.compact-2 span {
 /* Navigation SVGs are visible again, but not the text */
 nav.compact-3 span {
     display: none;
-}
-nav.compact-3 #svg-news {
-    padding: 0 4px;
 }
 nav.compact-3 #svg-profile {
     padding: 0 4px;

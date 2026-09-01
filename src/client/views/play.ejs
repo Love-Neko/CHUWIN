@@ -55,11 +55,10 @@
 
             <div id="overlay" class="overlay">
 
-                <!-- The game credits link on the title screen.
-                The wrapper div is required: guiplay/guipractice/guititle all toggle it by id. -->
-                <div id="menu-external-links" class="menu-external-links hidden">
-                    <a href="/credits" class="credits"><%=t('play.main-menu.credits')%></a>
-                </div>
+                <!-- Empty on purpose. The credits link that used to sit here is gone, but the
+                wrapper div has to stay: guiplay/guipractice/guititle all toggle it by id, and
+                they throw on a null element. -->
+                <div id="menu-external-links" class="menu-external-links hidden"></div>
 
                 <!-- Menu screen UI -->
                 <div id="title" class="title hidden">
